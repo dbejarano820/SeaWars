@@ -14,9 +14,17 @@ public class MainCliente {
     
         public static void main(String[] args) {
         
-        System.out.println("En esta progra vamos a sacar 100");
+            try{
+            PantallaCliente pantalla = new PantallaCliente();
+            Cliente p = new Cliente(pantalla); 
+            p.conectar();
+            prepantalla.setVisible(true);
 
-        
+
+            }
+            catch(Exception e){
+
+            }
         }
 }
         

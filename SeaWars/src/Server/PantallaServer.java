@@ -34,7 +34,10 @@ public class PantallaServer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1165, 792));
+        setMaximumSize(new java.awt.Dimension(1140, 800));
+        setMinimumSize(new java.awt.Dimension(1140, 800));
+        setPreferredSize(new java.awt.Dimension(1140, 800));
+        setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(textArea1);
         textArea1.setBounds(440, 320, 310, 340);
@@ -62,8 +65,9 @@ public class PantallaServer extends javax.swing.JFrame {
         jLabel4.setBounds(840, 290, 160, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FondoServer.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1165, 800));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1165, 792);
+        jLabel1.setBounds(0, 0, 1140, 810);
 
         pack();
         setLocationRelativeTo(null);
