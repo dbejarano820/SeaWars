@@ -11,13 +11,25 @@ package Server;
  */
 public class PantallaServer extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PantallaServer
-     */
+    public Server srv;
+    
     public PantallaServer() {
         initComponents();
     }
 
+    public void setServer(Server srv){
+        this.srv = srv;
+    }
+    
+    public void addMessage(String msj){
+        txtStatus.append(msj + "\n");
+    }
+    
+    public void increaseConnections(){
+        String num = Integer.toString(srv.contadorDeConexiones);
+        lblConectados.setText(num);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,34 +39,32 @@ public class PantallaServer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textArea1 = new java.awt.TextArea();
+        txtStatus = new java.awt.TextArea();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblConectados = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1140, 800));
         setMinimumSize(new java.awt.Dimension(1140, 800));
-        setPreferredSize(new java.awt.Dimension(1140, 800));
         setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(textArea1);
-        textArea1.setBounds(440, 320, 310, 340);
+        getContentPane().add(txtStatus);
+        txtStatus.setBounds(440, 320, 310, 340);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SeaWars.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(390, 80, 390, 211);
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 70)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("0");
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(840, 360, 160, 110);
+        lblConectados.setBackground(new java.awt.Color(0, 0, 0));
+        lblConectados.setFont(new java.awt.Font("Dialog", 1, 70)); // NOI18N
+        lblConectados.setForeground(new java.awt.Color(204, 204, 0));
+        lblConectados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConectados.setText("0");
+        lblConectados.setOpaque(true);
+        getContentPane().add(lblConectados);
+        lblConectados.setBounds(840, 360, 160, 110);
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -111,8 +121,8 @@ public class PantallaServer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private java.awt.TextArea textArea1;
+    private javax.swing.JLabel lblConectados;
+    private java.awt.TextArea txtStatus;
     // End of variables declaration//GEN-END:variables
 }

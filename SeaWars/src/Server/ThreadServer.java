@@ -5,10 +5,75 @@
  */
 package Server;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
 /**
  *
  * @author PERSONAL
  */
-public class ThreadServer {
+public class ThreadServer extends Thread {
     
+    private Socket socketRef;
+    private DataInputStream reader;
+    public DataOutputStream writer;
+    public String nombre;
+    private boolean running = true;
+    Server server;
+    
+    
+    public ThreadServer(Socket socketRef, Server server) throws IOException {
+      this.socketRef = socketRef;
+      reader = new DataInputStream(socketRef.getInputStream());
+      writer = new DataOutputStream(socketRef.getOutputStream());
+      this.server = server;
+  }   
+    
+    
+    public void startGame() throws IOException {
+ 
+        //start game on server
+        //start game on all thread
+        
+        
+    }
+    
+    
+    public void run(){
+        
+        int instruccionID = 1;
+        while(running){
+            
+            //revisar si perdio
+            /*
+            Player jugador = server.buscar(nombre);
+            if(server.partidaIniciada && jugador.totalCash <= 0 && jugador.todasHipotecadas()){
+                server.ordenTurnos.remove(this);
+            }    
+            */
+
+            try {
+               // intstruccionID = reader.readInt(); //espera hasta recibir un entero
+               String usuario = "";  //variable de usuario para utilizar en todos los casos
+               switch(instruccionID){
+                   
+                   case 1:
+                       nombre = reader.readUTF();
+                       //add player to list of players del server           
+                   break;
+                   
+                   
+                   
+               }               
+            } catch (IOException ex){
+                
+             
+            }
+        } 
+    }
+    
+
+
 }

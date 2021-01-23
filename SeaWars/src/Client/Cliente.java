@@ -16,13 +16,10 @@ public class Cliente {
     
     Socket socketRef;
     PantallaCliente refPantalla;
-    public ThreadPlayer hiloPlayer;
-    
-    boolean prerolled;
+    public ThreadPlayer hiloPlayer;  
     boolean gameready;
-    int consecutiveRolls;
-    
     String nombre;
+    
     
     
     
@@ -36,10 +33,7 @@ public class Cliente {
             hiloPlayer.start();
             String nombreTmp = JOptionPane.showInputDialog("Introduzca un Nick:");
             this.nombre = nombreTmp;
- //int gay = JOptionPane.showConfirmDialog(refPantalla, "Pagar");
-       //     JOptionPane.showMessageDialog(refPantalla, "CAREPICHA");
-            refPantalla.setTitle(nombre);
-            refPrePantalla.setTitle(nombre + " -- Pregame");
+            refPantalla.setTitle(nombre + " --- Sea Wars");
             hiloPlayer.writer.writeInt(1); //instruccion para el switch del thraed servidor
             hiloPlayer.writer.writeUTF(nombre); //instruccion para el switch del thraed servidor
             

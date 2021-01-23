@@ -7,6 +7,7 @@ package Server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,9 @@ import java.net.Socket;
 public class Server {
 
      PantallaServer refPantalla;
+     public ArrayList<ThreadServer> conexiones;
+     //include game
+     //game va a tener player, peleadores, y poderes   cada player tiene 3 peleadores los cuales tienen un arraylist de poderes.
      int contadorDeConexiones;
      private boolean running = true;
      private ServerSocket srv;
@@ -22,13 +26,16 @@ public class Server {
      private boolean partidaIniciada = false;
 
 
+     
+    public Server(PantallaServer refPantalla){
+        
+        this.refPantalla = refPantalla;
+        
+       
+    }
+     
+     
 
-
-
-
-
-
-/*
     public void runServer(){
         contadorDeConexiones = 0;
         try{
@@ -36,25 +43,20 @@ public class Server {
             refPantalla.setTitle("SERVER");
             while (running){
                 
-                if(prepartidaIniciada)
+                if(partidaIniciada)
                     refPantalla.addMessage("::Game has started!");
                 else refPantalla.addMessage("::Awaiting connection....");
                     Socket nuevaConexion = srv.accept();
-                if (!prepartidaIniciada){ 
+                if (!partidaIniciada){ 
                     contadorDeConexiones++;
                     refPantalla.increaseConnections();
                     refPantalla.addMessage(":Connection #" + contadorDeConexiones + " accepted!");
 
-                    // nuevo thread
+                    //nuevo trhead
                     ThreadServer newThread = new ThreadServer(nuevaConexion, this);
                     conexiones.add(newThread);
                     newThread.start();
                     
-                    if(contadorDeConexiones == setAmountPlayers){
-                        conexiones.get(0).iniciarPreGame();
-                       // refPantalla.addMessage("::Game has started!");
-                        //for loop writing start
-                    }
                 }
                 else{
                     // OutputStream socket para poder hacer un writer
@@ -70,6 +72,6 @@ public class Server {
         }
     
     }
-*/
+
     
 }

@@ -16,8 +16,11 @@ public class SeaWars {
      */
     public static void main(String[] args) {
         
-        System.out.println("En esta progra vamos a sacar 100");
-        
+        PantallaServer pantalla = new PantallaServer();
+        Server srv = new Server(pantalla);
+        pantalla.setVisible(true);
+        pantalla.setServer(srv);
+        srv.runServer();  
         
     }
     
