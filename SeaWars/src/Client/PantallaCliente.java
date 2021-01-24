@@ -22,34 +22,34 @@ public class PantallaCliente extends javax.swing.JFrame {
     public PantallaCliente() {
         initComponents();
         nombreTurno = ""; 
-   }
 
+    }
     
     public void setCliente(Cliente refCliente){
         this.refCliente = refCliente;
     }
-    
-    public void addLabelTablero(JLabel labelTmp){
-        this.jPanel1.add(labelTmp);
-    }
-    
-    
+   
 
     public void generarTablero(){
 
-        for(int row = 0; row < refCliente.tableroCliente.length; row++){
-
-            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
-
-                refCliente.tableroCliente[row][col] = new Casilla();
+        for(int row = 0; row < refCliente.tableroCliente.length; row++){  //refCliente.tableroCliente.length
+            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){ //refCliente.tableroCliente[row].length
+                refCliente.tableroCliente[row][col] = new Casilla();  
                 JLabel labelTmp = refCliente.tableroCliente[row][col].generateLabel();
                 this.jPanel1.add(labelTmp);
-                labelTmp.setLocation(((col*20)+680), ((row*20)+50)); 
+                labelTmp.setLocation(((col*20)), ((row*20))); 
             }
         }
     }
     
     
+    public void prubea(){
+        int i = 40;
+        String str = String.valueOf(40) + "%";
+        str += "\n The trident \n Kaka";
+        lblHero1Power.setText(nombreTurno);
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,17 +60,41 @@ public class PantallaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblHealth = new javax.swing.JLabel();
+        lblCasillasDestroyed = new javax.swing.JLabel();
+        lblHealthNum = new javax.swing.JLabel();
+        lblCasillasDestroyedNum = new javax.swing.JLabel();
+        lblHealt = new javax.swing.JLabel();
+        lblHero1Power = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtConsole = new java.awt.TextArea();
         txtFieldConsole = new java.awt.TextField();
         btnSend = new javax.swing.JButton();
         txtLastPlay = new java.awt.TextArea();
         txtBitacora = new java.awt.TextArea();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         lblHero3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        lblHealth1 = new javax.swing.JLabel();
         lblHero1 = new javax.swing.JLabel();
         lblHero2 = new javax.swing.JLabel();
         jLabel609 = new javax.swing.JLabel();
@@ -88,34 +112,54 @@ public class PantallaCliente extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1800, 1050));
         getContentPane().setLayout(null);
 
-        lblHealth.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        lblHealth.setForeground(new java.awt.Color(0, 0, 0));
-        lblHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHealth.setText("Casillas destroyed:");
-        getContentPane().add(lblHealth);
-        lblHealth.setBounds(1050, 460, 230, 30);
+        lblCasillasDestroyed.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblCasillasDestroyed.setForeground(new java.awt.Color(0, 0, 0));
+        lblCasillasDestroyed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCasillasDestroyed.setText("Casillas destroyed:");
+        getContentPane().add(lblCasillasDestroyed);
+        lblCasillasDestroyed.setBounds(1050, 460, 230, 30);
+
+        lblHealthNum.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblHealthNum.setForeground(new java.awt.Color(0, 0, 0));
+        lblHealthNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHealthNum.setText("100%");
+        getContentPane().add(lblHealthNum);
+        lblHealthNum.setBounds(670, 460, 70, 30);
+
+        lblCasillasDestroyedNum.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblCasillasDestroyedNum.setForeground(new java.awt.Color(0, 0, 0));
+        lblCasillasDestroyedNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCasillasDestroyedNum.setText("0");
+        getContentPane().add(lblCasillasDestroyedNum);
+        lblCasillasDestroyedNum.setBounds(1280, 460, 60, 30);
+
+        lblHealt.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblHealt.setForeground(new java.awt.Color(0, 0, 0));
+        lblHealt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHealt.setText("Health:");
+        getContentPane().add(lblHealt);
+        lblHealt.setBounds(580, 460, 90, 30);
+
+        lblHero1Power.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblHero1Power.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(lblHero1Power);
+        lblHero1Power.setBounds(1590, 90, 160, 30);
 
         jPanel1.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-
+        jPanel1.setLayout(null);
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(680, 50, 580, 380);
+        jPanel1.setBounds(680, 50, 600, 400);
         getContentPane().add(txtConsole);
         txtConsole.setBounds(580, 620, 1200, 330);
         getContentPane().add(txtFieldConsole);
         txtFieldConsole.setBounds(570, 970, 1130, 20);
 
         btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSend);
         btnSend.setBounds(1720, 970, 59, 25);
         getContentPane().add(txtLastPlay);
@@ -123,7 +167,152 @@ public class PantallaCliente extends javax.swing.JFrame {
         getContentPane().add(txtBitacora);
         txtBitacora.setBounds(20, 70, 520, 530);
 
-        lblHero3.setText("jLabel8");
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("2");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(660, 70, 20, 20);
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("1");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(660, 50, 20, 20);
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("3");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(660, 90, 20, 20);
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("4");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(660, 110, 20, 20);
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("5");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(660, 130, 20, 20);
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("6");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(660, 150, 20, 20);
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("7");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(660, 170, 20, 20);
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("8");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(660, 190, 20, 20);
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("9");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(660, 210, 20, 20);
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("10");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(660, 230, 20, 20);
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("11");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(660, 250, 20, 20);
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("12");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(660, 270, 20, 20);
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("13");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(660, 290, 20, 20);
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("14");
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(660, 310, 20, 20);
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("15");
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(660, 330, 20, 20);
+
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("16");
+        getContentPane().add(jLabel23);
+        jLabel23.setBounds(660, 350, 20, 20);
+
+        jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("20");
+        getContentPane().add(jLabel25);
+        jLabel25.setBounds(660, 430, 20, 20);
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("18");
+        getContentPane().add(jLabel26);
+        jLabel26.setBounds(660, 390, 20, 20);
+
+        jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("17");
+        getContentPane().add(jLabel27);
+        jLabel27.setBounds(660, 370, 20, 20);
+
+        jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("19");
+        getContentPane().add(jLabel28);
+        jLabel28.setBounds(660, 410, 20, 20);
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText(" 1   2   3   4   5   6   7   8   9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30");
+        getContentPane().add(jLabel24);
+        jLabel24.setBounds(680, 30, 600, 20);
+
         lblHero3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblHero3);
         lblHero3.setBounds(1420, 400, 140, 150);
@@ -138,19 +327,10 @@ public class PantallaCliente extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(570, 20, 810, 440);
 
-        lblHealth1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        lblHealth1.setForeground(new java.awt.Color(0, 0, 0));
-        lblHealth1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHealth1.setText("Health:");
-        getContentPane().add(lblHealth1);
-        lblHealth1.setBounds(580, 460, 90, 30);
-
-        lblHero1.setText("jLabel8");
         lblHero1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblHero1);
         lblHero1.setBounds(1420, 40, 140, 150);
 
-        lblHero2.setText("jLabel8");
         lblHero2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblHero2);
         lblHero2.setBounds(1420, 220, 140, 150);
@@ -208,6 +388,17 @@ public class PantallaCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        
+                        int i = 40;
+        String str = 40 + "%";
+        str += "\n The trident \n Kaka";
+        lblHero1Power.setText(str);
+        
+        
+    }//GEN-LAST:event_btnSendActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,7 +437,26 @@ public class PantallaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -254,11 +464,16 @@ public class PantallaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel609;
     private javax.swing.JLabel jLabel610;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCasillasDestroyed;
+    private javax.swing.JLabel lblCasillasDestroyedNum;
     private javax.swing.JLabel lblFondo;
-    private javax.swing.JLabel lblHealth;
-    private javax.swing.JLabel lblHealth1;
+    private javax.swing.JLabel lblHealt;
+    private javax.swing.JLabel lblHealthNum;
     private javax.swing.JLabel lblHero1;
+    private javax.swing.JLabel lblHero1Power;
     private javax.swing.JLabel lblHero2;
     private javax.swing.JLabel lblHero3;
     private javax.swing.JLabel lblTurn;

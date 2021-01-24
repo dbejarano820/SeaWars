@@ -31,22 +31,6 @@ public class Cliente {
     }
     
     
-    public void generarMatriz(){
-        
-        for(int row = 0; row < tableroCliente.length; row++){
-            
-            for(int col = 0; col < tableroCliente[row].length; col++ )
-               
-                tableroCliente[row][col] = new Casilla();
-        
-        }
-        
-        
-    }
-
-    
-    
-    
     public void conectar(){
 
     try{
@@ -55,13 +39,13 @@ public class Cliente {
 
         hiloPlayer = new ThreadPlayer(socketRef, refPantalla, this);
         hiloPlayer.start();
-        String nombreTmp = JOptionPane.showInputDialog("Introduzca un Nick:");
+        String nombreTmp = JOptionPane.showInputDialog("Enter your name:");
         this.nombre = nombreTmp;
         refPantalla.setTitle(nombre + " --- Sea Wars");
         refPantalla.setCliente(this);
         hiloPlayer.writer.writeInt(1); //instruccion para el switch del thraed servidor
         hiloPlayer.writer.writeUTF(nombre); //instruccion para el switch del thraed servidor
-        //generarTablero();
+
 
     }
     catch(Exception e){

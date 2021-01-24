@@ -5,6 +5,8 @@
  */
 package Client;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author PERSONAL
@@ -20,8 +22,7 @@ public class MainCliente {
             p.conectar();
             pantalla.generarTablero();
             pantalla.setVisible(true);
-        //    p.generarTablero();
-
+            
 
             }
             catch(Exception e){

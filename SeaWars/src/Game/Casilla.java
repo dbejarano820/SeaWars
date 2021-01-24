@@ -13,12 +13,12 @@ import javax.swing.JLabel;
  */
 public class Casilla {
     
-    String historial;
-    boolean ocupado;
+    public String historial;
+    public boolean ocupado;
     int vida;
-    boolean activeVolcano;
-    boolean activeWhirlpool;
-    JLabel refLabel;
+    public boolean activeVolcano;
+    public boolean activeWhirlpool;
+    public JLabel refLabel;
     
     public Casilla(){
         
@@ -26,28 +26,35 @@ public class Casilla {
         activeVolcano = false;
         activeWhirlpool = false;
         ocupado = false;
+        historial = "";
     }
     
     
     
     public JLabel generateLabel(){      // se utiliza para generar el reflabel de las casillas del cliente, el player no lo necesita
         JLabel newLabel = new JLabel();
+        
         newLabel.setForeground(new java.awt.Color(0, 0, 0));
         newLabel.setText("");
         newLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         newLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         newLabel.setOpaque(true);
-      //  getContentPane().add(newLabel);
         newLabel.setSize(20,20);
         newLabel.setLocation(0,0);
         this.refLabel = newLabel;
         return newLabel;
-        
-        
-        
+       
     }
     
+    public void addHistorial(String msj){
+        historial += msj;
+    }
     
-    
+    public boolean estaViva(){
+        if(vida <= 0)
+            return false;
+        else
+            return true;
+    }
     
 }

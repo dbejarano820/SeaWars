@@ -45,7 +45,6 @@ public class ThreadPlayer extends Thread {
                     case 1: // recibe el turno del jufador 1
                         usuario = reader.readUTF();
                         
-                        System.out.println("aca se cae 2");
                         //refPantalla.setNombreTurno(usuario);
                         // refPantalla.pintarTurno(turno);
                      /*
