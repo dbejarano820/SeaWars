@@ -67,7 +67,70 @@ public class ThreadServer extends Thread {
                    break;
                    
                    case 2:
-                   
+                       usuario = reader.readUTF();
+                       String comando = reader.readUTF();
+                       String[] comandos = comando.split("-");
+                       
+                       System.out.println(comandos[0]);
+                       
+                       if(comandos[0].equals("create")){
+                           
+                           System.out.println(comandos[1]);
+                       }
+                       else if(comandos[0].equals("start")){
+                           
+                           System.out.println("game started");
+                       }
+                       else if(comandos[0].equals("play")){
+                           
+                       }
+                        else if(comandos[0].equals("skip")){
+                           
+                       }
+                       else if(comandos[0].equals("chat")){
+                           
+                       }                       
+                       else if(comandos[0].equals("whisper")){
+                           
+                       }                       
+                       else if(comandos[0].equals("surrender")){
+                           
+                       }                       
+                       else if(comandos[0].equals("cellstatus")){
+                           
+                       }  
+                       else if(comandos[0].equals("log")){
+                           
+                       }
+                       else if(comandos[0].equals("logsummary")){
+                           
+                       }                       
+                       else if(comandos[0].equals("enemystatus")){
+                           
+                       }
+                       else if(comandos[0].equals("showcells")){
+                           
+                           if(comandos[1].equals("occupied")){
+                               
+                           }
+                           else if(comandos[1].equals("health")){
+                               
+                           }
+                           else if(comandos[1].equals("alive")){
+                               
+                           } 
+                       }
+                       else{
+                           
+                           //no se ingreso ningun comando valido
+                           
+                       }
+                       
+                       
+                       //parse string
+                       
+                       //parse string
+                       
                    
                    
                }               

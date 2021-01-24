@@ -6,6 +6,7 @@
 package Client;
 
 import Game.Casilla;
+import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -43,12 +44,14 @@ public class PantallaCliente extends javax.swing.JFrame {
     }
     
     
-    public void prubea(){
-        int i = 40;
-        String str = String.valueOf(40) + "%";
-        str += "\n The trident \n Kaka";
-        lblHero1Power.setText(nombreTurno);
-        
+    public void addHistory(String msj){
+        txtBitacora.append(msj + "\n");
+    }
+    
+    
+    public void addLastPlay(String msj){
+        txtLastPlay.setText("");
+        txtLastPlay.append(msj + "\n"); 
     }
     
     /**
@@ -64,7 +67,15 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHealthNum = new javax.swing.JLabel();
         lblCasillasDestroyedNum = new javax.swing.JLabel();
         lblHealt = new javax.swing.JLabel();
-        lblHero1Power = new javax.swing.JLabel();
+        lblHero2Name = new javax.swing.JLabel();
+        lblHero3Name = new javax.swing.JLabel();
+        lblHero1Name = new javax.swing.JLabel();
+        txtHero3Tablero = new java.awt.TextArea();
+        txtHero1Tablero = new java.awt.TextArea();
+        txtHero2Tablero = new java.awt.TextArea();
+        txtHero1 = new java.awt.TextArea();
+        txtHero2 = new java.awt.TextArea();
+        txtHero3 = new java.awt.TextArea();
         jPanel1 = new javax.swing.JPanel();
         txtConsole = new java.awt.TextArea();
         txtFieldConsole = new java.awt.TextField();
@@ -99,6 +110,7 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHero2 = new javax.swing.JLabel();
         jLabel609 = new javax.swing.JLabel();
         jLabel610 = new javax.swing.JLabel();
+        lblTurnoPlayer = new javax.swing.JLabel();
         lblTurn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -140,10 +152,35 @@ public class PantallaCliente extends javax.swing.JFrame {
         getContentPane().add(lblHealt);
         lblHealt.setBounds(580, 460, 90, 30);
 
-        lblHero1Power.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero1Power.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(lblHero1Power);
-        lblHero1Power.setBounds(1590, 90, 160, 30);
+        lblHero2Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblHero2Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero2Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblHero2Name);
+        lblHero2Name.setBounds(1590, 220, 160, 30);
+
+        lblHero3Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblHero3Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero3Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblHero3Name);
+        lblHero3Name.setBounds(1590, 400, 160, 30);
+
+        lblHero1Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblHero1Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero1Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblHero1Name);
+        lblHero1Name.setBounds(1590, 40, 180, 30);
+        getContentPane().add(txtHero3Tablero);
+        txtHero3Tablero.setBounds(1170, 490, 180, 100);
+        getContentPane().add(txtHero1Tablero);
+        txtHero1Tablero.setBounds(600, 490, 180, 100);
+        getContentPane().add(txtHero2Tablero);
+        txtHero2Tablero.setBounds(890, 490, 180, 100);
+        getContentPane().add(txtHero1);
+        txtHero1.setBounds(1590, 80, 180, 130);
+        getContentPane().add(txtHero2);
+        txtHero2.setBounds(1590, 260, 180, 130);
+        getContentPane().add(txtHero3);
+        txtHero3.setBounds(1590, 440, 180, 140);
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
@@ -349,6 +386,11 @@ public class PantallaCliente extends javax.swing.JFrame {
         getContentPane().add(jLabel610);
         jLabel610.setBounds(180, 30, 180, 40);
 
+        lblTurnoPlayer.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblTurnoPlayer.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(lblTurnoPlayer);
+        lblTurnoPlayer.setBounds(160, 620, 340, 40);
+
         lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTurn.setForeground(new java.awt.Color(0, 0, 0));
         lblTurn.setText("Turn:");
@@ -391,10 +433,19 @@ public class PantallaCliente extends javax.swing.JFrame {
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
         
-                        int i = 40;
-        String str = 40 + "%";
-        str += "\n The trident \n Kaka";
-        lblHero1Power.setText(str);
+        try{
+            
+            refCliente.hiloPlayer.writer.writeInt(2);
+            refCliente.hiloPlayer.writer.writeUTF(refCliente.nombre);
+            refCliente.hiloPlayer.writer.writeUTF(txtFieldConsole.getText());
+            txtConsole.append("> " + txtFieldConsole.getText() + "\n");
+            txtFieldConsole.setText("");
+            
+            
+            
+        } catch (IOException ex){
+            
+        }
         
         
     }//GEN-LAST:event_btnSendActionPerformed
@@ -473,13 +524,22 @@ public class PantallaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblHealt;
     private javax.swing.JLabel lblHealthNum;
     private javax.swing.JLabel lblHero1;
-    private javax.swing.JLabel lblHero1Power;
+    private javax.swing.JLabel lblHero1Name;
     private javax.swing.JLabel lblHero2;
+    private javax.swing.JLabel lblHero2Name;
     private javax.swing.JLabel lblHero3;
+    private javax.swing.JLabel lblHero3Name;
     private javax.swing.JLabel lblTurn;
+    private javax.swing.JLabel lblTurnoPlayer;
     private java.awt.TextArea txtBitacora;
     private java.awt.TextArea txtConsole;
     private java.awt.TextField txtFieldConsole;
+    private java.awt.TextArea txtHero1;
+    private java.awt.TextArea txtHero1Tablero;
+    private java.awt.TextArea txtHero2;
+    private java.awt.TextArea txtHero2Tablero;
+    private java.awt.TextArea txtHero3;
+    private java.awt.TextArea txtHero3Tablero;
     private java.awt.TextArea txtLastPlay;
     // End of variables declaration//GEN-END:variables
 }

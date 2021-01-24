@@ -16,6 +16,9 @@ public class Player {
     public String nombre;
     public Casilla [][] tablero;
     public ArrayList<Hero> heros;
+    public String historialPersonal;
+    public int cantidadAtaques;
+    public int cantidadAtinados;
     
     
     
@@ -23,7 +26,8 @@ public class Player {
         this.nombre  = nombre;
         tablero = new Casilla[20][30]; 
         heros = new ArrayList<Hero>();
-        //que mas?
+        cantidadAtaques = 0;
+        cantidadAtinados = 0;
     }
     
     
