@@ -5,6 +5,8 @@
  */
 package Client;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author PERSONAL
@@ -36,14 +38,26 @@ public class PantallaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblHealth = new javax.swing.JLabel();
+        txtConsole = new java.awt.TextArea();
+        txtFieldConsole = new java.awt.TextField();
+        btnSend = new javax.swing.JButton();
+        txtLastPlay = new java.awt.TextArea();
+        txtBitacora = new java.awt.TextArea();
+        lblHero3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblHealth1 = new javax.swing.JLabel();
+        lblHero1 = new javax.swing.JLabel();
+        lblHero2 = new javax.swing.JLabel();
+        jLabel609 = new javax.swing.JLabel();
+        jLabel610 = new javax.swing.JLabel();
+        lblTurn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        textField1 = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,10 +65,76 @@ public class PantallaCliente extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1800, 1050));
         getContentPane().setLayout(null);
 
+        lblHealth.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblHealth.setForeground(new java.awt.Color(0, 0, 0));
+        lblHealth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHealth.setText("Casillas destroyed:");
+        getContentPane().add(lblHealth);
+        lblHealth.setBounds(1050, 460, 230, 30);
+        getContentPane().add(txtConsole);
+        txtConsole.setBounds(580, 620, 1200, 330);
+        getContentPane().add(txtFieldConsole);
+        txtFieldConsole.setBounds(570, 970, 1130, 20);
+
+        btnSend.setText("Send");
+        getContentPane().add(btnSend);
+        btnSend.setBounds(1720, 970, 59, 25);
+        getContentPane().add(txtLastPlay);
+        txtLastPlay.setBounds(20, 720, 520, 260);
+        getContentPane().add(txtBitacora);
+        txtBitacora.setBounds(20, 70, 520, 530);
+
+        lblHero3.setText("jLabel8");
+        lblHero3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblHero3);
+        lblHero3.setBounds(1420, 400, 140, 150);
+
         jLabel2.setToolTipText("");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 680, 1220, 280);
+        jLabel2.setBounds(570, 610, 1220, 350);
+
+        jLabel7.setToolTipText("");
+        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(570, 20, 810, 440);
+
+        lblHealth1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblHealth1.setForeground(new java.awt.Color(0, 0, 0));
+        lblHealth1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHealth1.setText("Health:");
+        getContentPane().add(lblHealth1);
+        lblHealth1.setBounds(580, 460, 90, 30);
+
+        lblHero1.setText("jLabel8");
+        lblHero1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblHero1);
+        lblHero1.setBounds(1420, 40, 140, 150);
+
+        lblHero2.setText("jLabel8");
+        lblHero2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblHero2);
+        lblHero2.setBounds(1420, 220, 140, 150);
+
+        jLabel609.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel609.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel609.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel609.setText("Last play");
+        getContentPane().add(jLabel609);
+        jLabel609.setBounds(170, 680, 180, 40);
+
+        jLabel610.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel610.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel610.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel610.setText("Bitacora");
+        getContentPane().add(jLabel610);
+        jLabel610.setBounds(180, 30, 180, 40);
+
+        lblTurn.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lblTurn.setForeground(new java.awt.Color(0, 0, 0));
+        lblTurn.setText("Turn:");
+        getContentPane().add(lblTurn);
+        lblTurn.setBounds(30, 620, 160, 40);
 
         jLabel1.setToolTipText("");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
@@ -64,28 +144,22 @@ public class PantallaCliente extends javax.swing.JFrame {
         jLabel3.setToolTipText("");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 10, 540, 660);
+        jLabel3.setBounds(10, 20, 540, 650);
 
         jLabel4.setToolTipText("");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(570, 10, 810, 540);
+        jLabel4.setBounds(570, 20, 810, 580);
 
         jLabel5.setToolTipText("");
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(570, 10, 810, 660);
+        jLabel5.setBounds(570, 20, 810, 580);
 
         jLabel6.setToolTipText("");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(1400, 10, 390, 660);
-        getContentPane().add(textField1);
-        textField1.setBounds(570, 970, 1130, 20);
-
-        jButton1.setText("Send");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(1720, 970, 59, 25);
+        jLabel6.setBounds(1390, 20, 400, 580);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FondoCliente.jpg"))); // NOI18N
         getContentPane().add(lblFondo);
@@ -131,14 +205,26 @@ public class PantallaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel609;
+    private javax.swing.JLabel jLabel610;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblFondo;
-    private java.awt.TextField textField1;
+    private javax.swing.JLabel lblHealth;
+    private javax.swing.JLabel lblHealth1;
+    private javax.swing.JLabel lblHero1;
+    private javax.swing.JLabel lblHero2;
+    private javax.swing.JLabel lblHero3;
+    private javax.swing.JLabel lblTurn;
+    private java.awt.TextArea txtBitacora;
+    private java.awt.TextArea txtConsole;
+    private java.awt.TextField txtFieldConsole;
+    private java.awt.TextArea txtLastPlay;
     // End of variables declaration//GEN-END:variables
 }
