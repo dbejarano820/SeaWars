@@ -18,7 +18,9 @@ public class MainCliente {
             PantallaCliente pantalla = new PantallaCliente();
             Cliente p = new Cliente(pantalla); 
             p.conectar();
+            pantalla.generarTablero();
             pantalla.setVisible(true);
+        //    p.generarTablero();
 
 
             }

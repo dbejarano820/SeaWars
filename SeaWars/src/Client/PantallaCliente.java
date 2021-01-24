@@ -5,6 +5,8 @@
  */
 package Client;
 
+import Game.Casilla;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -27,6 +29,26 @@ public class PantallaCliente extends javax.swing.JFrame {
         this.refCliente = refCliente;
     }
     
+    public void addLabelTablero(JLabel labelTmp){
+        this.jPanel1.add(labelTmp);
+    }
+    
+    
+
+    public void generarTablero(){
+
+        for(int row = 0; row < refCliente.tableroCliente.length; row++){
+
+            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
+
+                refCliente.tableroCliente[row][col] = new Casilla();
+                JLabel labelTmp = refCliente.tableroCliente[row][col].generateLabel();
+                this.jPanel1.add(labelTmp);
+                labelTmp.setLocation(((col*20)+680), ((row*20)+50)); 
+            }
+        }
+    }
+    
     
     
     /**
@@ -39,6 +61,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         lblHealth = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtConsole = new java.awt.TextArea();
         txtFieldConsole = new java.awt.TextField();
         btnSend = new javax.swing.JButton();
@@ -71,6 +94,22 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHealth.setText("Casillas destroyed:");
         getContentPane().add(lblHealth);
         lblHealth.setBounds(1050, 460, 230, 30);
+
+        jPanel1.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(680, 50, 580, 380);
         getContentPane().add(txtConsole);
         txtConsole.setBounds(580, 620, 1200, 330);
         getContentPane().add(txtFieldConsole);
@@ -215,6 +254,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel609;
     private javax.swing.JLabel jLabel610;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblHealth;
     private javax.swing.JLabel lblHealth1;

@@ -5,6 +5,8 @@
  */
 package Game;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author PERSSONAL
@@ -16,7 +18,7 @@ public class Casilla {
     int vida;
     boolean activeVolcano;
     boolean activeWhirlpool;
-    //Jlabel
+    JLabel refLabel;
     
     public Casilla(){
         
@@ -28,7 +30,22 @@ public class Casilla {
     
     
     
-    
+    public JLabel generateLabel(){      // se utiliza para generar el reflabel de las casillas del cliente, el player no lo necesita
+        JLabel newLabel = new JLabel();
+        newLabel.setForeground(new java.awt.Color(0, 0, 0));
+        newLabel.setText("");
+        newLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        newLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        newLabel.setOpaque(true);
+      //  getContentPane().add(newLabel);
+        newLabel.setSize(20,20);
+        newLabel.setLocation(0,0);
+        this.refLabel = newLabel;
+        return newLabel;
+        
+        
+        
+    }
     
     
     
