@@ -8,6 +8,7 @@ package Server;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import Game.*;
 
 /**
  *
@@ -19,22 +20,29 @@ public class Server {
      public ArrayList<ThreadServer> conexiones;
      //include game
      //game va a tener player, peleadores, y poderes   cada player tiene 3 peleadores los cuales tienen un arraylist de poderes.
-     int contadorDeConexiones;
+     public ArrayList<Player> players;
+     public int contadorDeConexiones;
+     public int setAmountPlayers;
      private boolean running = true;
      private ServerSocket srv;
      private int turno = 0;
-     private boolean partidaIniciada = false;
+     private boolean gameStarted = false;
 
 
      
     public Server(PantallaServer refPantalla){
         
         this.refPantalla = refPantalla;
-        
+        players = new ArrayList<Player>();
+        conexiones = new ArrayList<ThreadServer>();
        
     }
      
-     
+    public void startGame(){
+        this.gameStarted = true;
+    } 
+    
+    
 
     public void runServer(){
         contadorDeConexiones = 0;
@@ -43,11 +51,11 @@ public class Server {
             refPantalla.setTitle("SERVER");
             while (running){
                 
-                if(partidaIniciada)
+                if(gameStarted)
                     refPantalla.addMessage("::Game has started!");
                 else refPantalla.addMessage("::Awaiting connection....");
-                    Socket nuevaConexion = srv.accept();
-                if (!partidaIniciada){ 
+                Socket nuevaConexion = srv.accept();
+                if (!gameStarted && contadorDeConexiones < setAmountPlayers){ 
                     contadorDeConexiones++;
                     refPantalla.increaseConnections();
                     refPantalla.addMessage(":Connection #" + contadorDeConexiones + " accepted!");
@@ -56,12 +64,11 @@ public class Server {
                     ThreadServer newThread = new ThreadServer(nuevaConexion, this);
                     conexiones.add(newThread);
                     newThread.start();
-                    
                 }
                 else{
                     // OutputStream socket para poder hacer un writer
                     
-                    refPantalla.addMessage(":Connection denied: game has already started!");
+                    refPantalla.addMessage(":Connection denied: game lobby is full!");
                 }
                 
             }

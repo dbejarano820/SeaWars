@@ -11,13 +11,22 @@ package Client;
  */
 public class PantallaCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PantallaCliente
-     */
+    
+    Cliente refCliente;
+    String nombreTurno;
+    
     public PantallaCliente() {
         initComponents();
-    }
+        nombreTurno = ""; 
+   }
 
+    
+    public void setCliente(Cliente refCliente){
+        this.refCliente = refCliente;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,20 +36,19 @@ public class PantallaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblFondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1480, 860));
+        setPreferredSize(new java.awt.Dimension(1800, 1000));
+        getContentPane().setLayout(null);
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FondoCliente.jpg"))); // NOI18N
+        getContentPane().add(lblFondo);
+        lblFondo.setBounds(0, 0, 1800, 1000);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +87,6 @@ public class PantallaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables
 }

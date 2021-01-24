@@ -18,7 +18,7 @@ public class MainCliente {
             PantallaCliente pantalla = new PantallaCliente();
             Cliente p = new Cliente(pantalla); 
             p.conectar();
-            prepantalla.setVisible(true);
+            pantalla.setVisible(true);
 
 
             }

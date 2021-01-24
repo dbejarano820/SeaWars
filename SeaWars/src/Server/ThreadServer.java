@@ -9,6 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import Game.*;
 
 /**
  *
@@ -55,14 +56,17 @@ public class ThreadServer extends Thread {
             */
 
             try {
-               // intstruccionID = reader.readInt(); //espera hasta recibir un entero
+               instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
                switch(instruccionID){
                    
-                   case 1:
+                   case 1: //caso para agregar jugador a la lista
                        nombre = reader.readUTF();
+                       server.players.add(new Player(nombre));
                        //add player to list of players del server           
                    break;
+                   
+                   case 2:
                    
                    
                    

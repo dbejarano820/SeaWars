@@ -15,10 +15,18 @@ public class Cliente {
     
     
     Socket socketRef;
-    PantallaCliente refPantalla;
+    public PantallaCliente refPantalla;
     public ThreadPlayer hiloPlayer;  
     boolean gameready;
-    String nombre;
+    public String nombre;
+    
+    
+    
+    public Cliente(PantallaCliente refPantalla){
+        this.refPantalla = refPantalla;
+        refPantalla.setCliente(this);
+    }
+    
     
     
     
@@ -29,7 +37,7 @@ public class Cliente {
             
             socketRef = new Socket("localhost", 35577);
               
-            hiloPlayer = new ThreadPlayer(socketRef, refPantalla, this, refPrePantalla);
+            hiloPlayer = new ThreadPlayer(socketRef, refPantalla, this);
             hiloPlayer.start();
             String nombreTmp = JOptionPane.showInputDialog("Introduzca un Nick:");
             this.nombre = nombreTmp;
