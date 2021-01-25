@@ -27,6 +27,7 @@ public class Server {
      private ServerSocket srv;
      private int turno = 0;
      private boolean gameStarted = false;
+     public boolean allPlayersReady = false;
 
 
      
@@ -42,6 +43,26 @@ public class Server {
         this.gameStarted = true;
     } 
     
+    
+    public Player buscarPlayer(String jugador){
+        
+        for(int i = 0; i<players.size(); i++){
+            if(players.get(i).nombre.equals(jugador))
+                return players.get(i);
+        }
+        return null;
+    }
+    
+    
+    public boolean areAllReady(){
+        
+        for(int i = 0; i<players.size(); i++){            
+            if(!players.get(i).gameReady)
+                return false;
+        }
+        allPlayersReady = true;
+        return true;
+    }
     
 
     public void runServer(){

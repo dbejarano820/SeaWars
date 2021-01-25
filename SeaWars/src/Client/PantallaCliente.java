@@ -54,6 +54,10 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtLastPlay.append(msj + "\n"); 
     }
     
+    public void addConsolaMsj(String msj){
+        txtConsole.append(msj + "\n");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

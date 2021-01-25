@@ -39,10 +39,11 @@ public class ThreadPlayer extends Thread {
         while (running){
             try {
                 String usuario = "";
+                String msj = "";
                 instruccionId = reader.readInt(); // esperar hasta que reciba un entero
                 
                 switch (instruccionId){
-                    case 1: // recibe el turno del jufador 1
+                    case 1: // recibe el turno del jugador 1
                         usuario = reader.readUTF();
                         
                         //refPantalla.setNombreTurno(usuario);
@@ -57,11 +58,21 @@ public class ThreadPlayer extends Thread {
                         else{
                             refPantalla.desactivarBotones();
                         }
-                        
-                    break;
-                        
+ 
                      */   
                     break;
+                    
+                    case 2: // recibe el usuario y el msj del comando invalido/respuesta de la consola
+                      //  usuario = reader.readUTF();
+                        msj = reader.readUTF();
+                        refPantalla.addConsolaMsj(msj);
+                    break;
+                    
+                    case 3:
+                        
+                        
+                    break;
+                        
                 } 
             } catch (IOException ex) {
                 

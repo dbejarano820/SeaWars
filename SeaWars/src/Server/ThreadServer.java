@@ -58,6 +58,7 @@ public class ThreadServer extends Thread {
             try {
                instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
+               Player jugadorTmp = null; //variable de player para utilizar en cualquier caso
                switch(instruccionID){
                    
                    case 1: //caso para agregar jugador a la lista
@@ -73,39 +74,68 @@ public class ThreadServer extends Thread {
                        
                        System.out.println(comandos[0]);
                        
-                       if(comandos[0].equals("create")){
+                       if(comandos[0].equals("create")){  //comando para crear 1 de 3 heroes
+                           jugadorTmp = server.buscarPlayer(usuario);
                            
-                           System.out.println(comandos[1]);
-                       }
-                       else if(comandos[0].equals("start")){
+                           if(jugadorTmp.gameReady){
+                               writer.writeInt(2);
+                               writer.writeUTF("Error. You have already completed your army!");
+                               break;
+                           }
+                           String nameHero = comandos[1];
+                           String pathImage = comandos[2];
+                           int percentCivilization = Integer.parseInt(comandos[3]);
+                           String superpower = comandos[4];
                            
-                           System.out.println("game started");
-                       }
-                       else if(comandos[0].equals("play")){
+                           
+                           //isAvailable que valide todas las entradas
+                           
                            
                        }
-                        else if(comandos[0].equals("skip")){
+                       
+                       
+                       
+                       else if(comandos[0].equals("start")){  //comando para dar ready game
+                           
+                           jugadorTmp = server.buscarPlayer(usuario);
+                             //does player have 3 heros                         
+                             
+                           if(!jugadorTmp.readyGame()){
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. You haven't created your 3 heros yet and aren't ready to start!");
+                               break;
+                           }
+                           
+                           else if(server.areAllReady()){
+                               //avisar a interfaces
+                           }
+
+                       }
+                       else if(comandos[0].equals("play")){  //comando para realizar una jugada/ataque a un jugador, ya sea con el un ataque o habilidad de un heroe
                            
                        }
-                       else if(comandos[0].equals("chat")){
+                        else if(comandos[0].equals("skip")){ //comando para saltarse su turno y no atacar
+                           
+                       }
+                       else if(comandos[0].equals("chat")){  //comadno para mandar un mensaje al chat global
                            
                        }                       
-                       else if(comandos[0].equals("whisper")){
+                       else if(comandos[0].equals("whisper")){ //comando para mandar un mensaje privado
                            
                        }                       
-                       else if(comandos[0].equals("surrender")){
+                       else if(comandos[0].equals("surrender")){ //comando para rendirse del juego
                            
                        }                       
-                       else if(comandos[0].equals("cellstatus")){
+                       else if(comandos[0].equals("cellstatus")){ //comando para solicitar el estado de una casilla, incluye vida, estado (vivo o muerto) y lista cronologica de ataques
                            
                        }  
-                       else if(comandos[0].equals("log")){
+                       else if(comandos[0].equals("log")){  //comando que muestra el detalle TODOS los eventos que han sucedido: ataques recididos, atauqes ejecutados.
                            
                        }
-                       else if(comandos[0].equals("logsummary")){
+                       else if(comandos[0].equals("logsummary")){ //comando que da cuántos ataques se han realizado y cuál es el porcentaje de éxito, cuántos aitnaron, cuántos no.
                            
                        }                       
-                       else if(comandos[0].equals("enemystatus")){
+                       else if(comandos[0].equals("enemystatus")){ // comando que muestra el estado del enemigo: porcentaje de vida, casillas de muertas del total.
                            
                        }
                        else if(comandos[0].equals("showcells")){
@@ -120,10 +150,9 @@ public class ThreadServer extends Thread {
                                
                            } 
                        }
-                       else{
-                           
-                           //no se ingreso ningun comando valido
-                           
+                       else{ //si no hay ninguna entrada valida
+                           writer.writeInt(2);
+                           writer.writeUTF("ERROR. Invalid command!");
                        }
                        
                        

@@ -19,8 +19,8 @@ public class Player {
     public String historialPersonal;
     public int cantidadAtaques;
     public int cantidadAtinados;
-    
-    
+    public boolean gameReady;
+   
     
     public Player(String nombre){
         this.nombre  = nombre;
@@ -28,11 +28,16 @@ public class Player {
         heros = new ArrayList<Hero>();
         cantidadAtaques = 0;
         cantidadAtinados = 0;
+        gameReady = false;
     }
     
-    
-    
-    
-    
+  
+    public boolean readyGame(){
+        
+        if(!(heros.size() == 3))
+            return false;
+        gameReady = true;
+        return true;
+    }  
     
 }
