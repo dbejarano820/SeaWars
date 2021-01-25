@@ -100,7 +100,7 @@ public class ThreadServer extends Thread {
                                String heroInfo = "% de civilizacion: " + percentCivilization +"\n" + jugadorTmp.buscarHero(nameHero).buscarSuperpowerName(superpower) + "\n" + 
                                        "\n" + "Healing: " + healing + "\n" + "Strength: " + strength + "\n" + "Resistance: " + resistance + "\n";
                                
-                               String heroInfoTablero = "100%" + "\n" + ((double)(percentCivilization/100)* 600) +" out of " + ((double)(percentCivilization/100)* 600) + " casillas";
+                               String heroInfoTablero = "100%" + "\n" + ( (int)(((double) percentCivilization/ (double)100)* (double)600)) +" out of " + ((int)((double) percentCivilization/ (double)100)* (double)600) + " casillas";
                                //send case to pintar players
                                writer.writeInt(3);
                                writer.writeUTF(nameHero);
@@ -180,13 +180,14 @@ public class ThreadServer extends Thread {
                                 for(int i = 0; i < server.conexiones.size(); i++){
                                   ThreadServer current = server.conexiones.get(i);
                                   current.writer.writeInt(4);
-                                  current.writer.writeUTF(usuario + "has skipped his turn!");                 
+                                  current.writer.writeUTF(usuario + " has skipped his turn!");                 
                                  }
 
+                                String nextTurn = server.getNextTurno();
                                  for(int i = 0; i < server.conexiones.size(); i++){
                                    ThreadServer current = server.conexiones.get(i);
                                    current.writer.writeInt(1);
-                                   current.writer.writeUTF(server.getNextTurno());                 
+                                   current.writer.writeUTF(nextTurn);                 
                                   }                          
  
                            }
