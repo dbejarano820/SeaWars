@@ -75,21 +75,21 @@ public class ThreadPlayer extends Thread {
                         
                         
                         if(cantidadHeros == 1){
-                            //falta enviar foto
+                            refPantalla.addHero1Image(pathImage);
                             refPantalla.addHeroInfo1(nombreHero,heroUpdate);
                         }
                         else if (cantidadHeros == 2){
+                            refPantalla.addHero2Image(pathImage);
                             refPantalla.addHeroInfo2(nombreHero, heroUpdate);
                         }
                         else if (cantidadHeros == 3){
+                            refPantalla.addHero3Image(pathImage);
                             refPantalla.addHeroInfo3(nombreHero, heroUpdate);
                         }
-                        
-                            
-                        
-                        
-                        
+   
                     break;
+                    
+                    
                         
                 } 
             } catch (IOException ex) {

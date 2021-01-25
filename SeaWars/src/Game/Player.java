@@ -67,6 +67,17 @@ public class Player {
         disponibleValores.remove(new Integer(Resistance));
     }
     
+    public boolean estaVivo(){  //metodo para revisar si esta vivo
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                if(tablero[row][col].vida > 0)
+                    return true;
+            }
+        return false;
+        
+        
+    }
     
     public Hero buscarHero(String name){
         
