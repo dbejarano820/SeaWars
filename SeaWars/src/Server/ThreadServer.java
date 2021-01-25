@@ -80,7 +80,7 @@ public class ThreadServer extends Thread {
                            
                            if(jugadorTmp.gameReady){
                                writer.writeInt(2);
-                               writer.writeUTF("Error. You have already completed your army!");
+                               writer.writeUTF("ERROR. You have already completed your army!");
                                break;
                            }
                            String nameHero = comandos[1];
@@ -91,7 +91,22 @@ public class ThreadServer extends Thread {
                            int strength = Integer.parseInt(comandos[6]);
                            int resistance = Integer.parseInt(comandos[7]);
                            
-                           //isAvailable que valide todas las entradas
+                           if(jugadorTmp.validHero(percentCivilization, healing, strength, resistance)){    //si es valido, lo crea
+                               
+                               jugadorTmp.addHero(nameHero, percentCivilization, healing, strength, resistance);
+                               jugadorTmp.buscarHero(nameHero).addSuperPower1(superpower);
+                               
+                               //send case to pintar players
+                               
+                               //se manda toda infa y size of heros
+                               
+                           }
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. The hero creation command is invalid, please correct");
+                               break;
+                           }
+                               
                            
                            
                        }
@@ -121,9 +136,9 @@ public class ThreadServer extends Thread {
                            
                            
                            //aca van jugadas
-                           
-                           
-                           
+                           //String nombreHeroActual = comando[1];
+                           //string superpower
+                           //string attack
                            
                            
                            

@@ -66,6 +66,16 @@ public class Player {
         heros.add(new Hero(nombre, percentCivilization, Healing, Strength, Resistance));
     }
     
+    
+    public Hero buscarHero(String name){
+        
+        for(int i = 0; i < heros.size(); i++){
+            if(heros.get(i).nombre.equals(name))
+                return heros.get(i);
+        }
+        return null;
+    }
+    
   
     public boolean readyGame(){
         
