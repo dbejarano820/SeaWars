@@ -32,6 +32,15 @@ public class PantallaCliente extends javax.swing.JFrame {
         this.refCliente = refCliente;
     }
    
+    
+    public void setNombreTurno(String player){
+        this.nombreTurno = player;
+    }
+    
+    public void pintarTurno(String player){
+        this.nombreTurno = player;
+        lblTurnoPlayer.setText(player);
+    }
 
     public void generarTablero(){
 
@@ -179,7 +188,6 @@ public class PantallaCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1813, 1050));
-        setPreferredSize(new java.awt.Dimension(1800, 1050));
         getContentPane().setLayout(null);
 
         lblCasillasDestroyed.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -274,7 +282,7 @@ public class PantallaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSend);
-        btnSend.setBounds(1720, 970, 59, 25);
+        btnSend.setBounds(1720, 970, 70, 25);
         getContentPane().add(txtLastPlay);
         txtLastPlay.setBounds(20, 720, 520, 260);
         getContentPane().add(txtBitacora);
@@ -511,13 +519,11 @@ public class PantallaCliente extends javax.swing.JFrame {
         
         try{
             
+            txtConsole.append("> " + txtFieldConsole.getText() + "\n");
             refCliente.hiloPlayer.writer.writeInt(2);
             refCliente.hiloPlayer.writer.writeUTF(refCliente.nombre);
             refCliente.hiloPlayer.writer.writeUTF(txtFieldConsole.getText());
-            txtConsole.append("> " + txtFieldConsole.getText() + "\n");
             txtFieldConsole.setText("");
-            
-            
             
         } catch (IOException ex){
             
@@ -593,7 +599,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCasillasDestroyed;
     private javax.swing.JLabel lblCasillasDestroyedNum;
     private javax.swing.JLabel lblFondo;

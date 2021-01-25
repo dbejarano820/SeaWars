@@ -61,6 +61,7 @@ public class Player {
     
     public void addHero(String nombre, int percentCivilization, int Healing, int Strength, int Resistance){
         heros.add(new Hero(nombre, percentCivilization, Healing, Strength, Resistance));
+        totalCivilizacion -= percentCivilization;
         disponibleValores.remove(new Integer(Healing));
         disponibleValores.remove(new Integer(Strength));
         disponibleValores.remove(new Integer(Resistance));
@@ -76,6 +77,24 @@ public class Player {
         return false;
    
     }
+    
+    
+    public String logSummary(){
+        
+        String res = "";  
+        res+= "Total de ataques: " + cantidadAtaques + ", Total de ataques atinados: " + cantidadAtinados + ", Efectividad: " + 0;
+        return res;
+        
+    }
+    
+    
+    public void surrender(){
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++)
+                tablero[row][col].vida = 0;
+    }
+    
     
     public Hero buscarHero(String name){
         

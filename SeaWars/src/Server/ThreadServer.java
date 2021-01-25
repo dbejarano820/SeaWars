@@ -32,16 +32,17 @@ public class ThreadServer extends Thread {
       this.server = server;
   }   
     
+   /* 
+   public void updateTablero{
     
-    public void startGame() throws IOException {
- 
-        //start game on server
-        //start game on all thread
-        
-        
-    }
+    send to hero1tablero vida %, y casillas destruidas
+    
+    same for hero2 y 3
     
     
+}
+    
+    */
     public void run(){
         
         int instruccionID = 1;
@@ -131,29 +132,69 @@ public class ThreadServer extends Thread {
                            
                            else if(server.areAllReady()){
 
-                                //avisar a interfaces
-                               
-                               //
+                                for(int i = 0; i < server.conexiones.size(); i++){
+                                    ThreadServer current = server.conexiones.get(i);
+                                    current.writer.writeInt(1);
+                                    current.writer.writeUTF(server.ordenPlayers.get(0).nombre);                 
+                                }
                            }
 
                        }
+                       
                        else if(comandos[0].equals("play")){  //comando para realizar una jugada/ataque a un jugador, ya sea con el un ataque o habilidad de un heroe
                            
                            
-                           
-                           
-                           
-                           //aca van jugadas
-                           //String nombreHeroActual = comando[1];
-                           //string superpower
-                           //string attack
-                           
-                           
-                           
+                           if(server.getTurno().equals(usuario)){
+                               
+                               //otras validaciones
+                                   //aca van jugadas
+                                  //String nombreHeroActual = comando[1];
+                                  //string superpower
+                                  //string attack
+
+                               
+                                for(int i = 0; i < server.conexiones.size(); i++){
+                                    ThreadServer current = server.conexiones.get(i);
+                                    current.writer.writeInt(1);
+                                    current.writer.writeUTF(server.getNextTurno());                 
+                                   }                           
+                             
+                                
+                                
+                                
+                                
+                               
+                           }
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. It is not your turn!"); 
+                           }
+
                            
                        }
                        
                        else if(comandos[0].equals("skip")){ //comando para saltarse su turno y no atacar
+                         
+                           if(server.getTurno().equals(usuario)){
+                               
+                                for(int i = 0; i < server.conexiones.size(); i++){
+                                  ThreadServer current = server.conexiones.get(i);
+                                  current.writer.writeInt(4);
+                                  current.writer.writeUTF(usuario + "has skipped his turn!");                 
+                                 }
+
+                                 for(int i = 0; i < server.conexiones.size(); i++){
+                                   ThreadServer current = server.conexiones.get(i);
+                                   current.writer.writeInt(1);
+                                   current.writer.writeUTF(server.getNextTurno());                 
+                                  }                          
+ 
+                           }
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. It is not your turn!"); 
+                           }                          
+ 
                            
                        }
                         
@@ -185,9 +226,17 @@ public class ThreadServer extends Thread {
                        
                        else if(comandos[0].equals("surrender")){ //comando para rendirse del juego
                            
-                       }                       
-                       else if(comandos[0].equals("cellstatus")){ //comando para solicitar el estado de una casilla, incluye vida, estado (vivo o muerto) y lista cronologica de ataques
+                           jugadorTmp = server.buscarPlayer(usuario);
+                           jugadorTmp.surrender();
                            
+                           for(int i = 0; i < server.conexiones.size(); i++){
+                               ThreadServer current = server.conexiones.get(i);
+                               current.writer.writeInt(4);
+                               current.writer.writeUTF(usuario + " has surrendered!");                 
+                           }                           
+                           
+                       }                       
+                       else if(comandos[0].equals("cellstatus")){ //comando para solicitar el estado de una casilla, incluye vida, estado (vivo o muerto) y lista cronologica de ataques                    
                            
                            jugadorTmp = server.buscarPlayer(usuario);
                            int row = Integer.parseInt(comandos[1]);
@@ -218,11 +267,6 @@ public class ThreadServer extends Thread {
                            writer.writeInt(2);
                            writer.writeUTF("ERROR. Invalid command!");
                        }
-                       
-                       
-                       //parse string
-                       
-                       //parse string
                        
                    
                    

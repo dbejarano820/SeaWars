@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import Game.*;
+import java.util.Random;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Server {
      //include game
      //game va a tener player, peleadores, y poderes   cada player tiene 3 peleadores los cuales tienen un arraylist de poderes.
      public ArrayList<Player> players;
+     public ArrayList<Player> ordenPlayers;
      public int contadorDeConexiones;
      public int setAmountPlayers;
      private boolean running = true;
@@ -36,6 +38,7 @@ public class Server {
         this.refPantalla = refPantalla;
         players = new ArrayList<Player>();
         conexiones = new ArrayList<ThreadServer>();
+        ordenPlayers = new ArrayList<Player>();
        
     }
      
@@ -53,6 +56,25 @@ public class Server {
         return null;
     }
     
+    public void generateOrder(){
+        
+        while(ordenPlayers.size()!= players.size()){
+          int rando = (new Random()).nextInt(conexiones.size());
+          Player playerTmp = players.get(rando);   
+          if(!estaOrdenPlayer(playerTmp))
+              ordenPlayers.add(playerTmp);
+        }
+    }
+    
+    public boolean estaOrdenPlayer(Player playerTmp){
+        
+        for(int i = 0; i < ordenPlayers.size(); i++){
+            if(ordenPlayers.get(i).equals(playerTmp))
+                return true;
+        }
+        return false;
+    }
+    
     
     public boolean areAllReady(){
         
@@ -60,10 +82,24 @@ public class Server {
             if(!players.get(i).gameReady)
                 return false;
         }
+        
+        generateOrder();
         allPlayersReady = true;
         return true;
     }
     
+    public String getTurno(){
+        
+        return ordenPlayers.get(turno).nombre;
+    }
+    
+    public String getNextTurno(){
+        
+        if(++turno >= ordenPlayers.size())
+            turno = 0;
+        
+        return ordenPlayers.get(turno).nombre;
+    }
 
     public void runServer(){
         contadorDeConexiones = 0;

@@ -43,23 +43,12 @@ public class ThreadPlayer extends Thread {
                 instruccionId = reader.readInt(); // esperar hasta que reciba un entero
                 
                 switch (instruccionId){
-                    case 1: // recibe el turno del jugador 1
-                        usuario = reader.readUTF();
+                    case 1: // recibe el turno del jugador que le toca
+                        usuario = reader.readUTF(); 
+                        refPantalla.setNombreTurno(usuario);
+                        refPantalla.pintarTurno(usuario);
                         
-                        //refPantalla.setNombreTurno(usuario);
-                        // refPantalla.pintarTurno(turno);
-                     /*
-                        refPantalla.setNombreTurno(turno);
-                        refPantalla.pintarTurno(turno);
                         
-                        if(refPlayer.nombre.equals(turno)){
-                            refPantalla.activarBotones();
-                        }
-                        else{
-                            refPantalla.desactivarBotones();
-                        }
- 
-                     */   
                     break;
                     
                     case 2: // recibe el usuario y el msj del comando invalido/respuesta de la consola
@@ -96,10 +85,14 @@ public class ThreadPlayer extends Thread {
                     case 4: //recibe info para la consola
 
                         msj = reader.readUTF();
-                        refPantalla.addConsolaMsj(msj + "\n");
+                        refPantalla.addConsolaMsj(msj);
 
                     break;
+                    
+                    case 5: //
+                        
 
+                    break;
                     
                         
                 } 
