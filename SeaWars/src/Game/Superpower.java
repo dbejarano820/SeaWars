@@ -14,24 +14,24 @@ import Server.*;
  */
 public interface Superpower {
     
-    void attack1();
-    void attack2();
-    void attack3();
+    void attack1(Player player);
+    void attack2(Player player);
+    void attack3(Player player);
     
 }
 
 class TheTrident implements Superpower{
     
     @Override
-    public void attack1(){
+    public void attack1(Player player){
     
     }
     @Override
-    public void attack2(){
+    public void attack2(Player player){
 
     }
     @Override
-    public void attack3(){
+    public void attack3(Player player){
 
     }
 }
@@ -39,15 +39,15 @@ class TheTrident implements Superpower{
 class ThundersUnderTheSea implements Superpower{
     
     @Override
-    public void attack1(){
+    public void attack1(Player player){
     
     }
     @Override
-    public void attack2(){
+    public void attack2(Player player){
 
     }
     @Override
-    public void attack3(){
+    public void attack3(Player player){
 
     }
 }    
@@ -55,15 +55,15 @@ class ThundersUnderTheSea implements Superpower{
 class ReleaseTheKraken implements Superpower{
     
     @Override
-    public void attack1(){
+    public void attack1(Player player){
     
     }
     @Override
-    public void attack2(){
+    public void attack2(Player player){
 
     }
     @Override
-    public void attack3(){
+    public void attack3(Player player){
 
     }
 }   
@@ -71,38 +71,47 @@ class ReleaseTheKraken implements Superpower{
 class WavesControl implements Superpower{
     
     
-    public void attack1(){
+    @Override
+    public void attack1(Player player){
     
     }
-    public void attack2(){
+    @Override
+    public void attack2(Player player){
 
     }
-    public void attack3(){
+    @Override
+    public void attack3(Player player){
 
     }
 }
 class FishTelepathy implements Superpower{
     
-    public void attack1(){
+    @Override
+    public void attack1(Player player){
     
     }
-    public void attack2(){
+    @Override
+    public void attack2(Player player){
 
     }
-    public void attack3(){
+    @Override
+    public void attack3(Player player){
 
     }
 }
 
 class UnderseaVolcanoes implements Superpower{
     
-    public void attack1(){
+    @Override
+    public void attack1(Player player){
     
     }
-    public void attack2(){
+    @Override
+    public void attack2(Player player){
 
     }
-    public void attack3(){
+    @Override
+    public void attack3(Player player){
 
     }
 }       
