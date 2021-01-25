@@ -93,13 +93,13 @@ public class ThreadPlayer extends Thread {
    
                     break;
                     
-                    case 4:
-                        
-                        usuario = reader.readUTF();
+                    case 4: //recibe info para la consola
+
                         msj = reader.readUTF();
-                        refPantalla.addConsolaMsj("(Chat) " + usuario + " > "+ msj + "\n");
+                        refPantalla.addConsolaMsj(msj + "\n");
 
                     break;
+
                     
                         
                 } 

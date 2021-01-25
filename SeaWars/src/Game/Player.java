@@ -21,7 +21,6 @@ public class Player {
     public int cantidadAtinados;
     public boolean gameReady;
     public boolean krakenDefense;
-    
     public ArrayList<Integer> disponibleValores;
     private int totalCivilizacion; 
     
@@ -75,8 +74,7 @@ public class Player {
                     return true;
             }
         return false;
-        
-        
+   
     }
     
     public Hero buscarHero(String name){
@@ -113,6 +111,13 @@ public class Player {
             return true;
         else 
             return false;   
+    }
+    
+    
+    public String cellStatus(int row, int col){
+        
+        Casilla casillaTmp = tablero[row][col];
+        return casillaTmp.update();
     }
 
 }

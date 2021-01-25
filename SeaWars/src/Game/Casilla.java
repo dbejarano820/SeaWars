@@ -14,19 +14,19 @@ import javax.swing.JLabel;
 public class Casilla {
     
     public String historial;
-    public boolean ocupado;
     int vida;
     public boolean activeVolcano;
     public boolean activeWhirlpool;
     public JLabel refLabel;
     public int cantBasura;
+    public String heroOwner;
     
     public Casilla(){
         
         vida = 100;
         activeVolcano = false;
         activeWhirlpool = false;
-        ocupado = false;
+        heroOwner = "";
         historial = "";
     }
     
@@ -56,6 +56,14 @@ public class Casilla {
             return false;
         else
             return true;
+    }
+    
+    
+    public String update(){
+        String msj = "";
+        msj += "Vida de la casilla: " + vida + "\n" + historial;
+        return msj;
+        
     }
     
 }
