@@ -91,15 +91,14 @@ public class ThreadServer extends Thread {
                            int strength = Integer.parseInt(comandos[6]);
                            int resistance = Integer.parseInt(comandos[7]);
                            
-                           if(jugadorTmp.validHero(percentCivilization, healing, strength, resistance)){    //si es valido, lo crea
+                           if(jugadorTmp.validHero(percentCivilization, healing, strength, resistance) && jugadorTmp.validSuperpower(superpower)){    //si es valido, lo crea
                                
                                jugadorTmp.addHero(nameHero, percentCivilization, healing, strength, resistance);
                                jugadorTmp.buscarHero(nameHero).addSuperPower1(superpower);
-                               
                                String heroInfo = "% de civilizacion: " + percentCivilization +"\n" + jugadorTmp.buscarHero(nameHero).buscarSuperpowerName(superpower) + "\n" + 
                                        "\n" + "Healing: " + healing + "\n" + "Strength: " + strength + "\n" + "Resistance: " + resistance + "\n";
                                
-                               String heroInfoTablero = "100%" + "\n" + ((percentCivilization/100)* 600) +" out of " + 600 + " casillas";
+                               String heroInfoTablero = "100%" + "\n" + ((double)(percentCivilization/100)* 600) +" out of " + ((double)(percentCivilization/100)* 600) + " casillas";
                                //send case to pintar players
                                writer.writeInt(3);
                                writer.writeUTF(nameHero);
