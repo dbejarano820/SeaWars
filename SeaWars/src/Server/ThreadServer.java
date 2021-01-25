@@ -86,7 +86,9 @@ public class ThreadServer extends Thread {
                            String pathImage = comandos[2];
                            int percentCivilization = Integer.parseInt(comandos[3]);
                            String superpower = comandos[4];
-                           
+                           int healing = Integer.parseInt(comandos[5]);
+                           int strength = Integer.parseInt(comandos[6]);
+                           int resistance = Integer.parseInt(comandos[7]);
                            
                            //isAvailable que valide todas las entradas
                            
