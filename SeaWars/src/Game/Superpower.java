@@ -20,7 +20,7 @@ public interface Superpower {
     String attack3(Player player,Player atacante);
     
 }
-
+//revision
 class TheTrident implements Superpower{
     
     //revision
@@ -179,8 +179,9 @@ class TheTrident implements Superpower{
     
     public String attack2(Player player,Player atacante, int cantDestrucciones){
         String res = "";
-        int x= 0;
-        int y = 0;
+        atacante.cantidadAtaques++;
+        int x;
+        int y;
         int i = 0;
         while(i < cantDestrucciones){
             x = new Random().nextInt(29);
@@ -193,6 +194,8 @@ class TheTrident implements Superpower{
                 res += "La casilla("+x+","+y+") fue destruida por el Three Numbers enviado por "+atacante.nombre;
             }
         }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
         
         return res;
     }
@@ -240,7 +243,7 @@ class ThundersUnderTheSea implements Superpower{
         return res;
     }
 }    
-    
+//revision    
 class ReleaseTheKraken implements Superpower{
     
     //revision
@@ -520,9 +523,27 @@ class WavesControl implements Superpower{
 }
 class FishTelepathy implements Superpower{
     
-    @Override
-    public String attack1(Player player,Player atacante){
+    
+    public String attack1(Player player,Player atacante, int extra){
         String res = "";
+        int cantPeces = new Random().nextInt(201)+100;
+        int x;
+        int y;
+        
+        for(int i = 0; i < cantPeces; i++){
+            x = new Random().nextInt(29);
+            y = new Random().nextInt(19);
+            if(player.tablero[y][x].vida > 0){
+                player.tablero[y][x].vida -= (33 + (33*(extra/100.0)));
+                player.tablero[y][x].historial += "Se redujo la vida de la casilla por un ataque del Cardumen enviado por "+atacante.nombre;
+                res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Cardumen enviado por "+atacante.nombre;
+            }
+            else{
+                res += "Un cardumen intento atacar la casilla ("+x+","+y+") pero ya estaba muerta";
+            }
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
         
         return res;
     }
@@ -532,11 +553,19 @@ class FishTelepathy implements Superpower{
         
         return res;
     }
+    
     @Override
     public String attack3(Player player,Player atacante){
         String res = "";
+        int cantPulpos = new Random().nextInt(31)+20;
         
         return res;
+    }
+    
+    //no se usa
+    @Override
+    public String attack1(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
