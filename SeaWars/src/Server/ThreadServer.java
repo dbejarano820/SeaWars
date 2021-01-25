@@ -129,7 +129,10 @@ public class ThreadServer extends Thread {
                            }
                            
                            else if(server.areAllReady()){
-                               //avisar a interfaces
+
+                                //avisar a interfaces
+                               
+                               //
                            }
 
                        }
