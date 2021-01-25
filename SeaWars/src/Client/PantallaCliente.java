@@ -58,6 +58,21 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtConsole.append(msj + "\n");
     }
     
+    
+    public void addHeroInfo1(String nombre, String msj){
+        lblHero1Name.setText(nombre);
+        txtHero1.append(msj);
+    }
+     public void addHeroInfo2(String nombre, String msj){
+         lblHero2Name.setText(nombre);
+        txtHero2.append(msj);
+    }   
+      public void addHeroInfo3(String nombre, String msj){
+        lblHero3Name.setText(nombre);
+        txtHero3.append(msj);
+    }  
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

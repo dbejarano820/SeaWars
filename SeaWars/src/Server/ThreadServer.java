@@ -96,22 +96,24 @@ public class ThreadServer extends Thread {
                                jugadorTmp.addHero(nameHero, percentCivilization, healing, strength, resistance);
                                jugadorTmp.buscarHero(nameHero).addSuperPower1(superpower);
                                
+                               String heroInfo = "% de civilizacion: " + percentCivilization +"\n" + jugadorTmp.buscarHero(nameHero).buscarSuperpowerName(superpower) + "\n" + 
+                                       "\n" + "Healing: " + healing + "\n" + "Strength: " + strength + "\n" + "Resistance: " + resistance + "\n";
                                //send case to pintar players
-                               
-                               //se manda toda infa y size of heros
-                               
+                               writer.writeInt(3);
+                               writer.writeUTF(nameHero);
+                               writer.writeUTF(heroInfo);
+                               writer.writeUTF(pathImage);
+                               writer.writeInt(jugadorTmp.heros.size());
+  
                            }
                            else{
                                writer.writeInt(2);
                                writer.writeUTF("ERROR. The hero creation command is invalid, please correct");
                                break;
                            }
-                               
-                           
-                           
+   
                        }
-                       
-                       
+   
                        
                        else if(comandos[0].equals("start")){  //comando para dar ready game
                            

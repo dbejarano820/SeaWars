@@ -63,12 +63,29 @@ public class ThreadPlayer extends Thread {
                     break;
                     
                     case 2: // recibe el usuario y el msj del comando invalido/respuesta de la consola
-                      //  usuario = reader.readUTF();
                         msj = reader.readUTF();
                         refPantalla.addConsolaMsj(msj);
                     break;
                     
                     case 3: //recibe info de los heroes correspondientes para pintarlos..
+                        String nombreHero = reader.readUTF();
+                        String heroUpdate = reader.readUTF();
+                        String pathImage = reader.readUTF();
+                        int cantidadHeros = reader.readInt();
+                        
+                        
+                        if(cantidadHeros == 1){
+                            //falta enviar foto
+                            refPantalla.addHeroInfo1(nombreHero,heroUpdate);
+                        }
+                        else if (cantidadHeros == 2){
+                            refPantalla.addHeroInfo2(nombreHero, heroUpdate);
+                        }
+                        else if (cantidadHeros == 3){
+                            refPantalla.addHeroInfo3(nombreHero, heroUpdate);
+                        }
+                        
+                            
                         
                         
                         

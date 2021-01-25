@@ -53,6 +53,25 @@ public class Hero {
     }
     
     
+        public String buscarSuperpowerName(String msj){
+        
+        if(msj.equals("thundersunderthesea"))
+            return "Thunders Under The Sea";
+        else if(msj.equals("fishtelepathy"))
+            return "Fish Telepathy";
+        else if(msj.equals("releasethekraken"))
+            return "Release The Kraken";
+        else if(msj.equals("wavescontrol"))
+            return "Waves Control";
+        else if(msj.equals("thetrident"))
+            return "The Trident";
+        else if(msj.equals("underseavolcanoes"))
+            return "Undersea Volcanoes";
+        else 
+            return "";   
+    }
+    
+        
     public void addSuperPower1(String msj){
         
         switch (msj) {
