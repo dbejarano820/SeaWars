@@ -72,17 +72,21 @@ public class ThreadPlayer extends Thread {
                         String heroUpdate = reader.readUTF();
                         String pathImage = reader.readUTF();
                         int cantidadHeros = reader.readInt();
+                        String heroTableroInfo = reader.readUTF();
                         
                         
                         if(cantidadHeros == 1){
+                            refPantalla.setInfoHero1Tablero(nombreHero, heroTableroInfo);
                             refPantalla.addHero1Image(pathImage);
                             refPantalla.addHeroInfo1(nombreHero,heroUpdate);
                         }
                         else if (cantidadHeros == 2){
+                            refPantalla.setInfoHero2Tablero(nombreHero, heroTableroInfo);
                             refPantalla.addHero2Image(pathImage);
                             refPantalla.addHeroInfo2(nombreHero, heroUpdate);
                         }
                         else if (cantidadHeros == 3){
+                            refPantalla.setInfoHero3Tablero(nombreHero, heroTableroInfo);
                             refPantalla.addHero3Image(pathImage);
                             refPantalla.addHeroInfo3(nombreHero, heroUpdate);
                         }

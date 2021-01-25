@@ -72,12 +72,12 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtHero1Tablero.append(info);
     }
     
-    public void setInfo2Tablero(String nombre, String info){
+    public void setInfoHero2Tablero(String nombre, String info){
         lblHero2Tablero.setText(nombre);
         txtHero2Tablero.append(info);
     }
     
-    public void setInfo3Tablero(String nombre, String info){
+    public void setInfoHero3Tablero(String nombre, String info){
         lblHero3Tablero.setText(nombre);
         txtHero3Tablero.append(info);
     }

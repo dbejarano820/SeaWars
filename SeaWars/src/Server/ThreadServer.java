@@ -106,6 +106,7 @@ public class ThreadServer extends Thread {
                                writer.writeUTF(heroInfo);
                                writer.writeUTF(pathImage);
                                writer.writeInt(jugadorTmp.heros.size());
+                               writer.writeUTF(heroInfoTablero);
   
                            }
                            else{
