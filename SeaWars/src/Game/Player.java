@@ -21,7 +21,6 @@ public class Player {
     public int cantidadAtinados;
     public boolean gameReady;
     public boolean krakenDefense;
-    
     public ArrayList<Integer> disponibleValores;
     private int totalCivilizacion; 
     
@@ -75,8 +74,7 @@ public class Player {
                     return true;
             }
         return false;
-        
-        
+   
     }
     
     public Hero buscarHero(String name){
@@ -97,4 +95,29 @@ public class Player {
         return true;
     }  
     
+    public boolean validSuperpower(String msj){
+        
+        if(msj.equals("thundersunderthesea"))
+            return true;
+        else if(msj.equals("fishtelepathy"))
+            return true;
+        else if(msj.equals("releasethekraken"))
+            return true;
+        else if(msj.equals("wavescontrol"))
+            return true;
+        else if(msj.equals("thetrident"))
+            return true;
+        else if(msj.equals("underseavolcanoes"))
+            return true;
+        else 
+            return false;   
+    }
+    
+    
+    public String cellStatus(int row, int col){
+        
+        Casilla casillaTmp = tablero[row][col];
+        return casillaTmp.update();
+    }
+
 }

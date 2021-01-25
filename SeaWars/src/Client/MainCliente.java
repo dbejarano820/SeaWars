@@ -23,7 +23,6 @@ public class MainCliente {
             pantalla.generarTablero();
             pantalla.setVisible(true);
             
-
             }
             catch(Exception e){
 
