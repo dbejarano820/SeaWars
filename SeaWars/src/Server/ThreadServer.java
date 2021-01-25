@@ -153,6 +153,14 @@ public class ThreadServer extends Thread {
                        }
                        else if(comandos[0].equals("chat")){  //comadno para mandar un mensaje al chat global
                            
+                           for(int i = 0; i < server.conexiones.size(); i++){
+                               ThreadServer current = server.conexiones.get(i);
+                               current.writer.writeInt(4);
+                               current.writer.writeUTF(usuario);
+                               current.writer.writeUTF(comandos[1]);                 
+                           }
+                           
+                           
                        }                       
                        else if(comandos[0].equals("whisper")){ //comando para mandar un mensaje privado
                            
