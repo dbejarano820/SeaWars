@@ -23,7 +23,7 @@ public interface Superpower {
 //revision
 class TheTrident implements Superpower{
     
-    //revision
+    //revision three lines
     public String attack1(Player player,Player atacante, int x1, int x2, int x3, int y1, int y2, int y3){//three lines
         String res = "";
         atacante.cantidadAtaques++;
@@ -176,7 +176,7 @@ class TheTrident implements Superpower{
     }
     
     //tocar los casos de los threads
-    
+    // three numbers
     public String attack2(Player player,Player atacante, int cantDestrucciones){
         String res = "";
         atacante.cantidadAtaques++;
@@ -200,6 +200,7 @@ class TheTrident implements Superpower{
         return res;
     }
     //revision
+    //Control the kraken
     @Override
     public String attack3(Player player,Player atacante){//control the kraken
         String res = "";
@@ -246,7 +247,7 @@ class ThundersUnderTheSea implements Superpower{
 //revision    
 class ReleaseTheKraken implements Superpower{
     
-    //revision
+    //revision tentaculos
     @Override
     public String attack1(Player player,Player atacante){//Tentaculos
         atacante.cantidadAtaques++;
@@ -384,7 +385,7 @@ class ReleaseTheKraken implements Superpower{
     }
     
     
-    //revision
+    //revision kraken breath
     public String attack2(Player player,Player atacante, int x, int y){//Kraken breath
         String res = "";
         int direccion = new Random().nextInt(4);
@@ -457,7 +458,7 @@ class ReleaseTheKraken implements Superpower{
         return res;
     }
     
-    //revision
+    //revision release the kraken
     @Override
     public String attack3(Player player,Player atacante){//Release the kraken
         
@@ -523,10 +524,10 @@ class WavesControl implements Superpower{
 }
 class FishTelepathy implements Superpower{
     
-    
+    //Revision Cardumen
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
-        int cantPeces = new Random().nextInt(201)+100;
+        int cantPeces = new Random().nextInt(200)+100;
         int x;
         int y;
         
@@ -547,24 +548,71 @@ class FishTelepathy implements Superpower{
         
         return res;
     }
+    //Revision tiburones
     @Override
     public String attack2(Player player,Player atacante){
+        atacante.cantidadAtaques++;
         String res = "";
+        int distancia = new Random().nextInt(10)+1;
         
+        
+        for(int i = 0; i < 29; i++){
+            
+            for(int j = 0; j< 19; j++){
+                if(player.tablero[j][i].vida > 0){
+                    double SupDer = Math.sqrt(((29-i)*(29-i))+((0-j)*(0-j)));
+                    double SupIzq = Math.sqrt(((0-i)*(0-i))+((0-j)*(0-j)));
+                    double BotDer = Math.sqrt(((29-i)*(29-i))+((19-j)*(19-j)));
+                    double BotIzq = Math.sqrt(((0-i)*(0-i))+((19-j)*(19-j)));
+                    if(SupDer<= distancia || SupIzq<= distancia || BotDer<= distancia || BotIzq<= distancia){
+                        player.tablero[j][i].vida = 0;
+                        player.tablero[j][i].historial += "Fue destruido por un ataque de tiburon enviado por "+atacante.nombre+"\n";
+                        res+= "La casilla ("+i+","+j+") fue destruida por un ataque de tiburon enviado por "+atacante.nombre+"\n";     
+                    }
+                }
+            }
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
         return res;
     }
+    //Revision pulpos
     
-    @Override
-    public String attack3(Player player,Player atacante){
+    public String attack3(Player player,Player atacante, int extra){
+        atacante.cantidadAtaques++;
         String res = "";
-        int cantPulpos = new Random().nextInt(31)+20;
-        
+        int cantPulpos = new Random().nextInt(30)+20;
+        int x;
+        int y;
+        for(int i = 0; i < cantPulpos; i++){
+            
+            for(int j = 0; j< 8; j++){
+                x = new Random().nextInt(29);
+                y = new Random().nextInt(19);
+                if(player.tablero[y][x].vida > 0){
+                    player.tablero[y][x].vida -= (25 + (25*(extra/100.0)));
+                    player.tablero[y][x].historial += "Se redujo la vida de la casilla por un ataque del Pulpo enviado por "+atacante.nombre;
+                    res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Pulpo enviado por "+atacante.nombre;
+                }
+                else{
+                    res += "Un pulpo intento atacar la casilla ("+x+","+y+") pero ya estaba muerta";
+                }
+                
+            }
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
         return res;
     }
     
     //no se usa
     @Override
     public String attack1(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    //no se usa
+    @Override
+    public String attack3(Player player, Player atacante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
