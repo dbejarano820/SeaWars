@@ -68,7 +68,8 @@ public class ThreadPlayer extends Thread {
                         refPantalla.addConsolaMsj(msj);
                     break;
                     
-                    case 3:
+                    case 3: //recibe info de los heroes correspondientes para pintarlos..
+                        
                         
                         
                     break;

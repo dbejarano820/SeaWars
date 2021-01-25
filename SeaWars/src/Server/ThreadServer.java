@@ -59,6 +59,8 @@ public class ThreadServer extends Thread {
                instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
                Player jugadorTmp = null; //variable de player para utilizar en cualquier caso
+               
+               
                switch(instruccionID){
                    
                    case 1: //caso para agregar jugador a la lista
@@ -72,14 +74,13 @@ public class ThreadServer extends Thread {
                        String comando = reader.readUTF();
                        String[] comandos = comando.split("-");
                        
-                       System.out.println(comandos[0]);
                        
                        if(comandos[0].equals("create")){  //comando para crear 1 de 3 heroes
                            jugadorTmp = server.buscarPlayer(usuario);
                            
                            if(jugadorTmp.gameReady){
                                writer.writeInt(2);
-                               writer.writeUTF("Error. You have already completed your army!");
+                               writer.writeUTF("ERROR. You have already completed your army!");
                                break;
                            }
                            String nameHero = comandos[1];
@@ -90,7 +91,22 @@ public class ThreadServer extends Thread {
                            int strength = Integer.parseInt(comandos[6]);
                            int resistance = Integer.parseInt(comandos[7]);
                            
-                           //isAvailable que valide todas las entradas
+                           if(jugadorTmp.validHero(percentCivilization, healing, strength, resistance)){    //si es valido, lo crea
+                               
+                               jugadorTmp.addHero(nameHero, percentCivilization, healing, strength, resistance);
+                               jugadorTmp.buscarHero(nameHero).addSuperPower1(superpower);
+                               
+                               //send case to pintar players
+                               
+                               //se manda toda infa y size of heros
+                               
+                           }
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. The hero creation command is invalid, please correct");
+                               break;
+                           }
+                               
                            
                            
                        }
@@ -114,6 +130,18 @@ public class ThreadServer extends Thread {
 
                        }
                        else if(comandos[0].equals("play")){  //comando para realizar una jugada/ataque a un jugador, ya sea con el un ataque o habilidad de un heroe
+                           
+                           
+                           
+                           
+                           
+                           //aca van jugadas
+                           //String nombreHeroActual = comando[1];
+                           //string superpower
+                           //string attack
+                           
+                           
+                           
                            
                        }
                         else if(comandos[0].equals("skip")){ //comando para saltarse su turno y no atacar
