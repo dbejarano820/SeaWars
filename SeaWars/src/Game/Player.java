@@ -20,9 +20,8 @@ public class Player {
     public int cantidadAtaques;
     public int cantidadAtinados;
     public boolean gameReady;
-    private int disponible100;
-    private int disponible75;
-    private int disponible50;
+    
+    public ArrayList<Integer> disponibleValores;
     private int totalCivilizacion; 
     
     public Player(String nombre){
@@ -32,10 +31,18 @@ public class Player {
         cantidadAtaques = 0;
         cantidadAtinados = 0;
         gameReady = false;
-        disponible100 = 3;
-        disponible75 = 3;
-        disponible50 = 3;
+        disponibleValores = new ArrayList<Integer>();
         totalCivilizacion = 100;
+        
+        disponibleValores.add(50);
+        disponibleValores.add(50);
+        disponibleValores.add(50);
+        disponibleValores.add(75);
+        disponibleValores.add(75);
+        disponibleValores.add(75);
+        disponibleValores.add(100);
+        disponibleValores.add(100);
+        disponibleValores.add(100);
     }
   
     
@@ -43,23 +50,20 @@ public class Player {
         
         if((totalCivilizacion - percentCivilizacion) != 0 && heros.size() == 2)  //los tres heroes tienen que representar el 100% de los humanos
             return false;
-        
-        
-        if(healing == 100){
-            
-            
-            
-        }
-        
-        
+
+        else if(!disponibleValores.remove(new Integer(healing)))
+            return false;
+        else if(!disponibleValores.remove(new Integer(strength)))
+            return false;
+        else if(!disponibleValores.remove(new Integer(resistance)))
+            return false;
+        else
+            return true;
+   
     }
     
-    public void addHero(){
-        
-       
-        
-        
-        
+    public void addHero(String nombre, int percentCivilization, int Healing, int Strength, int Resistance){
+        heros.add(new Hero(nombre, percentCivilization, Healing, Strength, Resistance));
     }
     
   

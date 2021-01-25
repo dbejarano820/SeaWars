@@ -59,6 +59,8 @@ public class ThreadServer extends Thread {
                instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
                Player jugadorTmp = null; //variable de player para utilizar en cualquier caso
+               
+               
                switch(instruccionID){
                    
                    case 1: //caso para agregar jugador a la lista
@@ -72,7 +74,6 @@ public class ThreadServer extends Thread {
                        String comando = reader.readUTF();
                        String[] comandos = comando.split("-");
                        
-                       System.out.println(comandos[0]);
                        
                        if(comandos[0].equals("create")){  //comando para crear 1 de 3 heroes
                            jugadorTmp = server.buscarPlayer(usuario);
@@ -114,6 +115,18 @@ public class ThreadServer extends Thread {
 
                        }
                        else if(comandos[0].equals("play")){  //comando para realizar una jugada/ataque a un jugador, ya sea con el un ataque o habilidad de un heroe
+                           
+                           
+                           
+                           
+                           
+                           //aca van jugadas
+                           
+                           
+                           
+                           
+                           
+                           
                            
                        }
                         else if(comandos[0].equals("skip")){ //comando para saltarse su turno y no atacar
