@@ -150,11 +150,9 @@ public class ThreadServer extends Thread {
                                writer.writeInt(2);
                                writer.writeUTF("ERROR. The hero creation command is invalid, please correct");
                                break;
-                           }
-   
+                           } 
                        }
-   
-                       
+       
                        else if(comandos[0].equals("start")){  //comando para dar ready game y si es el caso, comenzar el juego
                            
                            jugadorTmp = server.buscarPlayer(usuario);
@@ -261,10 +259,9 @@ public class ThreadServer extends Thread {
                                ThreadServer current = server.conexiones.get(i);
                                current.writer.writeInt(4);
                                current.writer.writeUTF(msj);                 
-                           }
-                           
-                           
+                           }                 
                        }
+                       
                        
                        else if(comandos[0].equals("whisper")){ //comando para mandar un mensaje privado
                            
@@ -294,6 +291,7 @@ public class ThreadServer extends Thread {
                                  }        
                            
                                 updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
+                                updateMatrizCliente();   //se actualiza la matriz del cliente
                                 
                                  String nextTurn = server.getNextTurno();
                                  for(int i = 0; i < server.conexiones.size(); i++){
@@ -341,11 +339,11 @@ public class ThreadServer extends Thread {
                            if(comandos[1].equals("occupied")){
                                
                            }
-                           else if(comandos[1].equals("health")){
+                           else if(comandos[1].equals("health")){ //será?
                                
                            }
                            else if(comandos[1].equals("alive")){
-                               
+                               writer.writeInt(7); //se llama caso para mostrar con x
                            } 
                        }
                        else{ //si no hay ninguna entrada valida

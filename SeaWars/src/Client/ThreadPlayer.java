@@ -103,32 +103,41 @@ public class ThreadPlayer extends Thread {
 
                     break;
                     
-                    case 6: //se actualiza la matriz del player server al cliente
+                    case 6: //se actualiza la matriz del player server al cliente  // fue aca
                         
-                        for(int row = 0; row < refPantalla.refCliente.tableroCliente.length; row++)
-                            for(int col = 0; col < refPantalla.refCliente.tableroCliente[row].length; col++){
+                        for(int row = 0; row < refCliente.tableroCliente.length; row++)
+                            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
                             
                                 String nombreTmp = reader.readUTF();
                                 int vidaTmp = reader.readInt();
                                 
-                                refPantalla.refCliente.tableroCliente[row][col].heroOwner = nombreTmp;                          
-                                refPantalla.refCliente.tableroCliente[row][col].vida = vidaTmp;
+                                refCliente.tableroCliente[row][col].heroOwner = nombreTmp;                          
+                                refCliente.tableroCliente[row][col].vida = vidaTmp;
                                 int volcano = reader.readInt();
                                 int whirpool = reader.readInt();
                                 
                                 if(volcano == 1)
-                                    refPantalla.refCliente.tableroCliente[row][col].activeVolcano = true;
+                                   refCliente.tableroCliente[row][col].activeVolcano = true;
                                 else 
-                                    refPantalla.refCliente.tableroCliente[row][col].activeVolcano = false;
+                                    refCliente.tableroCliente[row][col].activeVolcano = false;
                                 
                                 if(whirpool == 2)
-                                    refPantalla.refCliente.tableroCliente[row][col].activeWhirlpool = true;
+                                    refCliente.tableroCliente[row][col].activeWhirlpool = true;
                                 else 
-                                    refPantalla.refCliente.tableroCliente[row][col].activeWhirlpool = false;
+                                    refCliente.tableroCliente[row][col].activeWhirlpool = false;
                             }
                         
                         
                    break;
+                   
+                   case 7:
+                       refPantalla.mostrarVivas();
+                   break;
+                   
+                   case 8:
+                       //mostar volcanes
+                    
+                   
                         
                 } 
             } catch (IOException ex) {

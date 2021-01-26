@@ -66,9 +66,19 @@ public class PantallaCliente extends javax.swing.JFrame {
                     refCliente.tableroCliente[row][col].refLabel.setBackground(Color.orange);
                 else if(refCliente.tableroCliente[row][col].heroOwner.equals(lblHero3Name.getText()))
                     refCliente.tableroCliente[row][col].refLabel.setBackground(Color.gray);      
-
             }  
     }
+    
+    
+    public void mostrarVivas(){
+        
+        for(int row = 0; row < refCliente.tableroCliente.length; row++)
+            for(int col = 0; col < refCliente.tableroCliente[row].length; col++)
+                if(refCliente.tableroCliente[row][col].vida == 0)
+                    refCliente.tableroCliente[row][col].refLabel.setText("X");
+    }
+    
+    
     
     
     
