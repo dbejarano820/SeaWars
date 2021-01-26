@@ -78,7 +78,15 @@ public class ThreadServer extends Thread {
    }
    
    
-   
+   public void pasarTurno() throws IOException {
+       
+    String nextTurn = server.getNextTurno();
+    for(int i = 0; i < server.conexiones.size(); i++){
+      ThreadServer current = server.conexiones.get(i);
+      current.writer.writeInt(1);
+      current.writer.writeUTF(nextTurn);                 
+     }           
+   }
     
    
     public void run(){
@@ -197,7 +205,16 @@ public class ThreadServer extends Thread {
                            
                            if(server.getTurno().equals(usuario)){
                                
-                               //otras validaciones
+                               jugadorTmp = server.buscarPlayer(usuario);
+                               Hero heroTmp = jugadorTmp.buscarHero(comandos[1]);
+                               if(!heroTmp.equals(null)){
+                                   
+                                   
+                                   
+                         
+                                   
+                                   
+                                                                  //otras validaciones
                                    //aca van jugadas
                                   //String nombreHeroActual = comando[1];
                                   //string superpower
@@ -206,21 +223,19 @@ public class ThreadServer extends Thread {
                                
                                 updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                 updateMatrizCliente();  //se actualizan las matrices de los clientes
-                                
-                                String nextTurn = server.getNextTurno();
-                                 for(int i = 0; i < server.conexiones.size(); i++){
-                                   ThreadServer current = server.conexiones.get(i);
-                                   current.writer.writeInt(1);
-                                   current.writer.writeUTF(nextTurn);                 
-                                  }                         
-                             
-                                
-                                
-                                
-                                
-                               
+                                pasarTurno();   //pasar de turno
+                          
+                                   
+                               }
+                         
+                               else{
+                                writer.writeInt(2);
+                                writer.writeUTF("ERROR. Invalid command!");
+                                break;   
+                               }             
                            }
-                           else{
+                           
+                           else{                  // no es el turno del jugador
                                writer.writeInt(2);
                                writer.writeUTF("ERROR. It is not your turn!"); 
                            }
@@ -238,12 +253,7 @@ public class ThreadServer extends Thread {
                                   current.writer.writeUTF(usuario + " has skipped his turn!");                 
                                  }
 
-                                String nextTurn = server.getNextTurno();
-                                 for(int i = 0; i < server.conexiones.size(); i++){
-                                   ThreadServer current = server.conexiones.get(i);
-                                   current.writer.writeInt(1);
-                                   current.writer.writeUTF(nextTurn);                 
-                                  }                          
+                                pasarTurno();
  
                            }
                            else{
@@ -295,13 +305,7 @@ public class ThreadServer extends Thread {
                            
                                 updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
                                 updateMatrizCliente();   //se actualiza la matriz del cliente
-                                
-                                 String nextTurn = server.getNextTurno();
-                                 for(int i = 0; i < server.conexiones.size(); i++){
-                                   ThreadServer current = server.conexiones.get(i);
-                                   current.writer.writeInt(1);
-                                   current.writer.writeUTF(nextTurn);                 
-                                  } 
+                                pasarTurno();    //pasar de turno
                                 
                            }
                            else{
