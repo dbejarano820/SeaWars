@@ -13,6 +13,17 @@ import java.util.Random;
  *
  * @author PERSONAL
  */
+
+/*
+ 1. En el volcan y para el remolino hay unos datos para que escoja el metodo que a usted le parezca mas
+ 2. Falta agregarle el atributo escudo a las casillas, no lo toque para evitar que se despiche
+ 3. Faltaria lo de las clases de volcan y remolino y agregarle un ArrayList a los players, tambien evite tocar eso para no dsespichar
+ 4. Arreglar lo de los Strings, no se que le parece mejor si como a la hora de retornar el string que de una vez diga como el extra y el escudo que tiene aunque no tenga, asi evitamos hacer validaciones demas
+           y siento yo que queda mas organizado, un ejemplo de eso esta en los ultimos algoritmos
+ 5. Preguntar al profe lo del daño del volcan por eso solo falta ese algoritmo
+ 6. Alguna que otra validacion jajajaj
+
+*/
 public interface Superpower {
     
     String attack1(Player player,Player atacante);
@@ -178,14 +189,16 @@ class TheTrident implements Superpower{
     //tocar los casos de los threads
     // three numbers
     public String attack2(Player player,Player atacante, int cantDestrucciones){
+        
         String res = "";
         atacante.cantidadAtaques++;
         int x;
         int y;
         int i = 0;
         while(i < cantDestrucciones){
-            x = new Random().nextInt(29);
-            y = new Random().nextInt(19);
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
+            
             if(!player.estaVivo())
                 break;
             if(player.tablero[y][x].vida > 0){
@@ -211,6 +224,8 @@ class TheTrident implements Superpower{
         return res;
     }
     
+    
+    
     // no se usa
     @Override
     public String attack1(Player player, Player atacante) {
@@ -225,23 +240,138 @@ class TheTrident implements Superpower{
 
 class ThundersUnderTheSea implements Superpower{
     
-    @Override
-    public String attack1(Player player,Player atacante){
+    
+    //Thunder under the sea
+    
+    public String attack1(Player player,Player atacante, int extra){
         String res = "";
+        String fallo = "";
+        int x;
+        int y;
         
-        return res;
+        for(int i = 0; i < 100;i++){
+            
+            double daño = new Random().nextInt(11)+10;
+            
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
+            daño = daño +(daño*(extra/100.0))-(daño*(player.tablero[y][x].escudo/100.0));
+            
+            if(player.tablero[y][x].vida > 0){
+                if(extra > 0){
+                    res += "Se ataco la casilla("+x+","+y+") con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" debido al extra de "+extra+", el ataque fue enviado por"+atacante.nombre+" \n";
+                }
+                else if(player.tablero[y][x].escudo > 0){
+                    res += "Se ataco la casilla("+x+","+y+") con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" debido al escudo de "+player.tablero[y][x].escudo+", el ataque fue enviado por"+atacante.nombre+" \n";
+                }
+                else{
+                    res += "Se ataco la casilla("+x+","+y+") con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+", el ataque fue enviado por "+atacante.nombre+" \n";
+                }
+                
+                
+                player.tablero[y][x].vida -= daño;
+            }
+            else{
+                fallo += "Se intento atacar la casilla("+x+","+y+") con un rayo pero ya estaba muerta \n";
+            }
+            
+            
+            
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        return res+fallo;
     }
+    //poseidon thunders revision
     @Override
     public String attack2(Player player,Player atacante){
         String res = "";
+        String fallo = "";
+        int cantRayos = new Random().nextInt(5)+5;
+        int x;
+        int y;
+        int cantCasillas = new Random().nextInt(8)+1;
+        double distanciaTmp;
+        atacante.cantidadAtaques++;
         
-        return res;
+        
+        
+        for(int i = 0; i < cantRayos; i++){
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
+            for(int j = 0; j <30;j++){
+                for(int k = 0; k<20;k++){
+                    distanciaTmp = Math.sqrt(((x-j)*(x-j))+((y-k)*(y-k)));
+                    if(distanciaTmp <= cantCasillas){
+                        if(player.tablero[k][j].vida > 0){
+                            player.tablero[k][j].vida = 0;
+                            player.tablero[k][j].historial += "La casilla fue destruida por un rayo de Poseidon enviado por "+atacante.nombre;
+                            res += "La casilla ("+j+","+k+") fue destruida por un rayo de Poseidon enviado por"+atacante.nombre+"\n";
+                        }
+                        else{
+                            fallo += "La casilla ("+j+","+k+") iba a ser destruida por un rayo de Poseidon enviado por"+atacante.nombre+" pero ya estaba muerta\n";
+                        }
+                    }
+                }
+            }   
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        
+        return res+fallo;
     }
-    @Override
-    public String attack3(Player player,Player atacante){
+    
+    public String attack3(Player player,Player atacante, int extra){
         String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
+        int cantAnguilas = new Random().nextInt(75)+25;
+        int cantDescargas;
+        int x;
+        int y;
         
-        return res;
+        
+        for(int i = 0; i < cantAnguilas; i++){
+            cantDescargas = new Random().nextInt(10)+1;
+            for(int j = 0; j < cantDescargas; j++){
+                x = new Random().nextInt(30);
+                y = new Random().nextInt(20);
+                double daño = 10 +(10*(extra/100.0))-(10*(player.tablero[y][x].escudo/100.0));
+                if(player.tablero[y][x].vida > 0){
+                    
+                    player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
+                            atacante.nombre+", hubo un daño extra de "+extra+" y la casilla poseia un escudo de "+player.tablero[y][x].escudo;
+                    player.tablero[y][x].vida -= daño;
+                    res += "Se redujo la vida de la casilla ("+x+","+y+") de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
+                            atacante.nombre+", hubo un daño extra de "+extra+" y la casilla poseia un escudo de "+player.tablero[y][x].escudo;
+                    if(player.tablero[y][x].vida < 0)//agregar a los casos donde se reduce una cantidad de vida especifica
+                        player.tablero[y][x].vida = 0;
+                }
+                else{
+                    fallo += "Se intento atacar la casilla ("+x+","+y+") con un ataque de anguilas enviado por "+
+                            atacante.nombre+" pero esta ya estaba muerta";
+                }
+                
+            }
+            
+        }
+        
+        
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        return res+fallo;
+    }
+
+    
+    //no se usa
+    @Override
+    public String attack1(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    //no se usa
+    @Override
+    public String attack3(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }    
 //revision    
@@ -424,7 +554,7 @@ class ReleaseTheKraken implements Superpower{
         }
         else if(direccion == 2){
             for(int i = 0; i < cantCasillas; i++){
-                if(y>29){
+                if(y>19){
                     break;
                 }
                 if(player.tablero[y][x].vida > 0){
@@ -500,59 +630,55 @@ class ReleaseTheKraken implements Superpower{
     }
 }
 
-class WavesControl implements Superpower{
-    
-    
-    @Override
-    public String attack1(Player player,Player atacante){
-        String res = "";
-        
-        return res;
-    }
-    @Override
-    public String attack2(Player player,Player atacante){
-        String res = "";
-        
-        return res;
-    }
-    @Override
-    public String attack3(Player player,Player atacante){
-        String res = "";
-        
-        return res;
-    }
-}
+
 class FishTelepathy implements Superpower{
     
     //Revision Cardumen
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
+        String fallos = "";
         int cantPeces = new Random().nextInt(200)+100;
         int x;
         int y;
+        atacante.cantidadAtaques++;
         
         for(int i = 0; i < cantPeces; i++){
-            x = new Random().nextInt(29);
-            y = new Random().nextInt(19);
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
             if(player.tablero[y][x].vida > 0){
-                player.tablero[y][x].vida -= (33 + (33*(extra/100.0)));
-                player.tablero[y][x].historial += "Se redujo la vida de la casilla por un ataque del Cardumen enviado por "+atacante.nombre;
-                res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Cardumen enviado por "+atacante.nombre;
+                int damage = (33 + (33*(extra/100.0)))-(33*(player.tablero[y][x].escudo/100.0));
+                
+                player.tablero[y][x].historial += "Se redujo la vida de la casilla de "+" por un ataque del Cardumen enviado por "+atacante.nombre+"\n";
+                
+                if(player.tablero[y][x].escudo > 0){
+                    res += "Se redujo la vida de la casilla ("+x+","+y+") que tenia un escudo de "+player.tablero[y][x].escudo+" por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+" enviado por "+atacante.nombre+"\n";
+                }
+                if(extra > 0){
+                    res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+" con aumento de daño enviado por "+atacante.nombre+"\n";
+                }
+                else{
+                    res+= "Se redujo la vida de la casilla ("+x+","+y+") de"+player.tablero[y][x].vida+" a "+damage+" por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+" de daño enviado por "+atacante.nombre+"\n";
+                }
+                
+                player.tablero[y][x].vida -= damage;
+                
             }
             else{
-                res += "Un cardumen intento atacar la casilla ("+x+","+y+") pero ya estaba muerta";
+                fallos += "Un cardumen intento atacar la casilla ("+x+","+y+") pero ya estaba muerta\n";
             }
         }
         if(!res.equals(""))
             atacante.cantidadAtinados++;
         
-        return res;
+        return res+fallos;
     }
+    
     //Revision tiburones
     @Override
     public String attack2(Player player,Player atacante){
         atacante.cantidadAtaques++;
         String res = "";
+        String fallo = "";
         int distancia = new Random().nextInt(10)+1;
         
         
@@ -569,6 +695,9 @@ class FishTelepathy implements Superpower{
                         player.tablero[j][i].historial += "Fue destruido por un ataque de tiburon enviado por "+atacante.nombre+"\n";
                         res+= "La casilla ("+i+","+j+") fue destruida por un ataque de tiburon enviado por "+atacante.nombre+"\n";     
                     }
+                }
+                else{
+                    fallo += "La casilla ("+i+","+j+") intento ser destruida por un ataque de tiburon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
             }
         }
@@ -619,25 +748,214 @@ class FishTelepathy implements Superpower{
 
 class UnderseaVolcanoes implements Superpower{
     
-    @Override
+    @Override//crear volcan revision
     public String attack1(Player player,Player atacante){
         String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
         
-        return res;
+        int volcanTamaño = new Random().nextInt(10)+1;
+        double distanciaTmp;
+        int x = new Random().nextInt(30);
+        int y = new Random().nextInt(20);
+        //player.listaVolcanes.add(new Volcan(x,y,volcanTamaño));
+        
+        for(int i = 0; i < 30; i++){
+            for (int j = 0; j < 20; j++){
+                distanciaTmp = Math.sqrt(((x-i)*(x-i))+((y-j)*(y-j)));
+                
+                if(distanciaTmp <= volcanTamaño){
+                    if( !player.tablero[j][i].activeWhirlpool){
+                        player.tablero[j][i].activeVolcano  = true;
+                        player.tablero[j][i].vida = 0;
+                        player.tablero[j][i].historial += "Se creo un volcan enviado por "+atacante.nombre+"\n";
+                        res += "En la casilla ("+i+","+j+") se creo un volcan enviado por "+atacante.nombre+"\n";
+                        
+                    }
+                    
+                    else{
+                        fallo +=   "En la casilla ("+i+","+j+") se intento crear un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
+                    }
+                }  
+            }
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        
+        return res+fallo;
     }
-    @Override
-    public String attack2(Player player,Player atacante){
+    
+    
+    public String attack2(Player player,Player atacante, int extra){
         String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
+        //bro aqui no se si quiere como extraer un volcan random de la lista del player o que el atacante intente buscar uno conm un metodo de buscar por mediod e coordenadas
+        int cantPiedras = volcan.tamaño*volcan.tamaño*10;
+        int x;
+        int y;
+        for(int i = 0; i < cantPiedras;i++){
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
+            double daño = 20 +(20*(extra/100.0))-(20*(player.tablero[y][x].escudo/100.0));
+            if(player.tablero[y][x].vida > 0){
+                
+                player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " por una roca enviada por un volcan enviado de "+atacante.nombre;
+                
+                res += "Se redujo la vida de la casilla("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por una roca enviada por un volcan enviado de "+atacante.nombre;
+                player.tablero[y][x].vida -= daño;
+            }
+            else{
+                fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casillas ya estba muerta";
+            }
+        }
         
-        return res;
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        return res+fallo;
     }
-    @Override
+    @Override//preguntarle al profe lo del daño
     public String attack3(Player player,Player atacante){
         String res = "";
         
         return res;
     }
-}       
+    
+    //no se usa
+    @Override
+    public String attack2(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
+
+class WavesControl implements Superpower{
+    
+    
+    @Override//crear remolino
+    public String attack1(Player player,Player atacante){
+        String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
+        
+        int remolinoTamaño = new Random().nextInt(9)+2;
+        double distanciaTmp;
+        int x = new Random().nextInt(30);
+        int y = new Random().nextInt(20);
+        //player.listaRemolinos.add(new Volcan(x,y,volcanTamaño));
+        
+        for(int i = 0; i < 30; i++){
+            for (int j = 0; j < 20; j++){
+                distanciaTmp = Math.sqrt(((x-i)*(x-i))+((y-j)*(y-j)));
+                
+                if(distanciaTmp <= remolinoTamaño){
+                    if( !player.tablero[j][i].activeVolcano){
+                        player.tablero[j][i].activeWhirlpool  = true;
+                        player.tablero[j][i].vida = 0;
+                        player.tablero[j][i].historial += "Se creo un remolino enviado por "+atacante.nombre+"\n";
+                        res += "En la casilla ("+i+","+j+") se creo un remolino enviado por "+atacante.nombre+"\n";
+                        
+                    }
+                    
+                    else{
+                        fallo +=   "En la casilla ("+i+","+j+") se intento crear un remolino enviado por "+atacante.nombre+" porque ya tenia un volcan\n";
+                    }
+                }  
+            }
+        }
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        
+        return res+fallo;
+        
+    }
+    
+    
+    //enviar basura revision
+    public String attack2(Player player,Player atacante, int extra){
+        String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
+        //bro aqui no se si quiere como extraer un volcan random de la lista del player o que el atacante intente buscar uno conm un metodo de buscar por mediod e coordenadas
+        int cantBasura = (remolino.tamaño/2)*10;
+        int x;
+        int y;
+        for(int i = 0; i < cantBasura;i++){
+            x = new Random().nextInt(30);
+            y = new Random().nextInt(20);
+            double daño;
+            int radioactiva = new Random().nextInt(2);
+            
+            if(player.tablero[y][x].vida > 0){
+                if(radioactiva == 0)
+                    daño = 25 +(25*(extra/100.0))-(25*(player.tablero[y][x].escudo/100.0));
+                else{
+                    daño = 50 +(50*(extra/100.0))-(50*(player.tablero[y][x].escudo/100.0));
+                    player.tablero[y][x].cantBasuraRactiva++;
+                }
+                    
+                
+                player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " por basura enviada por un remolino enviado de "+atacante.nombre;
+                
+                res += "Se redujo la vida de la casilla("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura enviada por un remolino enviado de "+atacante.nombre;
+                player.tablero[y][x].vida -= daño;
+            }
+            else{
+                fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casilla ya estba muerta";
+            }
+        }
+        
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        return res+fallo;
+    }
+    
+    public String attack3(Player player,Player atacante,int extra){
+        String res = "";
+        String fallo = "";
+        atacante.cantidadAtaques++;
+        int segundos = new Random().nextInt(10)+1;
+        int preDaño;
+        double daño;
+        
+        for(int i = 0; i < 30;i++){
+            for(int j = 0; j < 29;j++){
+                if(player.tablero[j][i].vida > 0){
+                    preDaño = 10*segundos*player.tablero[j][i].cantBasuraRactiva;
+                    daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[j][i].escudo/100.0));
+                    player.tablero[j][i].historial += "La casilla redujo su vida de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño);
+                    res+= "La casilla("+i+","+j+") redujo su vida de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
+                            +player.tablero[j][i].escudo+" por una reaccion radioactiva enviada por "+atacante.nombre+"\n";
+                    player.tablero[j][i].vida -= daño;
+                    if(player.tablero[j][i].vida<0)
+                        player.tablero[j][i].vida = 0;
+                    
+                }
+                else{
+                    fallo += "La casilla("+i+","+j+") no redujo su vida de  por una reaccion radioactiva enviada por "+atacante.nombre+" porque ya estaba muerta\n";
+                }
+            }
+        }
+        
+        if(!res.equals(""))
+            atacante.cantidadAtinados++;
+        
+        return res+fallo;
+    }
+    //no se usa
+    @Override
+    public String attack2(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    // no se usa
+    @Override
+    public String attack3(Player player, Player atacante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
             
  //otros superpowers
     
