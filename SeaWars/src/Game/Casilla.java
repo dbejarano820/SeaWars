@@ -25,8 +25,8 @@ public class Casilla {
     public Casilla(){
         
         vida = 100;
-        activeVolcano = false;
-        activeWhirlpool = true;
+        activeVolcano = true;
+        activeWhirlpool = false;
         heroOwner = "";
         historial = "";
     }

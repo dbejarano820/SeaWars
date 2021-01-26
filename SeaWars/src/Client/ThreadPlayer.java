@@ -124,7 +124,7 @@ public class ThreadPlayer extends Thread {
                                 else 
                                     refCliente.tableroCliente[row][col].activeVolcano = false;
                                 
-                                if(whirpool == 2)
+                                if(whirpool == 1)
                                     refCliente.tableroCliente[row][col].activeWhirlpool = true;
                                 else 
                                     refCliente.tableroCliente[row][col].activeWhirlpool = false;

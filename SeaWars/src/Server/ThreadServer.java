@@ -32,7 +32,7 @@ public class ThreadServer extends Thread {
       this.server = server;
   }   
     
-   
+   //actauliza los valores debajo del tablero
    public void updateTableroHeros() throws IOException {
     
         for(int i = 0; i < server.conexiones.size(); i++){
@@ -204,8 +204,9 @@ public class ThreadServer extends Thread {
                                   //string attack
 
                                
-                                updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
-                                  
+                                updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
+                                updateMatrizCliente();  //se actualizan las matrices de los clientes
+                                
                                 String nextTurn = server.getNextTurno();
                                  for(int i = 0; i < server.conexiones.size(); i++){
                                    ThreadServer current = server.conexiones.get(i);
