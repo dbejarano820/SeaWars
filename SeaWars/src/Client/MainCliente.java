@@ -20,9 +20,7 @@ public class MainCliente {
             Cliente p = new Cliente(pantalla); 
             p.conectar();
             pantalla.generarTablero();
-            pantalla.setVisible(true);
-            
-            
+            pantalla.setVisible(true);     
             }
             catch(Exception e){
 
