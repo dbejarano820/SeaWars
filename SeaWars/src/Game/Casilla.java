@@ -26,7 +26,7 @@ public class Casilla {
         
         vida = 100;
         activeVolcano = false;
-        activeWhirlpool = false;
+        activeWhirlpool = true;
         heroOwner = "";
         historial = "";
     }
@@ -34,8 +34,7 @@ public class Casilla {
     
     
     public JLabel generateLabel(){      // se utiliza para generar el reflabel de las casillas del cliente, el player no lo necesita
-        JLabel newLabel = new JLabel();
-        
+        JLabel newLabel = new JLabel();    
         newLabel.setForeground(new java.awt.Color(0, 0, 0));
         newLabel.setText("");
         newLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

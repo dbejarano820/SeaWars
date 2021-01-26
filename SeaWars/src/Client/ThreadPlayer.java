@@ -133,14 +133,14 @@ public class ThreadPlayer extends Thread {
                         
                    break;
                    
-                   case 7:
+                   case 7: //caso para mostar casillas vivas
                        refPantalla.mostrarVivas();
                    break;
                    
-                   case 8:
-                       //mostar volcanes
+                   case 8: //caso para pintar los volcanes y remolinos en las casillas
+                       refPantalla.mostrarVolcanesRemolinos("C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Volcano.png", "C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Whirlpool.png");
                     
-                   
+                   break;
                         
                 } 
             } catch (IOException ex) {

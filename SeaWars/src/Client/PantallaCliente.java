@@ -74,22 +74,23 @@ public class PantallaCliente extends javax.swing.JFrame {
         
         for(int row = 0; row < refCliente.tableroCliente.length; row++)
             for(int col = 0; col < refCliente.tableroCliente[row].length; col++)
-                if(refCliente.tableroCliente[row][col].vida == 0)
+                if(refCliente.tableroCliente[row][col].vida == 0 && !refCliente.tableroCliente[row][col].activeVolcano && !refCliente.tableroCliente[row][col].activeWhirlpool)
                     refCliente.tableroCliente[row][col].refLabel.setText("X");
     }
     
     
     
-    public void mostrarVolcanesRemolinos(){
+    public void mostrarVolcanesRemolinos(String pathVolcan, String pathWhirlpool){
         
         for(int row = 0; row < refCliente.tableroCliente.length; row++)
             for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
                 
                  if(refCliente.tableroCliente[row][col].activeVolcano){
-                     //pintar volcan
+                     refCliente.tableroCliente[row][col].refLabel.setIcon(new ImageIcon(new ImageIcon(pathVolcan).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
                  }
                  else if(refCliente.tableroCliente[row][col].activeWhirlpool){
-                     //pintar remolino
+                     System.out.println("si entra la whirlpool");
+                     refCliente.tableroCliente[row][col].refLabel.setIcon(new ImageIcon(new ImageIcon(pathWhirlpool).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
                  }
             }
     }

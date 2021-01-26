@@ -43,6 +43,8 @@ public class ThreadServer extends Thread {
                 current.writer.writeUTF(server.players.get(i).updateTableroHero1());
                 current.writer.writeUTF(server.players.get(i).updateTableroHero2());
                 current.writer.writeUTF(server.players.get(i).updateTableroHero3());
+                current.writer.writeInt(server.players.get(i).updateVidaActual());
+                current.writer.writeInt(server.players.get(i).updateMuertosActual());
             }                  
         }
      }
@@ -337,14 +339,15 @@ public class ThreadServer extends Thread {
                        else if(comandos[0].equals("showcells")){
                            
                            if(comandos[1].equals("occupied")){
-                               
-                           }
-                           else if(comandos[1].equals("health")){ //será?
-                               
+                               writer.writeInt(8);
                            }
                            else if(comandos[1].equals("alive")){
                                writer.writeInt(7); //se llama caso para mostrar con x
                            } 
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. Invalid command!");                              
+                           }
                        }
                        else{ //si no hay ninguna entrada valida
                            writer.writeInt(2);
