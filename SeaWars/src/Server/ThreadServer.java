@@ -87,6 +87,7 @@ public class ThreadServer extends Thread {
             
             if(server.ordenPlayers.size() == 1){
                 
+                System.out.println("ya hay ganador");
                 //hay ganador
                 
             }
@@ -309,8 +310,8 @@ public class ThreadServer extends Thread {
                        else if(comandos[0].equals("cellstatus")){ //comando para solicitar el estado de una casilla, incluye vida, estado (vivo o muerto) y lista cronologica de ataques                    
                            
                            jugadorTmp = server.buscarPlayer(usuario);
-                           int row = Integer.parseInt(comandos[1]);
-                           int col = Integer.parseInt(comandos[2]);
+                           int col = Integer.parseInt(comandos[1]);
+                           int row = Integer.parseInt(comandos[2]);
                            writer.writeInt(4);
                            writer.writeUTF(jugadorTmp.cellStatus(row, col));      
                        }  

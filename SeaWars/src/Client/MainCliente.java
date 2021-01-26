@@ -23,8 +23,6 @@ public class MainCliente {
             pantalla.generarTablero();
             pantalla.setVisible(true);
             
-                System.out.println( (int)(((double)35/ (double)100)* (double)600));
-            
             
             }
             catch(Exception e){
