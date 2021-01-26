@@ -22,7 +22,7 @@ public class ThreadServer extends Thread {
     public DataOutputStream writer;
     public String nombre;
     private boolean running = true;
-    Server server;
+    public Server server;
     
     
     public ThreadServer(Socket socketRef, Server server) throws IOException {
@@ -32,17 +32,22 @@ public class ThreadServer extends Thread {
       this.server = server;
   }   
     
-   /* 
-   public void updateTablero{
+   
+   public void updateTableroHeros() throws IOException {
     
-    send to hero1tablero vida %, y casillas destruidas
+        for(int i = 0; i < server.conexiones.size(); i++){
+            ThreadServer current = server.conexiones.get(i);
+            
+            if(current.nombre.equals(server.players.get(i).nombre)){
+                current.writer.writeInt(5);
+                current.writer.writeUTF(server.players.get(i).updateTableroHero1());
+                current.writer.writeUTF(server.players.get(i).updateTableroHero2());
+                current.writer.writeUTF(server.players.get(i).updateTableroHero3());
+            }                  
+        }
+     }
     
-    same for hero2 y 3
-    
-    
-}
-    
-    */
+   
     public void run(){
         
         int instruccionID = 1;
@@ -60,7 +65,7 @@ public class ThreadServer extends Thread {
                instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
                Player jugadorTmp = null; //variable de player para utilizar en cualquier caso
-               String msj = "";
+               String msj = ""; //variable para utilizar a lo largo de los casos
                
                
                switch(instruccionID){
@@ -100,7 +105,7 @@ public class ThreadServer extends Thread {
                                String heroInfo = "% de civilizacion: " + percentCivilization +"\n" + jugadorTmp.buscarHero(nameHero).buscarSuperpowerName(superpower) + "\n" + 
                                        "\n" + "Healing: " + healing + "\n" + "Strength: " + strength + "\n" + "Resistance: " + resistance + "\n";
                                
-                               String heroInfoTablero = "100%" + "\n" + ( (int)(((double) percentCivilization/ (double)100)* (double)600)) +" out of " + ((int)((double) percentCivilization/ (double)100)* (double)600) + " casillas";
+                               String heroInfoTablero = "100%" + "\n" + ( (int)(((double) percentCivilization/ (double)100)* (double)600)) +" out of " + ((int)(((double) percentCivilization/ (double)100)* (double)600)) + " casillas";
                                //send case to pintar players
                                writer.writeInt(3);
                                writer.writeUTF(nameHero);
@@ -119,7 +124,7 @@ public class ThreadServer extends Thread {
                        }
    
                        
-                       else if(comandos[0].equals("start")){  //comando para dar ready game
+                       else if(comandos[0].equals("start")){  //comando para dar ready game y si es el caso, comenzar el juego
                            
                            jugadorTmp = server.buscarPlayer(usuario);
                              //does player have 3 heros                         
@@ -130,7 +135,20 @@ public class ThreadServer extends Thread {
                                break;
                            }
                            
-                           else if(server.areAllReady()){
+                            for(int i = 0; i < server.conexiones.size(); i++){
+                                ThreadServer current = server.conexiones.get(i);
+                                current.writer.writeInt(4);
+                                current.writer.writeUTF(usuario + " is ready to start the game!");                 
+                            }                         
+                           
+                           
+                           if(server.areAllReady()){
+                               
+                                for(int i = 0; i < server.conexiones.size(); i++){
+                                  ThreadServer current = server.conexiones.get(i);
+                                  current.writer.writeInt(4);
+                                  current.writer.writeUTF("The game has officially started!!!");                 
+                                 }
 
                                 for(int i = 0; i < server.conexiones.size(); i++){
                                     ThreadServer current = server.conexiones.get(i);
@@ -153,6 +171,8 @@ public class ThreadServer extends Thread {
                                   //string attack
 
                                
+                                updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
+                                  
                                 for(int i = 0; i < server.conexiones.size(); i++){
                                     ThreadServer current = server.conexiones.get(i);
                                     current.writer.writeInt(1);
@@ -227,16 +247,25 @@ public class ThreadServer extends Thread {
                        
                        else if(comandos[0].equals("surrender")){ //comando para rendirse del juego
                            
-                           jugadorTmp = server.buscarPlayer(usuario);
-                           jugadorTmp.surrender();
+                            if(server.getTurno().equals(usuario)){
+                               
+                                jugadorTmp = server.buscarPlayer(usuario);
+                                jugadorTmp.surrender();
+
+                                for(int i = 0; i < server.conexiones.size(); i++){
+                                    ThreadServer current = server.conexiones.get(i);
+                                    current.writer.writeInt(4);
+                                    current.writer.writeUTF(usuario + " has surrendered!");                 
+                                 }        
                            
-                           for(int i = 0; i < server.conexiones.size(); i++){
-                               ThreadServer current = server.conexiones.get(i);
-                               current.writer.writeInt(4);
-                               current.writer.writeUTF(usuario + " has surrendered!");                 
-                           }                           
-                           
-                       }                       
+                                updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
+                           }
+                           else{
+                               writer.writeInt(2);
+                               writer.writeUTF("ERROR. It is not your turn!"); 
+                           }  
+                       }
+                       
                        else if(comandos[0].equals("cellstatus")){ //comando para solicitar el estado de una casilla, incluye vida, estado (vivo o muerto) y lista cronologica de ataques                    
                            
                            jugadorTmp = server.buscarPlayer(usuario);
@@ -248,10 +277,22 @@ public class ThreadServer extends Thread {
                        
                        else if(comandos[0].equals("logsummary")){ //comando que da cuántos ataques se han realizado y cuál es el porcentaje de éxito, cuántos aitnaron, cuántos no.
                            
+                           jugadorTmp = server.buscarPlayer(usuario);
+                           writer.writeInt(4);
+                           writer.writeUTF(jugadorTmp.logSummary());                    
+       
                        }                       
+                       
                        else if(comandos[0].equals("enemystatus")){ // comando que muestra el estado del enemigo: porcentaje de vida, casillas de muertas del total.
                            
+                           Player jugadorTmp2 = server.buscarPlayer(comandos[1]);
+                           if(jugadorTmp2 == null)
+                               break;
+                           
+                           writer.writeInt(4);
+                           writer.writeUTF(jugadorTmp2.updateStatusMessage());                           
                        }
+                       
                        else if(comandos[0].equals("showcells")){
                            
                            if(comandos[1].equals("occupied")){

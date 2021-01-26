@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 public class Casilla {
     
     public String historial;
-    int vida;
+    public int vida;
     public boolean activeVolcano;
     public boolean activeWhirlpool;
     public JLabel refLabel;

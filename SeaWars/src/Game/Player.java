@@ -34,6 +34,7 @@ public class Player {
         krakenDefense = false;
         disponibleValores = new ArrayList<Integer>();
         totalCivilizacion = 100;
+        generateTablero();
         
         disponibleValores.add(50);
         disponibleValores.add(50);  //new Integer(50)
@@ -46,6 +47,14 @@ public class Player {
         disponibleValores.add(100);
     }
   
+    public void generateTablero(){
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                tablero[row][col] = new Casilla();         
+            } 
+    }
+    
     
     public boolean validHero(int percentCivilizacion, int healing, int strength, int resistance){
         
@@ -76,17 +85,7 @@ public class Player {
             }
         return false;
    
-    }
-    
-    
-    public String logSummary(){
-        
-        String res = "";  
-        res+= "Total de ataques: " + cantidadAtaques + ", Total de ataques atinados: " + cantidadAtinados + ", Efectividad: " + 0;
-        return res;
-        
-    }
-    
+    }    
     
     public void surrender(){
         
@@ -138,5 +137,107 @@ public class Player {
         Casilla casillaTmp = tablero[row][col];
         return casillaTmp.update();
     }
+    
+    
+    public String updateStatusMessage(){
+        int muertas = 0;
+        int vidaTmp = 0;
+        String res = "";
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                
+                if(tablero[row][col].vida <= 0)
+                    muertas++;
+                vidaTmp += tablero[row][col].vida;
+            }
+        
+        int vida = (int) (((double)vidaTmp / 6000.0) * 100.0 );
+        
+        res += nombre + " has " + vida + " heatlh, with a total of " + muertas + " dead casillas!";
+        return res;   
+    }
+    
+    
+       
+    
+    public String logSummary(){
+        
+        String res = "";  
+        int efectividad = (int)(((double)cantidadAtinados / (double)cantidadAtaques) * 100.0); 
+        res+= "Total de ataques: " + cantidadAtaques + ", Total de ataques atinados: " + cantidadAtinados + ", Efectividad: " + efectividad;
+        return res;
+        
+    } 
+    
+    
+    public String updateTableroHero1(){
 
+        int vidaHero1 = 0;
+        int vidaHero1Total = 0;
+        int casillasVivasHero1 = 0;
+
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                
+                if(tablero[row][col].heroOwner.equals(heros.get(0).nombre)){
+                    vidaHero1Total += 100;
+                    if(tablero[row][col].vida > 0)
+                        casillasVivasHero1++;
+                    vidaHero1 += tablero[row][col].vida;            
+                }
+            }
+        
+        int vida = (int) (((double)vidaHero1 / (double)vidaHero1Total) * 100.0 );
+
+        return vida + "%" + "\n" + casillasVivasHero1 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+    }
+
+    public String updateTableroHero2(){
+
+        int vidaHero2 = 0;
+        int vidaHero2Total = 0;
+        int casillasVivasHero2 = 0;
+
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                
+                if(tablero[row][col].heroOwner.equals(heros.get(1).nombre)){
+                    vidaHero2Total += 100;
+                    if(tablero[row][col].vida > 0)
+                        casillasVivasHero2++;
+                    vidaHero2 += tablero[row][col].vida;            
+                }
+            }
+        
+        int vida = (int) (((double)vidaHero2 / (double)vidaHero2Total) * 100.0 );
+
+        return vida + "%" + "\n" + casillasVivasHero2 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+    }
+    
+
+
+    public String updateTableroHero3(){
+
+        int vidaHero3 = 0;
+        int vidaHero3Total = 0;
+        int casillasVivasHero3 = 0;
+
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                
+                if(tablero[row][col].heroOwner.equals(heros.get(2).nombre)){
+                    vidaHero3Total += 100;
+                    if(tablero[row][col].vida > 0)
+                        casillasVivasHero3++;
+                    vidaHero3 += tablero[row][col].vida;            
+                }
+            }
+        
+        int vida = (int) (((double)vidaHero3 / (double)vidaHero3Total) * 100.0 );
+
+        return vida + "%" + "\n" + casillasVivasHero3 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+    }
+        
+    
 }

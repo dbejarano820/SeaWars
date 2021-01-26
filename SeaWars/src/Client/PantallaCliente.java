@@ -81,20 +81,17 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtHero1Tablero.append(info);
     }
     
-    public void setInfoHero2Tablero(String nombre, String info){
-        lblHero2Tablero.setText(nombre);
-        txtHero2Tablero.append(info);
+    public void addInfoHero1Tablero(String info){
+        txtHero1Tablero.setText("");
+        txtHero1Tablero.append(info);
     }
-    
-    public void setInfoHero3Tablero(String nombre, String info){
-        lblHero3Tablero.setText(nombre);
-        txtHero3Tablero.append(info);
-    }
-    
+   
     public void addHero1Image(String path){
         lblHero1.setSize(140, 150);
         lblHero1.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(140, 150, Image.SCALE_DEFAULT)));
     }
+   
+    
     
     
      public void addHeroInfo2(String nombre, String msj){
@@ -107,6 +104,28 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHero2.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(140, 150, Image.SCALE_DEFAULT)));
     }
      
+     public void setInfoHero2Tablero(String nombre, String info){
+        lblHero2Tablero.setText(nombre);
+        txtHero2Tablero.append(info);
+    }    
+     
+    public void addInfoHero2Tablero(String info){
+        txtHero2Tablero.setText("");
+        txtHero2Tablero.append(info);
+    }
+     
+     
+     
+     
+     public void setInfoHero3Tablero(String nombre, String info){
+        lblHero3Tablero.setText(nombre);
+        txtHero3Tablero.append(info);
+    }    
+     
+    public void addInfoHero3Tablero(String info){
+        txtHero3Tablero.setText("");
+        txtHero3Tablero.append(info);
+    } 
      
      public void addHeroInfo3(String nombre, String msj){
         lblHero3Name.setText(nombre);

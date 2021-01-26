@@ -89,7 +89,15 @@ public class ThreadPlayer extends Thread {
 
                     break;
                     
-                    case 5: //
+                    case 5: //update infos de tablero for each player indicidualmente
+                        
+                        String hero1 = reader.readUTF();
+                        String hero2 = reader.readUTF();
+                        String hero3 = reader.readUTF();
+                        
+                        refPantalla.addInfoHero1Tablero(hero1);
+                        refPantalla.addInfoHero2Tablero(hero2);
+                        refPantalla.addInfoHero3Tablero(hero3);
                         
 
                     break;
