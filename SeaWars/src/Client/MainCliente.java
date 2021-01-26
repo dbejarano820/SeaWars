@@ -6,7 +6,6 @@
 package Client;
 
 import javax.swing.JLabel;
-
 /**
  *
  * @author PERSONAL

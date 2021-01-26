@@ -26,7 +26,6 @@ public class Cliente {
     
     public Cliente(PantallaCliente refPantalla){
         this.refPantalla = refPantalla;
-        refPantalla.setCliente(this);
         tableroCliente = new Casilla[20][30];
     }
     

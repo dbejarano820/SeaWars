@@ -6,6 +6,7 @@
 package Client;
 
 import Game.Casilla;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
 public class PantallaCliente extends javax.swing.JFrame {
 
     
-    Cliente refCliente;
+    public Cliente refCliente;
     String nombreTurno;
     
     public PantallaCliente() {
@@ -31,7 +32,6 @@ public class PantallaCliente extends javax.swing.JFrame {
     public void setCliente(Cliente refCliente){
         this.refCliente = refCliente;
     }
-   
     
     public void setNombreTurno(String player){
         this.nombreTurno = player;
@@ -53,6 +53,23 @@ public class PantallaCliente extends javax.swing.JFrame {
             }
         }
     }
+    
+    
+    public void colorMatriz(){
+        
+        for(int row = 0; row < refCliente.tableroCliente.length; row++)
+            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
+                
+                if(refCliente.tableroCliente[row][col].heroOwner.equals(lblHero1Name.getText()))
+                    refCliente.tableroCliente[row][col].refLabel.setBackground(Color.cyan); 
+                else if(refCliente.tableroCliente[row][col].heroOwner.equals(lblHero2Name.getText()))
+                    refCliente.tableroCliente[row][col].refLabel.setBackground(Color.orange);
+                else if(refCliente.tableroCliente[row][col].heroOwner.equals(lblHero3Name.getText()))
+                    refCliente.tableroCliente[row][col].refLabel.setBackground(Color.gray);      
+
+            }  
+    }
+    
     
     
     public void addHistory(String msj){
@@ -90,9 +107,6 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHero1.setSize(140, 150);
         lblHero1.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(140, 150, Image.SCALE_DEFAULT)));
     }
-   
-    
-    
     
      public void addHeroInfo2(String nombre, String msj){
         lblHero2Name.setText(nombre);
@@ -114,9 +128,6 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtHero2Tablero.setText("");
         txtHero2Tablero.setText(info);
     }
-     
-     
-     
      
      public void setInfoHero3Tablero(String nombre, String info){
         lblHero3Tablero.setText(nombre);
@@ -239,37 +250,37 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHealt.setBounds(580, 460, 90, 30);
 
         lblHero3Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero3Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero3Name.setForeground(java.awt.Color.gray);
         lblHero3Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero3Name);
         lblHero3Name.setBounds(1590, 400, 160, 30);
 
         lblHero2Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero2Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero2Name.setForeground(java.awt.Color.orange);
         lblHero2Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero2Name);
         lblHero2Name.setBounds(1590, 220, 160, 30);
 
         lblHero1Name.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero1Name.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero1Name.setForeground(java.awt.Color.cyan);
         lblHero1Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero1Name);
         lblHero1Name.setBounds(1590, 40, 180, 30);
 
         lblHero3Tablero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero3Tablero.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero3Tablero.setForeground(java.awt.Color.gray);
         lblHero3Tablero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero3Tablero);
         lblHero3Tablero.setBounds(1170, 490, 180, 30);
 
         lblHero2Tablero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero2Tablero.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero2Tablero.setForeground(java.awt.Color.orange);
         lblHero2Tablero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero2Tablero);
         lblHero2Tablero.setBounds(890, 490, 180, 30);
 
         lblHero1Tablero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblHero1Tablero.setForeground(new java.awt.Color(0, 0, 0));
+        lblHero1Tablero.setForeground(java.awt.Color.cyan);
         lblHero1Tablero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblHero1Tablero);
         lblHero1Tablero.setBounds(600, 490, 180, 30);

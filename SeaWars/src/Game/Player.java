@@ -84,8 +84,6 @@ public class Player {
             int row = (new Random()).nextInt(20);   //aca se cae si no es 20 .. no puede ser 19
             int col = (new Random()).nextInt(30);
             
-            System.out.println("row: " + row + "  col: " + col + "  cantidadCasillas: " + cantidadCasillas);
-            
             if(tablero[row][col].heroOwner.equals("")){
                 tablero[row][col].heroOwner = nombre;
                 cantidadCasillas--;

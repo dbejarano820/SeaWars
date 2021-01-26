@@ -47,6 +47,7 @@ public class ThreadPlayer extends Thread {
                         usuario = reader.readUTF(); 
                         refPantalla.setNombreTurno(usuario);
                         refPantalla.pintarTurno(usuario);
+                        refPantalla.colorMatriz();
                         
                         
                     break;
@@ -102,9 +103,29 @@ public class ThreadPlayer extends Thread {
 
                     break;
                     
-                    case 6:
+                    case 6: //se actualiza la matriz del player server al cliente
                         
-                        //loops
+                        for(int row = 0; row < refPantalla.refCliente.tableroCliente.length; row++)
+                            for(int col = 0; col < refPantalla.refCliente.tableroCliente[row].length; col++){
+                            
+                                String nombreTmp = reader.readUTF();
+                                int vidaTmp = reader.readInt();
+                                
+                                refPantalla.refCliente.tableroCliente[row][col].heroOwner = nombreTmp;                          
+                                refPantalla.refCliente.tableroCliente[row][col].vida = vidaTmp;
+                                int volcano = reader.readInt();
+                                int whirpool = reader.readInt();
+                                
+                                if(volcano == 1)
+                                    refPantalla.refCliente.tableroCliente[row][col].activeVolcano = true;
+                                else 
+                                    refPantalla.refCliente.tableroCliente[row][col].activeVolcano = false;
+                                
+                                if(whirpool == 2)
+                                    refPantalla.refCliente.tableroCliente[row][col].activeWhirlpool = true;
+                                else 
+                                    refPantalla.refCliente.tableroCliente[row][col].activeWhirlpool = false;
+                            }
                         
                         
                    break;

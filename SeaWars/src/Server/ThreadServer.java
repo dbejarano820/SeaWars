@@ -180,7 +180,9 @@ public class ThreadServer extends Thread {
                                   current.writer.writeInt(4);
                                   current.writer.writeUTF("The game has officially started!!!");                 
                                  }
-
+                                
+                                updateMatrizCliente();
+                                
                                 for(int i = 0; i < server.conexiones.size(); i++){
                                     ThreadServer current = server.conexiones.get(i);
                                     current.writer.writeInt(1);
