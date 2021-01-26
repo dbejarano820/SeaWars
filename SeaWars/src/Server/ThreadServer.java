@@ -209,39 +209,46 @@ public class ThreadServer extends Thread {
                                Hero heroTmp = jugadorTmp.buscarHero(comandos[1]);
                                if(!heroTmp.equals(null)){
                                    
+                                   String jugadaDeseada = comandos[2];
                                    
-                                   
-                         
-                                   
-                                   
-                                                                  //otras validaciones
-                                   //aca van jugadas
-                                  //String nombreHeroActual = comando[1];
-                                  //string superpower
-                                  //string attack
-
-                               
-                                updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
-                                updateMatrizCliente();  //se actualizan las matrices de los clientes
-                                pasarTurno();   //pasar de turno
+                                   if(heroTmp.validAbility(jugadaDeseada)){
+                                       
+                                        updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
+                                        updateMatrizCliente();  //se actualizan las matrices de los clientes
+                                        pasarTurno();   //pasar de turno
                           
+                                       
+                                   }
                                    
+                                   
+                                   else if(heroTmp.validSuperpower(jugadaDeseada)){
+                                       
+                                       
+                                        updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
+                                        updateMatrizCliente();  //se actualizan las matrices de los clientes
+                                        pasarTurno();   //pasar de turno
+                          
+                                   }
+                                   else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;    
+                                     
+                                     
+                                   }
                                }
-                         
                                else{
                                 writer.writeInt(2);
                                 writer.writeUTF("ERROR. Invalid command!");
                                 break;   
                                }             
                            }
-                           
                            else{                  // no es el turno del jugador
                                writer.writeInt(2);
                                writer.writeUTF("ERROR. It is not your turn!"); 
                            }
-
-                           
                        }
+                       
                        
                        else if(comandos[0].equals("skip")){ //comando para saltarse su turno y no atacar
                          

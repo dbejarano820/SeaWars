@@ -34,6 +34,18 @@ public class Hero {
     }
     
     
+    public boolean validAbility(String msj){
+        
+        if(msj.equals("healing"))
+            return true;
+        else if(msj.equals("strength"))
+            return true;
+        else if(msj.equals("resistance"))
+            return true;
+ 
+        return false;       
+    }
+    
     public boolean validSuperpower(String msj){
         
         if(msj.equals("thundersunderthesea"))
