@@ -102,6 +102,12 @@ public class ThreadPlayer extends Thread {
 
                     break;
                     
+                    case 6:
+                        
+                        //loops
+                        
+                        
+                   break;
                         
                 } 
             } catch (IOException ex) {

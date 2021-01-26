@@ -47,8 +47,33 @@ public class ThreadServer extends Thread {
         }
      }
    
-   
-  // public void updateMatrizCliente() throws I
+   //se copia la matriz
+   public void updateMatrizCliente() throws IOException{
+
+          for(int i = 0; i < server.conexiones.size(); i++){
+            ThreadServer current = server.conexiones.get(i);
+            
+            if(current.nombre.equals(server.players.get(i).nombre)){
+                
+                current.writer.writeInt(6);
+                
+                for(int row = 0; row < server.players.get(i).tablero.length; row++)
+                    for(int col = 0; col < server.players.get(i).tablero[row].length; col++){
+                       
+                        current.writer.writeUTF(server.players.get(i).tablero[row][col].heroOwner);      //se manda 1.Nombre, 2.Vida, 3.VolcanoActiva, 4.WhirlpoolActive
+                        current.writer.writeInt(server.players.get(i).tablero[row][col].vida);
+                        if(server.players.get(i).tablero[row][col].activeVolcano)
+                          current.writer.writeInt(1);
+                        else
+                            current.writer.writeInt(0);
+                        if(server.players.get(i).tablero[row][col].activeWhirlpool)
+                            current.writer.writeInt(1);
+                        else 
+                            current.writer.writeInt(0);
+                    }
+            }                  
+        }    
+   }
    
    
    
