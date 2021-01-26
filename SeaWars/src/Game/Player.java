@@ -130,6 +130,7 @@ public class Player {
         gameReady = true;
         return true;
     }  
+   
     
     public boolean validSuperpower(String msj){
         
