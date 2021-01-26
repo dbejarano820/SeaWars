@@ -80,7 +80,19 @@ public class PantallaCliente extends javax.swing.JFrame {
     
     
     
-    
+    public void mostrarVolcanesRemolinos(){
+        
+        for(int row = 0; row < refCliente.tableroCliente.length; row++)
+            for(int col = 0; col < refCliente.tableroCliente[row].length; col++){
+                
+                 if(refCliente.tableroCliente[row][col].activeVolcano){
+                     //pintar volcan
+                 }
+                 else if(refCliente.tableroCliente[row][col].activeWhirlpool){
+                     //pintar remolino
+                 }
+            }
+    }
     
     public void addHistory(String msj){
         txtBitacora.append(msj + "\n");
@@ -96,7 +108,13 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtConsole.append(msj + "\n");
     }
     
+    public void updateVida(int life){
+        lblHealthNum.setText(life + "");
+    }
     
+    public void updateMuertas(int muertas){
+        lblCasillasDestroyedNum.setText(muertas + "");
+    }    
     
     public void addHeroInfo1(String nombre, String msj){
         lblHero1Name.setText(nombre);

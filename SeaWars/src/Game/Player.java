@@ -176,9 +176,33 @@ public class Player {
         return res;   
     }
     
+    //retorna la vida actual del jugador
+    public int updateVidaActual(){
+        int vidaTmp = 0;
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+                vidaTmp += tablero[row][col].vida;
+            }
+        
+        int vida = (int) (((double)vidaTmp / 6000.0) * 100.0 );
+
+        return vida;   
+    }
+     //retorna la cantidad de casillas muertas del jugador   
+     public int updateMuertosActual(){
+        int muertas = 0;
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){              
+                if(tablero[row][col].vida <= 0)
+                    muertas++;
+            }
+
+        return muertas;   
+    }     
     
-       
-    
+    //retorna un logsummary del jugador para saber la efectividad del mismo
     public String logSummary(){
         
         String res = "";  
