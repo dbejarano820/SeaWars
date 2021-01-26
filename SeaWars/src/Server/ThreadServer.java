@@ -46,6 +46,12 @@ public class ThreadServer extends Thread {
             }                  
         }
      }
+   
+   
+  // public void updateMatrizCliente() throws I
+   
+   
+   
     
    
     public void run(){
@@ -53,14 +59,13 @@ public class ThreadServer extends Thread {
         int instruccionID = 1;
         while(running){
             
-            //revisar si perdio
-            /*
-            Player jugador = server.buscar(nombre);
-            if(server.partidaIniciada && jugador.totalCash <= 0 && jugador.todasHipotecadas()){
-                server.ordenTurnos.remove(this);
-            }    
-            */
-
+            
+            if(server.ordenPlayers.size() == 1){
+                
+                //hay ganador
+                
+            }
+            
             try {
                instruccionID = reader.readInt(); //espera hasta recibir un entero
                String usuario = "";  //variable de usuario para utilizar en todos los casos
@@ -173,11 +178,12 @@ public class ThreadServer extends Thread {
                                
                                 updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
                                   
-                                for(int i = 0; i < server.conexiones.size(); i++){
-                                    ThreadServer current = server.conexiones.get(i);
-                                    current.writer.writeInt(1);
-                                    current.writer.writeUTF(server.getNextTurno());                 
-                                   }                           
+                                String nextTurn = server.getNextTurno();
+                                 for(int i = 0; i < server.conexiones.size(); i++){
+                                   ThreadServer current = server.conexiones.get(i);
+                                   current.writer.writeInt(1);
+                                   current.writer.writeUTF(nextTurn);                 
+                                  }                         
                              
                                 
                                 
@@ -251,7 +257,8 @@ public class ThreadServer extends Thread {
                                
                                 jugadorTmp = server.buscarPlayer(usuario);
                                 jugadorTmp.surrender();
-
+                                server.ordenPlayers.remove(jugadorTmp);
+                                
                                 for(int i = 0; i < server.conexiones.size(); i++){
                                     ThreadServer current = server.conexiones.get(i);
                                     current.writer.writeInt(4);
@@ -259,6 +266,14 @@ public class ThreadServer extends Thread {
                                  }        
                            
                                 updateTableroHeros();    //se actualizan los datos de los heroes de los tableros
+                                
+                                 String nextTurn = server.getNextTurno();
+                                 for(int i = 0; i < server.conexiones.size(); i++){
+                                   ThreadServer current = server.conexiones.get(i);
+                                   current.writer.writeInt(1);
+                                   current.writer.writeUTF(nextTurn);                 
+                                  } 
+                                
                            }
                            else{
                                writer.writeInt(2);

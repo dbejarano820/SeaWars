@@ -6,6 +6,7 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -74,6 +75,25 @@ public class Player {
         disponibleValores.remove(new Integer(Healing));
         disponibleValores.remove(new Integer(Strength));
         disponibleValores.remove(new Integer(Resistance));
+        
+        
+        int cantidadCasillas = ((int)(((double) percentCivilization / (double)100)* (double)600));
+        
+        while(cantidadCasillas != 0){
+            
+            int row = (new Random()).nextInt(20);   //aca se cae si no es 20 .. no puede ser 19
+            int col = (new Random()).nextInt(30);
+            
+            System.out.println("row: " + row + "  col: " + col + "  cantidadCasillas: " + cantidadCasillas);
+            
+            if(tablero[row][col].heroOwner.equals("")){
+                tablero[row][col].heroOwner = nombre;
+                cantidadCasillas--;
+            }
+        } 
+
+        
+        
     }
     
     public boolean estaVivo(){  //metodo para revisar si esta vivo
@@ -190,7 +210,7 @@ public class Player {
         
         int vida = (int) (((double)vidaHero1 / (double)vidaHero1Total) * 100.0 );
 
-        return vida + "%" + "\n" + casillasVivasHero1 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+        return vida + "%" + "\n" + casillasVivasHero1 +" out of " + ((int)(((double) heros.get(0).percentCivilization / (double)100)* (double)600)) + " casillas";
     }
 
     public String updateTableroHero2(){
@@ -212,7 +232,7 @@ public class Player {
         
         int vida = (int) (((double)vidaHero2 / (double)vidaHero2Total) * 100.0 );
 
-        return vida + "%" + "\n" + casillasVivasHero2 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+        return vida + "%" + "\n" + casillasVivasHero2 +" out of " + ((int)(((double) heros.get(1).percentCivilization / (double)100)* (double)600)) + " casillas";
     }
     
 
@@ -236,7 +256,7 @@ public class Player {
         
         int vida = (int) (((double)vidaHero3 / (double)vidaHero3Total) * 100.0 );
 
-        return vida + "%" + "\n" + casillasVivasHero3 +" out of " + ((int)((double) heros.get(0).percentCivilization / (double)100)* (double)600) + " casillas";
+        return vida + "%" + "\n" + casillasVivasHero3 +" out of " + ((int)(((double) heros.get(2).percentCivilization / (double)100)* (double)600)) + " casillas";
     }
         
     

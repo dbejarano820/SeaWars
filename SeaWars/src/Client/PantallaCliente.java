@@ -73,7 +73,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     
     public void addHeroInfo1(String nombre, String msj){
         lblHero1Name.setText(nombre);
-        txtHero1.append(msj);
+        txtHero1.setText(msj);
     }
     
     public void setInfoHero1Tablero(String nombre, String info){
@@ -83,7 +83,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     
     public void addInfoHero1Tablero(String info){
         txtHero1Tablero.setText("");
-        txtHero1Tablero.append(info);
+        txtHero1Tablero.setText(info);
     }
    
     public void addHero1Image(String path){
@@ -96,7 +96,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     
      public void addHeroInfo2(String nombre, String msj){
         lblHero2Name.setText(nombre);
-        txtHero2.append(msj);
+        txtHero2.setText(msj);
     }   
      
      public void addHero2Image(String path){
@@ -111,7 +111,8 @@ public class PantallaCliente extends javax.swing.JFrame {
      
     public void addInfoHero2Tablero(String info){
         txtHero2Tablero.setText("");
-        txtHero2Tablero.append(info);
+        txtHero2Tablero.setText("");
+        txtHero2Tablero.setText(info);
     }
      
      
@@ -124,12 +125,12 @@ public class PantallaCliente extends javax.swing.JFrame {
      
     public void addInfoHero3Tablero(String info){
         txtHero3Tablero.setText("");
-        txtHero3Tablero.append(info);
+        txtHero3Tablero.setText(info);
     } 
      
      public void addHeroInfo3(String nombre, String msj){
         lblHero3Name.setText(nombre);
-        txtHero3.append(msj);
+        txtHero3.setText(msj);
     }  
     
      public void addHero3Image(String path){
