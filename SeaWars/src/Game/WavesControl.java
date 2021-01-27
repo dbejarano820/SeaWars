@@ -86,6 +86,10 @@ public class WavesControl implements Superpower{
                 res += "Se redujo la vida de la casilla("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
                 player.tablero[y][x].vida -= daño;
+                
+                if(player.tablero[y][x].vida < 0)
+                            player.tablero[y][x].vida = 0;
+                        player.tablero[y][x].escudo = 0;
             }
             else{
                 fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casilla ya estba muerta\n";
@@ -120,6 +124,7 @@ public class WavesControl implements Superpower{
                     
                     if(player.tablero[j][i].vida<0)
                         player.tablero[j][i].vida = 0;
+                    player.tablero[j][i].escudo = 0;
                     
                 }
                 else{
