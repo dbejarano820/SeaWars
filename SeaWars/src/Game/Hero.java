@@ -103,7 +103,24 @@ public class Hero {
         else
             return false;
     }
+ 
+    public Superpower buscarSuperpower(String power){
         
+       if(power.equals("thundersunderthesea"))
+            return new ThundersUnderTheSea();     
+       else if(power.equals("fishtelepathy"))
+           return new FishTelepathy();
+        else if(power.equals("releasethekraken"))
+           return new ReleaseTheKraken();
+        else if(power.equals("wavescontrol"))
+            return new WavesControl();
+        else if(power.equals("thetrident"))
+            return new TheTrident();
+        else if(power.equals("underseavolcanoes"))
+            return new UnderseaVolcanoes();
+        else
+            return null;
+    }    
         
     public void addSuperPower1(String msj){
         

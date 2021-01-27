@@ -243,9 +243,14 @@ public class ThreadServer extends Thread {
                                    
                                    else if(heroTmp.validSuperpower(jugadaDeseada)){
                                        
+                                       String ataqueDeseado = comandos[3];
+                                       Player jugadorTarget = server.buscarPlayer(comandos[4]);
+                                       
                                        if(jugadaDeseada.equals("thundersunderthesea")){
                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
+                                              
+                                             
+                                            // heroTmp.buscarSuperpower(jugadaDeseada).
                                                
                                                
                                            }       
