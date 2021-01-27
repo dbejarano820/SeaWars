@@ -217,7 +217,7 @@ public class ThreadServer extends Thread {
                                
                                jugadorTmp = server.buscarPlayer(usuario);
                                Hero heroTmp = jugadorTmp.buscarHero(comandos[1]);
-                               if(!heroTmp.equals(null)){
+                               if(heroTmp != null){
                                    
                                    String jugadaDeseada = comandos[2];
                                    
