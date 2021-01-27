@@ -245,38 +245,115 @@ public class ThreadServer extends Thread {
                                        
                                        String ataqueDeseado = comandos[3];
                                        Player jugadorTarget = server.buscarPlayer(comandos[4]);
+                                       String resultado = "";
                                        
                                        if(jugadaDeseada.equals("thundersunderthesea")){
-                                           if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                              
-                                             
-                                            // heroTmp.buscarSuperpower(jugadaDeseada).
-                                               
-                                               
+                                           if(heroTmp.estaSuperpower(jugadaDeseada)){                                    
+                                               if(ataqueDeseado.equals("thunderrain")){
+                                                  resultado = heroTmp.buscarThunder(jugadaDeseada).attack1(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("poseidonthunders")){
+                                                  resultado = heroTmp.buscarThunder(jugadaDeseada).attack2(jugadorTarget, jugadorTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("eelattack")){
+                                                  resultado = heroTmp.buscarThunder(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                          
                                            }       
                                        }
                                        
                                        else if(jugadaDeseada.equals("fishtelepathy")){
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
-                                               
-                                               
+                                               if(ataqueDeseado.equals("cardumen")){
+                                                  resultado = heroTmp.buscarFish(jugadaDeseada).attack1(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("sharkattack")){
+                                                  resultado = heroTmp.buscarFish(jugadaDeseada).attack2(jugadorTarget, jugadorTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("pulp")){
+                                                  resultado = heroTmp.buscarFish(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                                                                                   
                                            }              
                                        }
                                        
                                        else if(jugadaDeseada.equals("wavescontrol")){
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
-                                               
-                                               
+                                               if(ataqueDeseado.equals("swirlrasing")){
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("sendhumangarbage")){
+                                                  int x = Integer.parseInt(comandos[6]);
+                                                  int y = Integer.parseInt(comandos[8]);
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack2(jugadorTarget, jugadorTmp,heroTmp.strengthTmp, x, y);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("radioactiverush")){
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                                                   
                                            }
                                        }
                                        
                                        else if(jugadaDeseada.equals("thetrident")){
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
-                                               
-                                               
+                                               if(ataqueDeseado.equals("threelines")){
+                                                  int x1 = Integer.parseInt(comandos[6]);
+                                                  int y1 = Integer.parseInt(comandos[8]);
+                                                  int x2 = Integer.parseInt(comandos[10]);
+                                                  int y2 = Integer.parseInt(comandos[12]);                                                 
+                                                  int x3 = Integer.parseInt(comandos[14]);
+                                                  int y3 = Integer.parseInt(comandos[16]);         
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("threenumbers")){
+                                                  int x = Integer.parseInt(comandos[6]);
+                                                  int y = Integer.parseInt(comandos[8]);
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack2(jugadorTarget, jugadorTmp,heroTmp.strengthTmp, x, y);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("controlthekraken")){
+                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                                                   
                                            }
                                        }                                      
                                        
