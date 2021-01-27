@@ -311,6 +311,7 @@ public class ThreadServer extends Thread {
                                                else if(ataqueDeseado.equals("radioactiverush")){
                                                   resultado = heroTmp.buscarWaves(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
                                                   heroTmp.strengthTmp = 0;
+                                                   System.out.println(resultado);
                                                   mandarBitacora(resultado);
                                                }
                                                else{

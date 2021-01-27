@@ -18,7 +18,6 @@ public class Casilla {
     public boolean activeVolcano;
     public boolean activeWhirlpool;
     public JLabel refLabel;
-    public int cantBasura;
     public int cantBasuraRactiva;
     public String heroOwner;
     public int escudo;

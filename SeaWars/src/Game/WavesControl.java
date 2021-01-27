@@ -75,19 +75,26 @@ public class WavesControl implements Superpower{
             int radioactiva = new Random().nextInt(2);
             
             if(player.tablero[y][x].vida > 0){
-                if(radioactiva == 0)
+                if(radioactiva == 0){
                     daño = 25 +(25*(extra/100.0))-(25*(player.tablero[y][x].escudo/100.0));
+                    player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        "con un daño extra de "+extra+" y con un escudo de "+ player.tablero[y][x]+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
+                
+                    res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
+                }
                 else{
                     daño = 50 +(50*(extra/100.0))-(50*(player.tablero[y][x].escudo/100.0));
                     player.tablero[y][x].cantBasuraRactiva++;
+                    player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        "con un daño extra de "+extra+" y con un escudo de "+ player.tablero[y][x]+" por basura radioactiva enviada por un remolino enviado de "+atacante.nombre+"\n";
+                
+                    res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                        " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura radioactiva enviada por un remolino enviado de "+atacante.nombre+"\n";
                 }
                     
                 
-                player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
-                        "con un daño extra de "+extra+" y con un escudo de "+ player.tablero[y][x]+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
                 
-                res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
-                        " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
                 player.tablero[y][x].vida -= daño;
                 
                 if(player.tablero[y][x].vida < 0)
@@ -95,7 +102,7 @@ public class WavesControl implements Superpower{
                         player.tablero[y][x].escudo = 0;
             }
             else{
-                fallo += "No se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" por basura enviada por un remolino enviado de "+atacante.nombre+" porque la casilla ya estba muerta\n";
+                fallo += "No se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" por basura enviada por un remolino enviado de "+atacante.nombre+" porque la casilla ya estaba muerta\n";
             }
         }
         
@@ -122,11 +129,13 @@ public class WavesControl implements Superpower{
                     System.out.println("si entra al if de cantbasuraractiva");
                     
                     preDaño = 10*segundos*player.tablero[i][j].cantBasuraRactiva;
+                    
                     daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[i][j].escudo/100.0));
+                    
                     player.tablero[i][j].historial += "La casilla redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de " +
                             player.tablero[i][j].escudo+"\n";
                     
-                    res+= "La casilla("+j+","+i+") redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
+                    res+= "La casilla("+j+","+i+") de"+player.nombre+" redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
                             +player.tablero[i][j].escudo+" por una reaccion radioactiva enviada por "+atacante.nombre+"\n";
                     
                     player.tablero[i][j].vida -= daño;
