@@ -199,7 +199,7 @@ public class ReleaseTheKraken implements Superpower{
     
     
     //Kraken breath
-    public String attack2(Player player,Player atacante, int x, int y){//Kraken breath
+    public String attack2(Player player,Player atacante, int x, int y){
         String res = "";
         String fallo = "";
         int direccion = new Random().nextInt(4);
@@ -290,7 +290,7 @@ public class ReleaseTheKraken implements Superpower{
         
         if(player.krakenDefense){
             player.krakenDefense = false;
-            attack3(atacante,player);
+            return atacante.nombre+" intento atacar a "+player.nombre+" con Release the kraken pero por la poteccion del tridente se reflejo el ataque\n"+attack3(atacante,player);
         }
         String fallo = "";
         String res = "";

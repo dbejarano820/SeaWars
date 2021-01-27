@@ -39,13 +39,15 @@ public class UnderseaVolcanoes implements Superpower{
                     }
                     
                     else{
-                        fallo +=   "En la casilla ("+i+","+j+") se intento crear un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
+                        fallo +=   "En la casilla ("+i+","+j+") no se creo un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
                     }
                 }  
             }
         }
-        if(!res.equals(""))
+        if(!res.equals("")){
+            res = "Se creo un volcan en la casilla("+x+","+y+")\n"+res;
             atacante.cantidadAtinados++;
+        }
         
         return res+fallo;
     }

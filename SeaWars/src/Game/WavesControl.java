@@ -40,13 +40,15 @@ public class WavesControl implements Superpower{
                     }
                     
                     else{
-                        fallo +=   "En la casilla ("+i+","+j+") se intento crear un remolino enviado por "+atacante.nombre+" porque ya tenia un volcan\n";
+                        fallo +=   "En la casilla ("+i+","+j+") no se creo un remolino enviado por "+atacante.nombre+" porque ya tenia un volcan\n";
                     }
                 }  
             }
         }
-        if(!res.equals(""))
+        if(!res.equals("")){
+            res = "Se creo un remolino en la casilla("+x+","+y+")\n"+res;
             atacante.cantidadAtinados++;
+        }
         
         return res+fallo; 
     }
