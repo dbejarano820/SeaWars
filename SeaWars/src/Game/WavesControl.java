@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class WavesControl implements Superpower{
     
+    String name = "wavescontrol";
     
     @Override//Swirl raising
     public String attack1(Player player,Player atacante){
@@ -28,19 +29,19 @@ public class WavesControl implements Superpower{
         
         for(int i = 0; i < player.tablero.length; i++){
             for (int j = 0; j < player.tablero[i].length; j++){
-                distanciaTmp = Math.sqrt(((x-i)*(x-i))+((y-j)*(y-j)));
+                distanciaTmp = Math.sqrt(((x-j)*(x-j))+((y-i)*(y-i)));
                 
                 if(distanciaTmp <= remolinoTamaño){
-                    if( !player.tablero[j][i].activeVolcano){
-                        player.tablero[j][i].activeWhirlpool  = true;
-                        player.tablero[j][i].vida = 0;
-                        player.tablero[j][i].historial += "Se creo un remolino enviado por "+atacante.nombre+"\n";
-                        res += "En la casilla ("+i+","+j+") se creo un remolino enviado por "+atacante.nombre+"\n";
+                    if( !player.tablero[i][j].activeVolcano){
+                        player.tablero[i][j].activeWhirlpool  = true;
+                        player.tablero[i][j].vida = 0;
+                        player.tablero[i][j].historial += "Se creo un remolino enviado por "+atacante.nombre+"\n";
+                        res += "En la casilla ("+j+","+i+") se creo un remolino enviado por "+atacante.nombre+"\n";
                         
                     }
                     
                     else{
-                        fallo +=   "En la casilla ("+i+","+j+") no se creo un remolino enviado por "+atacante.nombre+" porque ya tenia un volcan\n";
+                        fallo +=   "En la casilla ("+j+","+i+") no se creo un remolino enviado por "+atacante.nombre+" porque ya tenia un volcan\n";
                     }
                 }  
             }
@@ -94,7 +95,7 @@ public class WavesControl implements Superpower{
                         player.tablero[y][x].escudo = 0;
             }
             else{
-                fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casilla ya estba muerta\n";
+                fallo += "No se redujo la vida de la casilla("+x+","+y+") por basura enviada por un remolino enviado de "+atacante.nombre+" porque la casilla ya estba muerta\n";
             }
         }
         
@@ -115,22 +116,23 @@ public class WavesControl implements Superpower{
             
             for(int j = 0; j < player.tablero[i].length;j++){
                 
-                if(player.tablero[j][i].vida > 0){
-                    preDaño = 10*segundos*player.tablero[j][i].cantBasuraRactiva;
-                    daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[j][i].escudo/100.0));
-                    player.tablero[j][i].historial += "La casilla redujo su vida de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño);
-                    res+= "La casilla("+i+","+j+") redujo su vida de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
-                            +player.tablero[j][i].escudo+" por una reaccion radioactiva enviada por "+atacante.nombre+"\n";
+                if(player.tablero[i][j].vida > 0 && player.tablero[i][j].cantBasuraRactiva > 0){
                     
-                    player.tablero[j][i].vida -= daño;
+                    preDaño = 10*segundos*player.tablero[i][j].cantBasuraRactiva;
+                    daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[i][j].escudo/100.0));
+                    player.tablero[i][j].historial += "La casilla redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño);
+                    res+= "La casilla("+j+","+i+") redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
+                            +player.tablero[i][j].escudo+" por una reaccion radioactiva enviada por "+atacante.nombre+"\n";
                     
-                    if(player.tablero[j][i].vida<0)
-                        player.tablero[j][i].vida = 0;
-                    player.tablero[j][i].escudo = 0;
+                    player.tablero[i][j].vida -= daño;
+                    
+                    if(player.tablero[i][j].vida<0)
+                        player.tablero[i][j].vida = 0;
+                    player.tablero[i][j].escudo = 0;
                     
                 }
                 else{
-                    fallo += "La casilla("+i+","+j+") no redujo su vida de  por una reaccion radioactiva enviada por "+atacante.nombre+" porque ya estaba muerta\n";
+                    fallo += "La casilla("+j+","+i+") no redujo su vida de  por una reaccion radioactiva enviada por "+atacante.nombre+" porque ya estaba muerta\n";
                 }
             }
         }

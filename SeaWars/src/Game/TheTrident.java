@@ -13,6 +13,8 @@ import java.util.Random;
  */
 public class TheTrident implements Superpower{
     
+    String name = "thetrident";
+    
     //Three lines
     public String attack1(Player player,Player atacante, int x1, int x2, int x3, int y1, int y2, int y3){
         String res = "";

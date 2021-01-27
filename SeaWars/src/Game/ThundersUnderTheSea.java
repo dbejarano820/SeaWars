@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class ThundersUnderTheSea implements Superpower{
     
-    
+    String name = "thundersunderthesea";
     //Thunder rain
     
     public String attack1(Player player,Player atacante, int extra){
@@ -21,6 +21,7 @@ public class ThundersUnderTheSea implements Superpower{
         String fallo = "";
         int x;
         int y;
+        atacante.cantidadAtaques++;
         
         for(int i = 0; i < 100;i++){
             
@@ -32,7 +33,7 @@ public class ThundersUnderTheSea implements Superpower{
             
             if(player.tablero[y][x].vida > 0){
                 
-                player.tablero[y][x].historial += "La casilla fue atacada con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño);
+                player.tablero[y][x].historial += "La casilla fue atacada con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño) + "\n";
                 res += "Se ataco la casilla("+x+","+y+") con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" con un escudo de "+
                         player.tablero[y][x].escudo+" y un daño extra de "+extra+", el ataque fue enviado por "+atacante.nombre+" \n";
 
@@ -124,7 +125,7 @@ public class ThundersUnderTheSea implements Superpower{
                 }
                 else{
                     fallo += "Se intento atacar la casilla ("+x+","+y+") con un ataque de anguilas enviado por "+
-                            atacante.nombre+" pero esta ya estaba muerta";
+                            atacante.nombre+" pero esta ya estaba muerta\n";
                 }
                 
             }

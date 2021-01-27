@@ -13,6 +13,8 @@ import java.util.Random;
  */
 public class UnderseaVolcanoes implements Superpower{
     
+    String name = "underseavolcanoes";
+    
     @Override//Volcanoe Raising
     public String attack1(Player player,Player atacante){
         String res = "";
@@ -27,19 +29,19 @@ public class UnderseaVolcanoes implements Superpower{
         
         for(int i = 0; i < player.tablero.length; i++){
             for (int j = 0; j < player.tablero[i].length; j++){
-                distanciaTmp = Math.sqrt(((x-i)*(x-i))+((y-j)*(y-j)));
+                distanciaTmp = Math.sqrt(((x-j)*(x-j))+((y-i)*(y-i)));
                 
                 if(distanciaTmp <= volcanTamaño){
-                    if( !player.tablero[j][i].activeWhirlpool){
-                        player.tablero[j][i].activeVolcano  = true;
-                        player.tablero[j][i].vida = 0;
-                        player.tablero[j][i].historial += "Se creo un volcan enviado por "+atacante.nombre+"\n";
-                        res += "En la casilla ("+i+","+j+") se creo un volcan enviado por "+atacante.nombre+"\n";
+                    if( !player.tablero[i][j].activeWhirlpool){
+                        player.tablero[i][j].activeVolcano  = true;
+                        player.tablero[i][j].vida = 0;
+                        player.tablero[i][j].historial += "Se creo un volcan enviado por "+atacante.nombre+"\n";
+                        res += "En la casilla ("+j+","+i+") se creo un volcan enviado por "+atacante.nombre+"\n";
                         
                     }
                     
                     else{
-                        fallo +=   "En la casilla ("+i+","+j+") no se creo un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
+                        fallo +=   "En la casilla ("+j+","+i+") no se creo un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
                     }
                 }  
             }
@@ -108,25 +110,25 @@ public class UnderseaVolcanoes implements Superpower{
         double daño;
         
         for(int i = 0; i < player.tablero.length;i++){
-            for(int j = 0; i <player.tablero[i].length;i++){
-                distanciaTmp = Math.sqrt(((xV-i)*(xV-i))+((yV-j)*(yV-j)));
+            for(int j = 0; j <player.tablero[i].length;j++){
+                distanciaTmp = Math.sqrt(((xV-j)*(xV-j))+((yV-i)*(yV-i)));
                 
                 if(distanciaTmp>volcan.tamaño && distanciaTmp < (volcan.tamaño+5)){
                     
-                    daño  = dañoTmp+(dañoTmp*(extra/100.0))-(dañoTmp*(player.tablero[j][i].escudo/100.0));
-                    if(player.tablero[j][i].vida > 0){
-                        player.tablero[j][i].historial += "La vida de la casilla se redujo de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" por un Thermal Rush enviado por "
+                    daño  = dañoTmp+(dañoTmp*(extra/100.0))-(dañoTmp*(player.tablero[i][j].escudo/100.0));
+                    if(player.tablero[i][j].vida > 0){
+                        player.tablero[i][j].historial += "La vida de la casilla se redujo de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" por un Thermal Rush enviado por "
                                 +atacante.nombre+"\n";
-                        res += "La vida de la casilla("+i+","+j+") se redujo de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" por un Thermal Rush con daño extra de "+extra
-                                +" y un escudo de "+player.tablero[j][i].escudo+", el ataque fue enviado por "+atacante.nombre+"\n";
-                        player.tablero[j][i].vida -= daño;
+                        res += "La vida de la casilla("+j+","+i+") se redujo de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" por un Thermal Rush con daño extra de "+extra
+                                +" y un escudo de "+player.tablero[i][j].escudo+", el ataque fue enviado por "+atacante.nombre+"\n";
+                        player.tablero[i][j].vida -= daño;
                         
-                        if(player.tablero[j][i].vida < 0)
-                            player.tablero[j][i].vida = 0;
-                        player.tablero[j][i].escudo = 0;
+                        if(player.tablero[i][j].vida < 0)
+                            player.tablero[i][j].vida = 0;
+                        player.tablero[i][j].escudo = 0;
                     }
                     else{
-                        fallo += "La vida de la casilla ("+i+","+j+") no se redujo por el ataque de Thermal Rush enviado por "+atacante.nombre+" porque la casillas ya estaba muerta";
+                        fallo += "La vida de la casilla ("+j+","+i+") no se redujo por el ataque de Thermal Rush enviado por "+atacante.nombre+" porque la casillas ya estaba muerta";
                     }
                     
                 }

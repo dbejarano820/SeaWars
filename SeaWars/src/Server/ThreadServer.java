@@ -256,7 +256,6 @@ public class ThreadServer extends Thread {
                                                } 
                                                else if(ataqueDeseado.equals("poseidonthunders")){
                                                   resultado = heroTmp.buscarThunder(jugadaDeseada).attack2(jugadorTarget, jugadorTmp);
-                                                  heroTmp.strengthTmp = 0;
                                                   mandarBitacora(resultado);        
                                                }
                                                else if(ataqueDeseado.equals("eelattack")){
@@ -281,7 +280,6 @@ public class ThreadServer extends Thread {
                                                } 
                                                else if(ataqueDeseado.equals("sharkattack")){
                                                   resultado = heroTmp.buscarFish(jugadaDeseada).attack2(jugadorTarget, jugadorTmp);
-                                                  heroTmp.strengthTmp = 0;
                                                   mandarBitacora(resultado);        
                                                }
                                                else if(ataqueDeseado.equals("pulp")){
@@ -299,9 +297,8 @@ public class ThreadServer extends Thread {
                                        
                                        else if(jugadaDeseada.equals("wavescontrol")){
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               if(ataqueDeseado.equals("swirlrasing")){
+                                               if(ataqueDeseado.equals("swirlraising")){
                                                   resultado = heroTmp.buscarWaves(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
-                                                  heroTmp.strengthTmp = 0;
                                                   mandarBitacora(resultado);
                                                } 
                                                else if(ataqueDeseado.equals("sendhumangarbage")){
@@ -333,20 +330,22 @@ public class ThreadServer extends Thread {
                                                   int y2 = Integer.parseInt(comandos[12]);                                                 
                                                   int x3 = Integer.parseInt(comandos[14]);
                                                   int y3 = Integer.parseInt(comandos[16]);         
-                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
-                                                  heroTmp.strengthTmp = 0;
+                                                  resultado = heroTmp.buscarTrident(jugadaDeseada).attack1(jugadorTarget, jugadorTmp, x1, x2, x3, y1, y2, y3);
                                                   mandarBitacora(resultado);
                                                } 
                                                else if(ataqueDeseado.equals("threenumbers")){
+                                                   
+                                                   //llamar a otro caso
+                                                   /*
                                                   int x = Integer.parseInt(comandos[6]);
                                                   int y = Integer.parseInt(comandos[8]);
                                                   resultado = heroTmp.buscarWaves(jugadaDeseada).attack2(jugadorTarget, jugadorTmp,heroTmp.strengthTmp, x, y);
                                                   heroTmp.strengthTmp = 0;
-                                                  mandarBitacora(resultado);        
+                                                  mandarBitacora(resultado);  
+                                                    */
                                                }
                                                else if(ataqueDeseado.equals("controlthekraken")){
-                                                  resultado = heroTmp.buscarWaves(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, heroTmp.strengthTmp);
-                                                  heroTmp.strengthTmp = 0;
+                                                  resultado = heroTmp.buscarTrident(jugadaDeseada).attack3(jugadorTarget, jugadorTmp);
                                                   mandarBitacora(resultado);
                                                }
                                                else{
@@ -359,7 +358,29 @@ public class ThreadServer extends Thread {
                                        
                                        else if(jugadaDeseada.equals("underseavolcanoes")){
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
+                                               if(ataqueDeseado.equals("volcanoraising")){
+                                                  resultado = heroTmp.buscarVolcano(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("volcanoexplosion")){
+                                                  int x = Integer.parseInt(comandos[6]);
+                                                  int y = Integer.parseInt(comandos[8]);
+                                                  resultado = heroTmp.buscarVolcano(jugadaDeseada).attack2(jugadorTarget, jugadorTmp, heroTmp.strengthTmp, x, y);
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("thermalrush")){
+                                                  int x = Integer.parseInt(comandos[6]);
+                                                  int y = Integer.parseInt(comandos[8]);                                                   
+                                                  resultado = heroTmp.buscarVolcano(jugadaDeseada).attack3(jugadorTarget, jugadorTmp, x, y, heroTmp.strengthTmp);
+                                                  heroTmp.strengthTmp = 0;
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                                                 
                                                
                                                
                                            }
@@ -369,27 +390,39 @@ public class ThreadServer extends Thread {
                                        }    
                                        
                                        else if(jugadaDeseada.equals("releasethekraken")){
+                                           System.out.println("NO ENTRA 1");
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                               
-                                               
-                                               
+                                                System.out.println("NO ENTRA 2");
+                                               if(ataqueDeseado.equals("tentaculos")){
+                                                  resultado = heroTmp.buscarKraken(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
+                                                   System.out.println("resultado: " + resultado);
+                                                  mandarBitacora(resultado);
+                                               } 
+                                               else if(ataqueDeseado.equals("krakenbreath")){
+                                                  int x = Integer.parseInt(comandos[6]);
+                                                  int y = Integer.parseInt(comandos[8]);
+                                                  resultado = heroTmp.buscarKraken(jugadaDeseada).attack2(jugadorTarget, jugadorTmp,x, y);
+                                                  mandarBitacora(resultado);        
+                                               }
+                                               else if(ataqueDeseado.equals("releasethekraken")){
+                                                  resultado = heroTmp.buscarKraken(jugadaDeseada).attack3(jugadorTarget, jugadorTmp);
+                                                  mandarBitacora(resultado);
+                                               }
+                                               else{
+                                                  writer.writeInt(2);
+                                                  writer.writeUTF("ERROR. Invalid command!");
+                                                  break;   
+                                               }                                                    
                                            }
-                                           
-                                           
-                                           
                                        }                                       
-                                       
                                        updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                        updateMatrizCliente();  //se actualizan las matrices de los clientes
                                        pasarTurno();   //pasar de turno
-                          
                                    }
                                    else{
                                           writer.writeInt(2);
                                           writer.writeUTF("ERROR. Invalid command!");
-                                          break;    
-                                     
-                                     
+                                          break;       
                                    }
                                }
                                else{

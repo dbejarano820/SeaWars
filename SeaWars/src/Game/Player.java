@@ -37,6 +37,8 @@ public class Player {
         krakenDefense = false;
         disponibleValores = new ArrayList<Integer>();
         totalCivilizacion = 100;
+        volcanes = new ArrayList<Volcan>();
+        remolinos = new ArrayList<Remolino>();
         generateTablero();
         
         disponibleValores.add(50);

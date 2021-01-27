@@ -26,6 +26,7 @@ import java.util.Random;
 */
 public interface Superpower {
     
+    public String name = "";
     String attack1(Player player,Player atacante);
     String attack2(Player player,Player atacante);
     String attack3(Player player,Player atacante);

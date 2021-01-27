@@ -87,23 +87,28 @@ public class Hero {
     
     
     public boolean estaSuperpower(String power){
+        String n = "";
         
-       if(power.equals("thundersunderthesea"))
-            return superpowers.contains(new ThundersUnderTheSea());     
+         if(power.equals("thundersunderthesea"))
+            n = "Game.ThundersUnderTheSea";   
        else if(power.equals("fishtelepathy"))
-           return superpowers.contains(new FishTelepathy());
+            n = "Game.FishTelepathy"; 
         else if(power.equals("releasethekraken"))
-           return superpowers.contains(new ReleaseTheKraken());
+             n = "Game.ReleaseTheKraken";            
         else if(power.equals("wavescontrol"))
-            return superpowers.contains(new WavesControl());
+             n = "Game.WavesControl"; 
         else if(power.equals("thetrident"))
-            return superpowers.contains(new TheTrident());
+             n = "Game.TheTrident"; 
         else if(power.equals("underseavolcanoes"))
-            return superpowers.contains(new UnderseaVolcanoes());
-        else
-            return false;
+             n = "Game.UnderseaVolcanoes";       
+        
+        for(int i = 0; i<superpowers.size();i++){
+            if(superpowers.get(i).getClass().getName().equals(n))
+                return true;
+        }
+        return false;
     }
- 
+
     public ThundersUnderTheSea buscarThunder(String power){      
        if(power.equals("thundersunderthesea"))
             return new ThundersUnderTheSea();     
@@ -167,7 +172,7 @@ public class Hero {
                 superpowers.add(new TheTrident());
                 break;
             case "underseavolcanoes":
-                superpowers.add(new FishTelepathy());
+                superpowers.add(new UnderseaVolcanoes());
                 break;
             default:
                 break;

@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class ReleaseTheKraken implements Superpower{
     
+    String name = "releasethekraken";
     //Tentaculos
     @Override
     public String attack1(Player player,Player atacante){//Tentaculos
@@ -313,22 +314,25 @@ public class ReleaseTheKraken implements Superpower{
             
             for(int j = 0; j<player.tablero[i].length; j++){
                 
-                distanciaTmp = Math.sqrt(((casillaX-i)*(casillaX-i))+((casillaY-j)*(casillaY-j)));
+                distanciaTmp = Math.sqrt(((casillaX-j)*(casillaX-j))+((casillaY-i)*(casillaY-i)));
                 
                 if(distanciaTmp <= distancia){
-                    if(player.tablero[j][i].vida > 0){
-                        player.tablero[j][i].vida = 0;
-                        player.tablero[j][i].historial += "Fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
-                        res += "La casilla ("+i+","+j+") fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
+                    if(player.tablero[i][j].vida > 0){
+                        player.tablero[i][j].vida = 0;
+                        player.tablero[i][j].historial += "Fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
+                        res += "La casilla ("+j+","+i+") fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
                     }
                     else{
-                        fallo += "La casilla ("+i+","+j+") no fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
+                        fallo += "La casilla ("+j+","+i+") no fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
                     }
                 }
             }
         }
-        if(!res.equals(""))
+        if(!res.equals("")){
             atacante.cantidadAtinados++;
+            res = "Se generó el kraken en la casilla (" + casillaX + "," + casillaY+") \n" + res;
+        }
+ 
         
         return res+fallo;
     }
