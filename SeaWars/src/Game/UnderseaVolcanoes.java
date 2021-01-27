@@ -36,12 +36,12 @@ public class UnderseaVolcanoes implements Superpower{
                         player.tablero[i][j].activeVolcano  = true;
                         player.tablero[i][j].vida = 0;
                         player.tablero[i][j].historial += "Se creo un volcan enviado por "+atacante.nombre+"\n";
-                        res += "En la casilla ("+j+","+i+") se creo un volcan enviado por "+atacante.nombre+"\n";
+                        res += "En la casilla ("+j+","+i+") de "+player.nombre+" se creo un volcan enviado por "+atacante.nombre+"\n";
                         
                     }
                     
                     else{
-                        fallo +=   "En la casilla ("+j+","+i+") no se creo un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
+                        fallo += "En la casilla ("+j+","+i+") de "+player.nombre+" no se creo un volcan enviado por "+atacante.nombre+" porque ya tenia un remolino\n";
                     }
                 }  
             }
@@ -74,10 +74,10 @@ public class UnderseaVolcanoes implements Superpower{
             double daño = 20 +(20*(extra/100.0))-(20*(player.tablero[y][x].escudo/100.0));
             if(player.tablero[y][x].vida > 0){
                 
-                player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
-                        " por una roca enviada por un volcan enviado de "+atacante.nombre+"\n";
+                player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" con un daño extra de "+extra+
+                        " y un escudo de "+player.tablero[y][x].escudo+" por una roca enviada por un volcan enviado de "+atacante.nombre+"\n";
                 
-                res += "Se redujo la vida de la casilla("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por una roca enviada por un volcan enviado de "+atacante.nombre+"\n";
                 player.tablero[y][x].vida -= daño;
                 
@@ -86,7 +86,8 @@ public class UnderseaVolcanoes implements Superpower{
                 player.tablero[y][x].escudo = 0;
             }
             else{
-                fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casillas ya estba muerta \n";
+                fallo += "No se redujo la vida de la casilla("+x+","+y+") de "+player.tablero[y][x].vida+" por una roca enviada por un volcan enviado de "+atacante.nombre+
+                        " porque la casillas ya estba muerta \n";
             }
         }
         
@@ -118,8 +119,9 @@ public class UnderseaVolcanoes implements Superpower{
                     daño  = dañoTmp+(dañoTmp*(extra/100.0))-(dañoTmp*(player.tablero[i][j].escudo/100.0));
                     if(player.tablero[i][j].vida > 0){
                         player.tablero[i][j].historial += "La vida de la casilla se redujo de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" por un Thermal Rush enviado por "
-                                +atacante.nombre+"\n";
-                        res += "La vida de la casilla("+j+","+i+") se redujo de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" por un Thermal Rush con daño extra de "+extra
+                                +atacante.nombre+" con un daño extra de "+extra+" y un escudo de "+player.tablero[i][j].escudo+"\n";
+                        
+                        res += "La vida de la casilla("+j+","+i+") de "+player.nombre+" se redujo de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" por un Thermal Rush con daño extra de "+extra
                                 +" y un escudo de "+player.tablero[i][j].escudo+", el ataque fue enviado por "+atacante.nombre+"\n";
                         player.tablero[i][j].vida -= daño;
                         
@@ -128,7 +130,7 @@ public class UnderseaVolcanoes implements Superpower{
                         player.tablero[i][j].escudo = 0;
                     }
                     else{
-                        fallo += "La vida de la casilla ("+j+","+i+") no se redujo por el ataque de Thermal Rush enviado por "+atacante.nombre+" porque la casillas ya estaba muerta";
+                        fallo += "La vida de la casilla ("+j+","+i+") de "+player.nombre+" no se redujo por el ataque de Thermal Rush enviado por "+atacante.nombre+" porque la casillas ya estaba muerta";
                     }
                     
                 }

@@ -35,28 +35,28 @@ public class ReleaseTheKraken implements Superpower{
         if(player.tablero[casilla1Y][casilla1X].vida > 0){
             player.tablero[casilla1Y][casilla1X].vida = 0;
             player.tablero[casilla1Y][casilla1X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-            res += "La casilla ("+casilla1X+","+casilla1Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+            res += "La casilla ("+casilla1X+","+casilla1Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
         }
         else{
-            fallo += "La casilla ("+casilla1X+","+casilla1Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+            fallo += "La casilla ("+casilla1X+","+casilla1Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
         }
         
         if(player.tablero[casilla2Y][casilla2X].vida > 0){
             player.tablero[casilla2Y][casilla2X].vida = 0;
             player.tablero[casilla2Y][casilla2X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-            res += "La casilla ("+casilla2X+","+casilla2Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n"; 
+            res += "La casilla ("+casilla2X+","+casilla2Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n"; 
         }
         else{
-            fallo += "La casilla ("+casilla2X+","+casilla2Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+            fallo += "La casilla ("+casilla2X+","+casilla2Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
         }
         
         if(player.tablero[casilla3Y][casilla3X].vida > 0){
             player.tablero[casilla3Y][casilla3X].vida = 0;
             player.tablero[casilla3Y][casilla3X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-            res += "La casilla ("+casilla3X+","+casilla3Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+            res += "La casilla ("+casilla3X+","+casilla3Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
         }
         else{
-            fallo += "La casilla ("+casilla3X+","+casilla3Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+            fallo += "La casilla ("+casilla3X+","+casilla3Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
         }
         //los alrededores
 
@@ -64,10 +64,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla1Y][casilla1X-1].vida > 0){
                 player.tablero[casilla1Y][casilla1X-1].vida = 0;
                 player.tablero[casilla1Y][casilla1X-1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla1X-1)+","+casilla1Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla1X-1)+","+casilla1Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla1X-1)+","+casilla1Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla1X-1)+","+casilla1Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -75,10 +75,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla2Y][casilla2X-1].vida > 0){
                 player.tablero[casilla2Y][casilla2X-1].vida = 0;
                 player.tablero[casilla2Y][casilla2X-1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla2X-1)+","+casilla2Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla2X-1)+","+casilla2Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla2X-1)+","+casilla2Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla2X-1)+","+casilla2Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -86,10 +86,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla3Y][casilla3X-1].vida > 0){
                 player.tablero[casilla3Y][casilla3X-1].vida = 0;
                 player.tablero[casilla3Y][casilla3X-1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla3X-1)+","+casilla3Y+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla3X-1)+","+casilla3Y+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla3X-1)+","+casilla3Y+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla3X-1)+","+casilla3Y+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -97,10 +97,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla1Y-1][casilla1X].vida > 0){
                 player.tablero[casilla1Y-1][casilla1X].vida = 0;
                 player.tablero[casilla1Y-1][casilla1X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n"; 
-                res += "La casilla ("+(casilla1X)+","+(casilla1Y-1)+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla1X)+","+(casilla1Y-1)+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla1X)+","+(casilla1Y-1)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla1X)+","+(casilla1Y-1)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -108,10 +108,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla2Y-1][casilla2X].vida > 0){
                 player.tablero[casilla2Y-1][casilla2X].vida = 0;
                 player.tablero[casilla2Y-1][casilla2X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla2X)+","+(casilla2Y-1)+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla2X)+","+(casilla2Y-1)+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla2X)+","+(casilla2Y-1)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla2X)+","+(casilla2Y-1)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -119,10 +119,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla3Y-1][casilla3X].vida > 0){
                 player.tablero[casilla3Y-1][casilla3X].vida = 0;
                 player.tablero[casilla3Y-1][casilla3X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla3X)+","+(casilla3Y-1)+") fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
+                res += "La casilla ("+(casilla3X)+","+(casilla3Y-1)+") de "+player.nombre+" fue destruida por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla ("+(casilla3X)+","+(casilla3Y-1)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla3X)+","+(casilla3Y-1)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -134,10 +134,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla1Y][casilla1X+1].vida > 0){
                 player.tablero[casilla1Y][casilla1X+1].vida = 0;
                 player.tablero[casilla1Y][casilla1X+1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla1X+1)+","+casilla1Y+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla1X+1)+","+casilla1Y+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla1X+1)+","+(casilla1Y)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla1X+1)+","+(casilla1Y)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -145,10 +145,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla2Y][casilla2X+1].vida > 0){
                 player.tablero[casilla2Y][casilla2X+1].vida = 0;
                 player.tablero[casilla2Y][casilla2X+1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla2X+1)+","+casilla2Y+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla2X+1)+","+casilla2Y+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla2X+1)+","+(casilla2Y)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla2X+1)+","+(casilla2Y)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -156,10 +156,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla3Y][casilla3X+1].vida > 0){
                 player.tablero[casilla3Y][casilla3X+1].vida = 0;
                 player.tablero[casilla3Y][casilla3X+1].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla3X+1)+","+casilla3Y+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla3X+1)+","+casilla3Y+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla3X+1)+","+(casilla3Y)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla3X+1)+","+(casilla3Y)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -167,10 +167,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla1Y+1][casilla1X].vida > 0){
                 player.tablero[casilla1Y+1][casilla1X].vida = 0;
                 player.tablero[casilla1Y+1][casilla1X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n"; 
-                res += "La casilla ("+(casilla1X)+","+(casilla1Y+1)+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla1X)+","+(casilla1Y+1)+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla1X)+","+(casilla1Y+1)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla1X)+","+(casilla1Y+1)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -178,10 +178,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla2Y+1][casilla2X].vida > 0){
                 player.tablero[casilla2Y+1][casilla2X].vida = 0;
                 player.tablero[casilla2Y+1][casilla2X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla2X)+","+(casilla2Y+1)+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla2X)+","+(casilla2Y+1)+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla2X+1)+","+(casilla2Y)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla2X+1)+","+(casilla2Y)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -189,10 +189,10 @@ public class ReleaseTheKraken implements Superpower{
             if(player.tablero[casilla3Y+1][casilla3X].vida > 0){
                 player.tablero[casilla3Y+1][casilla3X].vida = 0;
                 player.tablero[casilla3Y+1][casilla3X].historial += "Fue destruido por un tentaculo enviado por el jugador "+atacante.nombre+"\n";
-                res += "La casilla ("+(casilla3X)+","+(casilla3Y+1)+") fue destruida por un tentaculo\n";
+                res += "La casilla ("+(casilla3X)+","+(casilla3Y+1)+") de "+player.nombre+" fue destruida por un tentaculo\n";
             }
             else{
-                fallo += "La casilla ("+(casilla3X)+","+(casilla3Y+1)+") fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
+                fallo += "La casilla ("+(casilla3X)+","+(casilla3Y+1)+") de "+player.nombre+" fallo al ser destruida por un tentaculo enviado por el jugador "+atacante.nombre+", porque la casilla ya estaba muerta\n";
             }
             
         }
@@ -208,7 +208,7 @@ public class ReleaseTheKraken implements Superpower{
         
         if(player.krakenDefense){
             player.krakenDefense = false;
-            return atacante.nombre+" intento atacar a "+player.nombre+" con Kraken Breath pero por la poteccion del tridente se reflejo el ataque\n"+attack2(atacante,player,x,y);
+            return atacante.nombre+" intento atacar a "+player.nombre+" con Kraken Breath pero por la proteccion del tridente se reflejo el ataque\n"+attack2(atacante,player,x,y);
         }
         String res = "";
         String fallo = "";
@@ -224,10 +224,10 @@ public class ReleaseTheKraken implements Superpower{
                 if(player.tablero[y][x].vida > 0){
                     player.tablero[y][x].vida = 0;
                     player.tablero[y][x].historial += "Fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
-                    res += "La casilla ("+x+","+y+") fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
+                    res += "La casilla ("+x+","+y+") de "+player.nombre+" fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla ("+x+","+y+") no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
+                    fallo += "La casilla ("+x+","+y+") de "+player.nombre+" no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
                 }
                 y--;
                 
@@ -243,10 +243,10 @@ public class ReleaseTheKraken implements Superpower{
                 if(player.tablero[y][x].vida > 0){
                     player.tablero[y][x].vida = 0;
                     player.tablero[y][x].historial += "Fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
-                    res += "La casilla ("+x+","+y+") fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
+                    res += "La casilla ("+x+","+y+") de "+player.nombre+" fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla ("+x+","+y+") no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
+                    fallo += "La casilla ("+x+","+y+") de "+player.nombre+" no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
                 }
                 x--;
             }
@@ -260,10 +260,10 @@ public class ReleaseTheKraken implements Superpower{
                 if(player.tablero[y][x].vida > 0){
                     player.tablero[y][x].vida = 0;
                     player.tablero[y][x].historial += "Fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
-                    res += "La casilla ("+x+","+y+") fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
+                    res += "La casilla ("+x+","+y+") de "+player.nombre+" fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla ("+x+","+y+") no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
+                    fallo += "La casilla ("+x+","+y+") de "+player.nombre+" no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
                 }
                 y++;
             }
@@ -277,10 +277,10 @@ public class ReleaseTheKraken implements Superpower{
                 if(player.tablero[y][x].vida > 0){
                     player.tablero[y][x].vida = 0;
                     player.tablero[y][x].historial += "Fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
-                    res += "La casilla ("+x+","+y+") fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
+                    res += "La casilla ("+x+","+y+") de "+player.nombre+" fue destruido por el aliento del Kraken enviado por el jugador "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla ("+x+","+y+") no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
+                    fallo += "La casilla ("+x+","+y+") de "+player.nombre+" no fue destruido por el aliento del Kraken, porque ya estaba destruido\n";
                 }
                 x++;
                 
@@ -320,10 +320,10 @@ public class ReleaseTheKraken implements Superpower{
                     if(player.tablero[i][j].vida > 0){
                         player.tablero[i][j].vida = 0;
                         player.tablero[i][j].historial += "Fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
-                        res += "La casilla ("+j+","+i+") fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
+                        res += "La casilla ("+j+","+i+") de "+player.nombre+" fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
                     }
                     else{
-                        fallo += "La casilla ("+j+","+i+") no fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
+                        fallo += "La casilla ("+j+","+i+") de "+player.nombre+" no fue destruida por el Kraken liberado por "+atacante.nombre+"\n";
                     }
                 }
             }

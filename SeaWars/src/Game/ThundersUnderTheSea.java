@@ -33,8 +33,10 @@ public class ThundersUnderTheSea implements Superpower{
             
             if(player.tablero[y][x].vida > 0){
                 
-                player.tablero[y][x].historial += "La casilla fue atacada con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño) + "\n";
-                res += "Se ataco la casilla("+x+","+y+") con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" con un escudo de "+
+                player.tablero[y][x].historial += "Se ataco la casilla con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" con un escudo de "+
+                        player.tablero[y][x].escudo+" y un daño extra de "+extra+", el ataque fue enviado por "+atacante.nombre+" \n";
+                
+                res += "Se ataco la casilla("+x+","+y+") de "+player.nombre+" con un rayo y paso su vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+" con un escudo de "+
                         player.tablero[y][x].escudo+" y un daño extra de "+extra+", el ataque fue enviado por "+atacante.nombre+" \n";
 
                 player.tablero[y][x].vida -= daño;
@@ -44,7 +46,7 @@ public class ThundersUnderTheSea implements Superpower{
                 player.tablero[y][x].escudo = 0;
             }
             else{
-                fallo += "Se intento atacar la casilla("+x+","+y+") con un rayo pero ya estaba muerta \n";
+                fallo += "Se intento atacar la casilla("+x+","+y+") de "+player.nombre+" con un rayo pero ya estaba muerta \n";
             }
 
         }
@@ -77,11 +79,11 @@ public class ThundersUnderTheSea implements Superpower{
                     if(distanciaTmp <= cantCasillas){
                         if(player.tablero[k][j].vida > 0){
                             player.tablero[k][j].vida = 0;
-                            player.tablero[k][j].historial += "La casilla fue destruida por un rayo de Poseidon enviado por "+atacante.nombre+"\n";
-                            res += "La casilla ("+j+","+k+") fue destruida por un rayo de Poseidon enviado por"+atacante.nombre+"\n";
+                            player.tablero[k][j].historial += "La casilla  fue destruida por un rayo de Poseidon enviado por"+atacante.nombre+"\n";
+                            res += "La casilla ("+j+","+k+") de "+player.nombre+" fue destruida por un rayo de Poseidon enviado por"+atacante.nombre+"\n";
                         }
                         else{
-                            fallo += "La casilla ("+j+","+k+") iba a ser destruida por un rayo de Poseidon enviado por"+atacante.nombre+" pero ya estaba muerta\n";
+                            fallo += "La casilla ("+j+","+k+") de "+player.nombre+" iba a ser destruida por un rayo de Poseidon enviado por"+atacante.nombre+" pero ya estaba muerta\n";
                         }
                     }
                 }
@@ -111,10 +113,10 @@ public class ThundersUnderTheSea implements Superpower{
                 double daño = 10 +(10*(extra/100.0))-(10*(player.tablero[y][x].escudo/100.0));
                 if(player.tablero[y][x].vida > 0){
                     
-                    player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
+                    player.tablero[y][x].historial += "Se redujo la vida  de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
                             atacante.nombre+", hubo un daño extra de "+extra+" y la casilla poseia un escudo de "+player.tablero[y][x].escudo+"\n";
                     
-                    res += "Se redujo la vida de la casilla ("+x+","+y+") de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
+                    res += "Se redujo la vida de la casilla ("+x+","+y+")  de "+player.nombre+" de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida - daño)+" por un ataque de Anguilas enviado por "+
                             atacante.nombre+", hubo un daño extra de "+extra+" y la casilla poseia un escudo de "+player.tablero[y][x].escudo+"\n";
                     
                     player.tablero[y][x].vida -= daño;
@@ -124,7 +126,7 @@ public class ThundersUnderTheSea implements Superpower{
                     player.tablero[y][x].escudo = 0;
                 }
                 else{
-                    fallo += "Se intento atacar la casilla ("+x+","+y+") con un ataque de anguilas enviado por "+
+                    fallo += "Se intento atacar la casilla ("+x+","+y+") de "+player.nombre+" con un ataque de anguilas enviado por "+
                             atacante.nombre+" pero esta ya estaba muerta\n";
                 }
                 

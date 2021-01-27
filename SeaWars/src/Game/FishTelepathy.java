@@ -30,10 +30,11 @@ public class FishTelepathy implements Superpower{
             if(player.tablero[y][x].vida > 0){
                 double damage = (33 + (33*(extra/100.0)))-(33*(player.tablero[y][x].escudo/100.0));
                 
-                player.tablero[y][x].historial += "Se redujo la vida de la casilla de "+" por un ataque del Cardumen enviado por "+atacante.nombre+"\n";
+                player.tablero[y][x].historial += "Se redujo la vida de la casilla paso de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-damage)+" por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+
+                                                    " de daño y un escudo de "+player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
                 
                
-                res+= "Se redujo la vida de la casilla ("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-damage)+" por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+
+                res+= "Se redujo la vida de la casilla ("+x+","+y+") de "+player.nombre+ ", paso de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-damage)+" por un ataque de Cardumen que hizo "+(33 + (33*(extra/100.0)))+
                         " de daño y un escudo de "+player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
                 
                 
@@ -45,7 +46,7 @@ public class FishTelepathy implements Superpower{
                 
             }
             else{
-                fallos += "Un cardumen intento atacar la casilla ("+x+","+y+") pero ya estaba muerta\n";
+                fallos += "Un cardumen intento atacar la casilla ("+x+","+y+") de "+player.nombre +" pero ya estaba muerta\n";
             }
         }
         if(!res.equals(""))
@@ -75,11 +76,11 @@ public class FishTelepathy implements Superpower{
                     if(SupDer<= distancia || SupIzq<= distancia || BotDer<= distancia || BotIzq<= distancia){
                         player.tablero[i][j].vida = 0;
                         player.tablero[i][j].historial += "Fue destruido por un ataque de tiburon enviado por "+atacante.nombre+"\n";
-                        res+= "La casilla ("+j+","+i+") fue destruida por un ataque de tiburon enviado por "+atacante.nombre+"\n";     
+                        res+= "La casilla ("+j+","+i+") de "+player.nombre+" fue destruida por un ataque de tiburon enviado por "+atacante.nombre+"\n";     
                     }
                 }
                 else{
-                    fallo += "La casilla ("+j+","+i+") intento ser destruida por un ataque de tiburon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla ("+j+","+i+") de "+player.nombre+" intento ser destruida por un ataque de tiburon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
             }
         }
@@ -102,9 +103,12 @@ public class FishTelepathy implements Superpower{
                 if(player.tablero[y][x].vida > 0){
                     double daño = (25 + (25*(extra/100.0))-(25*(player.tablero[y][x].escudo/100.0)));
                     
-                    player.tablero[y][x].historial += "Se redujo la vida de la casilla por un ataque del Pulpo enviado por "+atacante.nombre;
-                    res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Pulpo que hizo "+daño+" de daño y tenia un escudo de "
-                            +player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
+                    player.tablero[y][x].historial += "Se redujo la vida de la casilla de "+player.nombre+ " paso de "+player.tablero[y][x].vida+" a " +(player.tablero[y][x].vida-daño)
+                            +"por un ataque de Pulpo que hizo "+daño+" de daño y tenia un escudo de "+player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
+                    
+                    res+= "Se redujo la vida de la casilla ("+x+","+y+") de "+player.nombre+ " paso de "+player.tablero[y][x].vida+" a " +(player.tablero[y][x].vida-daño)
+                            +"por un ataque de Pulpo que hizo "+daño+" de daño y tenia un escudo de "+player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
+                    
                     player.tablero[y][x].vida -= daño;
                     if(player.tablero[y][x].vida < 0)
                         player.tablero[y][x].vida = 0;

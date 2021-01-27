@@ -30,10 +30,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y1][x1].vida > 0){
                     player.tablero[y1][x1].vida = 0;
                     player.tablero[y1][x1].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x1+","+y1+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x1+","+y1+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x1+","+y1+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x1+","+y1+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y1--;
             }
@@ -44,10 +44,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y2][x2].vida > 0){
                     player.tablero[y2][x2].vida = 0;
                     player.tablero[y2][x2].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x2+","+y2+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x2+","+y2+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x2+","+y2+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x2+","+y2+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y2--;
             }
@@ -58,10 +58,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y3][x3].vida > 0){
                     player.tablero[y3][x3].vida = 0;
                     player.tablero[y3][x3].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x3+","+y3+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x3+","+y3+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x3+","+y3+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x3+","+y3+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y3--;
             }
@@ -74,10 +74,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y1][x1].vida > 0){
                     player.tablero[y1][x1].vida = 0;
                     player.tablero[y1][x1].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x1+","+y1+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x1+","+y1+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x1+","+y1+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x1+","+y1+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x1--;
             }
@@ -88,10 +88,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y2][x2].vida > 0){
                     player.tablero[y2][x2].vida = 0;
                     player.tablero[y2][x2].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x2+","+y2+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x2+","+y2+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x2+","+y2+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x2+","+y2+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x2--;
             }
@@ -102,10 +102,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y3][x3].vida > 0){
                     player.tablero[y3][x3].vida = 0;
                     player.tablero[y3][x3].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x3+","+y3+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x3+","+y3+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x3+","+y3+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x3+","+y3+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x3--;
             }
@@ -119,10 +119,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y1][x1].vida > 0){
                     player.tablero[y1][x1].vida = 0;
                     player.tablero[y1][x1].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x1+","+y1+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x1+","+y1+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x1+","+y1+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x1+","+y1+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y1++;
             }
@@ -132,10 +132,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y3][x3].vida > 0){
                     player.tablero[y3][x3].vida = 0;
                     player.tablero[y3][x3].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x3+","+y3+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x3+","+y3+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x3+","+y1+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x3+","+y1+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y3++;
             }
@@ -145,10 +145,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y2][x2].vida > 0){
                     player.tablero[y2][x2].vida = 0;
                     player.tablero[y2][x2].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x2+","+y2+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x2+","+y2+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x2+","+y2+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x2+","+y2+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 y2++;
             }
@@ -162,10 +162,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y1][x1].vida > 0){
                     player.tablero[y1][x1].vida = 0;
                     player.tablero[y1][x1].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x1+","+y1+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x1+","+y1+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x1+","+y1+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x1+","+y1+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x1++;
             }
@@ -175,10 +175,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y2][x2].vida > 0){
                     player.tablero[y2][x2].vida = 0;
                     player.tablero[y2][x2].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x2+","+y2+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x2+","+y2+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x2+","+y2+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x2+","+y2+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x2++;
             }
@@ -188,10 +188,10 @@ public class TheTrident implements Superpower{
                 if(player.tablero[y3][x3].vida > 0){
                     player.tablero[y3][x3].vida = 0;
                     player.tablero[y3][x3].historial += "Fue destruido por un tridente de poseidon enviado por "+atacante.nombre+"\n";
-                    res += "La casilla("+x3+","+y3+") fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
+                    res += "La casilla("+x3+","+y3+") de "+player.nombre+" fue destruida por un tridente de poseidon enviado por "+atacante.nombre+"\n";
                 }
                 else{
-                    fallo += "La casilla("+x3+","+y3+") intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                    fallo += "La casilla("+x3+","+y3+") de "+player.nombre+" intento ser destruida por un tridente de poseidon enviado por "+atacante.nombre+" pero ya estaba muerta\n";
                 }
                 x3++;
             }
@@ -223,10 +223,10 @@ public class TheTrident implements Superpower{
             if(player.tablero[y][x].vida > 0){
                 player.tablero[y][x].vida = 0;
                 player.tablero[y][x].historial += "Fue destruida por el Three Numbers enviado por "+atacante.nombre+"\n";
-                res += "La casilla("+x+","+y+") fue destruida por el Three Numbers enviado por "+atacante.nombre+"\n";
+                res += "La casilla("+x+","+y+") de "+player.nombre+" fue destruida por el Three Numbers enviado por "+atacante.nombre+"\n";
             }
             else{
-                fallo += "La casilla("+x+","+y+") iba a ser destruida por el Three Numbers enviado por "+atacante.nombre+" pero ya estaba muerta\n";
+                fallo += "La casilla("+x+","+y+") de "+player.nombre+" iba a ser destruida por el Three Numbers enviado por "+atacante.nombre+" pero ya estaba muerta\n";
             }
         }
         if(!res.equals(""))
