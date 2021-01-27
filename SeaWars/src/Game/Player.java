@@ -88,10 +88,7 @@ public class Player {
                 tablero[row][col].heroOwner = nombre;
                 cantidadCasillas--;
             }
-        } 
-
-        
-        
+        }    
     }
     
     public boolean estaVivo(){  //metodo para revisar si esta vivo
@@ -282,5 +279,18 @@ public class Player {
         return vida + "%" + "\n" + casillasVivasHero3 +" out of " + ((int)(((double) heros.get(2).percentCivilization / (double)100)* (double)600)) + " casillas";
     }
         
+    
+    //HABILIDADES
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

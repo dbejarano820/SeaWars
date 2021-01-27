@@ -97,7 +97,7 @@ public class Server {
         
         if(++turno >= ordenPlayers.size())
             turno = 0;
-        
+       
         return ordenPlayers.get(turno).nombre;
     }
 

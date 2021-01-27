@@ -213,16 +213,81 @@ public class ThreadServer extends Thread {
                                    
                                    if(heroTmp.validAbility(jugadaDeseada)){
                                        
+                                       
+                                       if(jugadaDeseada.equals("healing")){
+                                           
+                                           //
+                                       }
+                                       else if(jugadaDeseada.equals("strength")){
+                                           
+                                           
+                                       }
+                                       else if(jugadaDeseada.equals("resistance")){
+                                           
+                                           
+                                       }
+
                                         updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                         updateMatrizCliente();  //se actualizan las matrices de los clientes
-                                        pasarTurno();   //pasar de turno
-                          
-                                       
+                                        pasarTurno();   //pasar de turno                                                    
                                    }
                                    
                                    
                                    else if(heroTmp.validSuperpower(jugadaDeseada)){
                                        
+                                       if(jugadaDeseada.equals("thundersunderthesea")){
+                                           if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }       
+                                       }
+                                       
+                                       else if(jugadaDeseada.equals("fishtelepathy")){
+                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }              
+                                       }
+                                       
+                                       else if(jugadaDeseada.equals("wavescontrol")){
+                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }
+                                       }
+                                       
+                                       else if(jugadaDeseada.equals("thetrident")){
+                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }
+                                       }                                      
+                                       
+                                       else if(jugadaDeseada.equals("underseavolcanoes")){
+                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }
+                                           
+                                           
+                                           
+                                       }    
+                                       
+                                       else if(jugadaDeseada.equals("releasethekraken")){
+                                            if(heroTmp.estaSuperpower(jugadaDeseada)){
+                                               
+                                               
+                                               
+                                           }
+                                           
+                                           
+                                           
+                                       }                                       
                                        
                                         updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                         updateMatrizCliente();  //se actualizan las matrices de los clientes

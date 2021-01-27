@@ -87,23 +87,19 @@ public class Hero {
     public boolean estaSuperpower(String power){
         
        if(power.equals("thundersunderthesea"))
-            return superpowers.contains(new ThundersUnderTheSea());
-          
-        return "Thunders Under The Sea";
-    else if(msj.equals("fishtelepathy"))
-        return "Fish Telepathy";
-    else if(msj.equals("releasethekraken"))
-        return "Release The Kraken";
-    else if(msj.equals("wavescontrol"))
-        return "Waves Control";
-    else if(msj.equals("thetrident"))
-        return "The Trident";
-    else if(msj.equals("underseavolcanoes"))
-        return "Undersea Volcanoes";
-    else 
-        return "";        
-        
-        
+            return superpowers.contains(new ThundersUnderTheSea());     
+       else if(power.equals("fishtelepathy"))
+           return superpowers.contains(new FishTelepathy());
+        else if(power.equals("releasethekraken"))
+           return superpowers.contains(new ReleaseTheKraken());
+        else if(power.equals("wavescontrol"))
+            return superpowers.contains(new WavesControl());
+        else if(power.equals("thetrident"))
+            return superpowers.contains(new TheTrident());
+        else if(power.equals("underseavolcanoes"))
+            return superpowers.contains(new UnderseaVolcanoes());
+        else
+            return false;
     }
         
         
