@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class FishTelepathy implements Superpower{
     
-    //Revision Cardumen
+    // Cardumen
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
         String fallos = "";
@@ -37,6 +37,10 @@ public class FishTelepathy implements Superpower{
                 
                 player.tablero[y][x].vida -= damage;
                 
+                if(player.tablero[y][x].vida < 0)
+                    player.tablero[y][x].vida = 0;
+                player.tablero[y][x].escudo = 0;
+                
             }
             else{
                 fallos += "Un cardumen intento atacar la casilla ("+x+","+y+") pero ya estaba muerta\n";
@@ -48,7 +52,7 @@ public class FishTelepathy implements Superpower{
         return res+fallos;
     }
     
-    //Revision tiburones
+    //Shark Attack
     @Override
     public String attack2(Player player,Player atacante){
         atacante.cantidadAtaques++;
@@ -81,8 +85,7 @@ public class FishTelepathy implements Superpower{
             atacante.cantidadAtinados++;
         return res;
     }
-    //Revision pulpos
-    
+    //Pulp
     public String attack3(Player player,Player atacante, int extra){
         atacante.cantidadAtaques++;
         String res = "";
@@ -100,7 +103,10 @@ public class FishTelepathy implements Superpower{
                     player.tablero[y][x].historial += "Se redujo la vida de la casilla por un ataque del Pulpo enviado por "+atacante.nombre;
                     res+= "Se redujo la vida de la casilla ("+x+","+y+") por un ataque de Pulpo que hizo "+daño+" de daño y tenia un escudo de "
                             +player.tablero[y][x].escudo+" enviado por "+atacante.nombre+"\n";
-                    player.tablero[y][x].vida -= daño;
+                    
+                    if(player.tablero[y][x].vida < 0)
+                        player.tablero[y][x].vida = 0;
+                    player.tablero[y][x].escudo = 0;
                 }
                 else{
                     res += "Un pulpo intento atacar la casilla ("+x+","+y+") pero ya estaba muerta\n";

@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class UnderseaVolcanoes implements Superpower{
     
-    @Override//crear volcan revision
+    @Override//Volcanoe Raising
     public String attack1(Player player,Player atacante){
         String res = "";
         String fallo = "";
@@ -50,7 +50,7 @@ public class UnderseaVolcanoes implements Superpower{
         return res+fallo;
     }
     
-    
+    //Volcanoe Explosion
     public String attack2(Player player,Player atacante, int extra, int xV, int yV){
         String res = "";
         String fallo = "";
@@ -76,6 +76,10 @@ public class UnderseaVolcanoes implements Superpower{
                 res += "Se redujo la vida de la casilla("+x+","+y+") de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por una roca enviada por un volcan enviado de "+atacante.nombre+"\n";
                 player.tablero[y][x].vida -= daño;
+                
+                if(player.tablero[y][x].vida < 0)
+                    player.tablero[y][x].vida = 0;
+                player.tablero[y][x].escudo = 0;
             }
             else{
                 fallo += "No se redujo la vida de la casilla("+x+","+y+")  por una roca enviada por un volcan enviado de "+atacante.nombre+" porque la casillas ya estba muerta \n";
@@ -86,7 +90,7 @@ public class UnderseaVolcanoes implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
-    //preguntarle al profe lo del daño
+    //Thermal rush
     public String attack3(Player player,Player atacante, int xV, int yV, int extra){
         String res = "";
         String fallo = "";
@@ -96,15 +100,35 @@ public class UnderseaVolcanoes implements Superpower{
         if(volcan == null)
             return "El jugador "+atacante.nombre+" no ha seleccionado un volcan valido";
         
-        int distanciaTmp;
+        double distanciaTmp;
         int segundos = new Random().nextInt(2)+5;
         int dañoTmp = volcan.tamaño*segundos;
         double daño;
         
         for(int i = 0; i < player.tablero.length;i++){
             for(int j = 0; i <player.tablero[i].length;i++){
-                daño  = dañoTmp+(dañoTmp*(extra/100.0))-(dañoTmp*(player.tablero[j][i].escudo/100.0));
-                if(player)
+                distanciaTmp = Math.sqrt(((xV-i)*(xV-i))+((yV-j)*(yV-j)));
+                
+                if(distanciaTmp>volcan.tamaño && distanciaTmp < (volcan.tamaño+5)){
+                    
+                    daño  = dañoTmp+(dañoTmp*(extra/100.0))-(dañoTmp*(player.tablero[j][i].escudo/100.0));
+                    if(player.tablero[j][i].vida > 0){
+                        player.tablero[j][i].historial += "La vida de la casilla se redujo de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" por un Thermal Rush enviado por "
+                                +atacante.nombre+"\n";
+                        res += "La vida de la casilla("+i+","+j+") se redujo de "+player.tablero[j][i].vida+" a "+(player.tablero[j][i].vida-daño)+" por un Thermal Rush con daño extra de "+extra
+                                +" y un escudo de "+player.tablero[j][i].escudo+", el ataque fue enviado por "+atacante.nombre+"\n";
+                        player.tablero[j][i].vida -= daño;
+                        
+                        if(player.tablero[j][i].vida < 0)
+                            player.tablero[j][i].vida = 0;
+                        player.tablero[j][i].escudo = 0;
+                    }
+                    else{
+                        fallo += "La vida de la casilla ("+i+","+j+") no se redujo por el ataque de Thermal Rush enviado por "+atacante.nombre+" porque la casillas ya estaba muerta";
+                    }
+                    
+                }
+                
             }
         }
         

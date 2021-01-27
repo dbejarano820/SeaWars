@@ -14,7 +14,7 @@ import java.util.Random;
 public class ThundersUnderTheSea implements Superpower{
     
     
-    //Thunder under the sea
+    //Thunder rain
     
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
@@ -37,6 +37,10 @@ public class ThundersUnderTheSea implements Superpower{
                         player.tablero[y][x].escudo+" y un daño extra de "+extra+", el ataque fue enviado por "+atacante.nombre+" \n";
 
                 player.tablero[y][x].vida -= daño;
+                
+                if(player.tablero[y][x].vida < 0)
+                    player.tablero[y][x].vida = 0;
+                player.tablero[y][x].escudo = 0;
             }
             else{
                 fallo += "Se intento atacar la casilla("+x+","+y+") con un rayo pero ya estaba muerta \n";
@@ -47,7 +51,7 @@ public class ThundersUnderTheSea implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
-    //poseidon thunders revision
+    //Poseidon thunders
     @Override
     public String attack2(Player player,Player atacante){
         String res = "";
@@ -87,7 +91,7 @@ public class ThundersUnderTheSea implements Superpower{
         
         return res+fallo;
     }
-    //anguilas revision
+    //Eel attack
     public String attack3(Player player,Player atacante, int extra){
         String res = "";
         String fallo = "";
@@ -113,8 +117,10 @@ public class ThundersUnderTheSea implements Superpower{
                             atacante.nombre+", hubo un daño extra de "+extra+" y la casilla poseia un escudo de "+player.tablero[y][x].escudo+"\n";
                     
                     player.tablero[y][x].vida -= daño;
-                    if(player.tablero[y][x].vida < 0)//agregar a los casos donde se reduce una cantidad de vida especifica
+                    
+                    if(player.tablero[y][x].vida < 0)
                         player.tablero[y][x].vida = 0;
+                    player.tablero[y][x].escudo = 0;
                 }
                 else{
                     fallo += "Se intento atacar la casilla ("+x+","+y+") con un ataque de anguilas enviado por "+
