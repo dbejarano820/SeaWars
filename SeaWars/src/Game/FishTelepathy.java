@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class FishTelepathy implements Superpower{
     
-    //Revision Cardumen
+    // Cardumen
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
         String fallos = "";
@@ -52,7 +52,7 @@ public class FishTelepathy implements Superpower{
         return res+fallos;
     }
     
-    //Revision tiburones
+    //Shark Attack
     @Override
     public String attack2(Player player,Player atacante){
         atacante.cantidadAtaques++;
@@ -85,8 +85,7 @@ public class FishTelepathy implements Superpower{
             atacante.cantidadAtinados++;
         return res;
     }
-    //Revision pulpos
-    
+    //Pulp
     public String attack3(Player player,Player atacante, int extra){
         atacante.cantidadAtaques++;
         String res = "";

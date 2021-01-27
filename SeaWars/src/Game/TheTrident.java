@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class TheTrident implements Superpower{
     
-    //revision three lines
+    //Three lines
     public String attack1(Player player,Player atacante, int x1, int x2, int x3, int y1, int y2, int y3){//three lines
         String res = "";
         String fallo = "";
@@ -203,7 +203,7 @@ public class TheTrident implements Superpower{
     }
     
     //tocar los casos de los threads
-    // three numbers
+    // Three numbers
     public String attack2(Player player,Player atacante, int cantDestrucciones){
         
         String res = "";
@@ -232,7 +232,8 @@ public class TheTrident implements Superpower{
         
         return res+fallo;
     }
-    //revision
+     
+    
     //Control the kraken
     @Override
     public String attack3(Player player,Player atacante){//control the kraken

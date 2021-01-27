@@ -14,7 +14,7 @@ import java.util.Random;
 public class WavesControl implements Superpower{
     
     
-    @Override//crear remolino
+    @Override//Swirl raising
     public String attack1(Player player,Player atacante){
         String res = "";
         String fallo = "";
@@ -52,7 +52,7 @@ public class WavesControl implements Superpower{
     }
     
     
-    //enviar basura revision
+    //Send human garbage
     public String attack2(Player player,Player atacante, int extra, int xR, int yR){
         String res = "";
         String fallo = "";
@@ -100,7 +100,7 @@ public class WavesControl implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
-    
+    //Radioactive rush
     public String attack3(Player player,Player atacante,int extra){
         String res = "";
         String fallo = "";

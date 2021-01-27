@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class ReleaseTheKraken implements Superpower{
     
-    //revision tentaculos
+    //Tentaculos
     @Override
     public String attack1(Player player,Player atacante){//Tentaculos
         atacante.cantidadAtaques++;
@@ -198,7 +198,7 @@ public class ReleaseTheKraken implements Superpower{
     }
     
     
-    //revision kraken breath
+    //Kraken breath
     public String attack2(Player player,Player atacante, int x, int y){//Kraken breath
         String res = "";
         String fallo = "";
@@ -284,7 +284,7 @@ public class ReleaseTheKraken implements Superpower{
         return res;
     }
     
-    //revision release the kraken
+    //Release the kraken
     @Override
     public String attack3(Player player,Player atacante){//Release the kraken
         

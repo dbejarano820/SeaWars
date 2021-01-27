@@ -14,7 +14,7 @@ import java.util.Random;
 public class ThundersUnderTheSea implements Superpower{
     
     
-    //Thunder under the sea
+    //Thunder rain
     
     public String attack1(Player player,Player atacante, int extra){
         String res = "";
@@ -51,7 +51,7 @@ public class ThundersUnderTheSea implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
-    //poseidon thunders revision
+    //Poseidon thunders
     @Override
     public String attack2(Player player,Player atacante){
         String res = "";
@@ -91,7 +91,7 @@ public class ThundersUnderTheSea implements Superpower{
         
         return res+fallo;
     }
-    //anguilas revision
+    //Eel attack
     public String attack3(Player player,Player atacante, int extra){
         String res = "";
         String fallo = "";

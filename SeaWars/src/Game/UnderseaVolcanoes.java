@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class UnderseaVolcanoes implements Superpower{
     
-    @Override//crear volcan revision
+    @Override//Volcanoe Raising
     public String attack1(Player player,Player atacante){
         String res = "";
         String fallo = "";
@@ -50,7 +50,7 @@ public class UnderseaVolcanoes implements Superpower{
         return res+fallo;
     }
     
-    
+    //Volcanoe Explosion
     public String attack2(Player player,Player atacante, int extra, int xV, int yV){
         String res = "";
         String fallo = "";
@@ -90,7 +90,7 @@ public class UnderseaVolcanoes implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
-    //termal rush revision
+    //Thermal rush
     public String attack3(Player player,Player atacante, int xV, int yV, int extra){
         String res = "";
         String fallo = "";
