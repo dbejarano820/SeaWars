@@ -102,7 +102,7 @@ public class PantallaCliente extends javax.swing.JFrame {
     
     public void addLastPlay(String msj){
         txtLastPlay.setText("");
-        txtLastPlay.append(msj + "\n"); 
+        txtLastPlay.setText(msj + "\n"); 
     }
     
     public void addConsolaMsj(String msj){

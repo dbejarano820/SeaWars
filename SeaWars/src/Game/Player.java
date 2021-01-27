@@ -168,7 +168,7 @@ public class Player {
                 vidaTmp += tablero[row][col].vida;
             }
         
-        int vida = (int) (((double)vidaTmp / 6000.0) * 100.0 );
+        int vida = (int) (((double)vidaTmp / 60000.0) * 100.0 );
         
         res += nombre + " has " + vida + " heatlh, with a total of " + muertas + " dead casillas!";
         return res;   
@@ -183,7 +183,7 @@ public class Player {
                 vidaTmp += tablero[row][col].vida;
             }
         
-        int vida = (int) (((double)vidaTmp / 6000.0) * 100.0 );
+        int vida = (int) (((double)vidaTmp / 60000.0) * 100.0 );
 
         return vida;   
     }
@@ -282,12 +282,50 @@ public class Player {
     
     //HABILIDADES
     
+    public String healing(Hero heroTmp){
+
+        String res = "";
+        
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){
+               
+                if(tablero[row][col].vida > 0 && tablero[row][col].vida < heroTmp.healing && tablero[row][col].heroOwner.equals(heroTmp.nombre)){
+                    res += heroTmp.nombre + " sanó a la casilla (" + col + "," + row +") " + " hasta " + heroTmp.healing + "\n";
+                    tablero[row][col].vida = heroTmp.healing; 
+                    System.out.println("VIDA DE CASILLA SANADA :" + tablero[row][col].vida);
+                }
+            }  
+        if(res.equals(""))
+            res += heroTmp.nombre + " intentó sanar sus casillas pero ninguna lo necesitaba!\n";
+        return res;  
+    }
     
     
+    public String strength(Hero heroTmp){
+
+        String res = "";
+        heroTmp.strengthTmp = heroTmp.strength;
+        res += heroTmp.nombre + " utilizó fuerza y tendrá " + heroTmp.strength + " de aumento en su próximo ataque\n";
+       
+        return res;  
+    }
     
     
-    
-    
+    public String resistance(Hero heroTmp){
+
+        String res = "";
+        
+        
+        for(int row = 0; row < tablero.length; row++)
+            for(int col = 0; col < tablero[row].length; col++){     
+                if(tablero[row][col].vida > 0 && tablero[row][col].heroOwner.equals(heroTmp.nombre)){
+                    res += heroTmp.nombre + " protegió a la casilla (" + col + "," + row +") " + " con un escudo de " + heroTmp.resistance + "\n";
+                    tablero[row][col].escudo = heroTmp.resistance; 
+                }
+            }        
+        return res;  
+    }
     
     
     

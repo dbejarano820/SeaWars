@@ -18,8 +18,9 @@ public class Hero {
     public String pathImage;
     int percentCivilization;
     public ArrayList<Superpower> superpowers;
-    int healing;
-    int strength;
+    public int healing;
+    public int strength;
+    public int strengthTmp;
     int resistance;
     
     
@@ -31,6 +32,7 @@ public class Hero {
         this.strength = Strength;
         this.resistance = Resistance;
         this.superpowers = new ArrayList<Superpower>();
+        this.strengthTmp = 0;
     }
     
     

@@ -141,6 +141,14 @@ public class ThreadPlayer extends Thread {
                        refPantalla.mostrarVolcanesRemolinos("C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Volcano.png", "C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Whirlpool.png");
                     
                    break;
+                   
+                   case 9: //agregar detalles a bitacora y last play
+                       
+                       refPantalla.addHistory(reader.readUTF());
+                       refPantalla.addLastPlay(reader.readUTF());
+                       
+                       
+                   break;
                         
                 } 
             } catch (IOException ex) {

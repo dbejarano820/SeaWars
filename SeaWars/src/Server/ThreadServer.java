@@ -78,6 +78,16 @@ public class ThreadServer extends Thread {
    }
    
    
+   public void mandarBitacora(String msj) throws IOException{
+         for(int i = 0; i < server.conexiones.size(); i++){
+            ThreadServer current = server.conexiones.get(i);
+            current.writer.writeInt(9);
+            current.writer.writeUTF(msj);
+            current.writer.writeUTF(msj);             
+        }      
+   }
+   
+   
    public void pasarTurno() throws IOException {
        
     String nextTurn = server.getNextTurno();
@@ -215,18 +225,16 @@ public class ThreadServer extends Thread {
                                        
                                        
                                        if(jugadaDeseada.equals("healing")){
-                                           
-                                           //
+                                          // System.out.println(jugadorTmp.healing(heroTmp));
+                                           mandarBitacora(jugadorTmp.healing(heroTmp));
                                        }
                                        else if(jugadaDeseada.equals("strength")){
-                                           
-                                           
+                                           mandarBitacora(jugadorTmp.strength(heroTmp));  
                                        }
-                                       else if(jugadaDeseada.equals("resistance")){
-                                           
-                                           
+                                       else if(jugadaDeseada.equals("resistance")){  
+                                           mandarBitacora(jugadorTmp.resistance(heroTmp)); 
                                        }
-
+                                       
                                         updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                         updateMatrizCliente();  //se actualizan las matrices de los clientes
                                         pasarTurno();   //pasar de turno                                                    
@@ -289,9 +297,9 @@ public class ThreadServer extends Thread {
                                            
                                        }                                       
                                        
-                                        updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
-                                        updateMatrizCliente();  //se actualizan las matrices de los clientes
-                                        pasarTurno();   //pasar de turno
+                                       updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
+                                       updateMatrizCliente();  //se actualizan las matrices de los clientes
+                                       pasarTurno();   //pasar de turno
                           
                                    }
                                    else{

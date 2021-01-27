@@ -21,6 +21,7 @@ public class Casilla {
     public int cantBasura;
     public int cantBasuraRactiva;
     public String heroOwner;
+    public int escudo;
     
     public Casilla(){
         
@@ -29,6 +30,7 @@ public class Casilla {
         activeWhirlpool = false;
         heroOwner = "";
         historial = "";
+        escudo = 0;
     }
     
     
