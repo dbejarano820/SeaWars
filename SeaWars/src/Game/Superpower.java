@@ -979,7 +979,8 @@ class WavesControl implements Superpower{
         String res = "";
         String fallo = "";
         atacante.cantidadAtaques++;
-        //bro aqui no se si quiere como extraer un remolino random de la lista del player o que el atacante intente buscar uno conm un metodo de buscar por mediod e coordenadas
+        int selecRemolino = new Random().nextInt();
+        
         int cantBasura = (remolino.tamaño/2)*10;
         int x;
         int y;
