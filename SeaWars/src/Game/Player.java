@@ -24,6 +24,8 @@ public class Player {
     public boolean krakenDefense;
     public ArrayList<Integer> disponibleValores;
     private int totalCivilizacion; 
+    public ArrayList<Volcan> volcanes;
+    public ArrayList<Remolino> remolinos;
     
     public Player(String nombre){
         this.nombre  = nombre;
@@ -326,6 +328,25 @@ public class Player {
             }        
         return res;  
     }
+    
+    public Volcan buscarVolcan(int x, int y){
+        for(int i = 0; i < volcanes.size();i++){
+            if(volcanes.get(i).x == x && volcanes.get(i).y == y){
+                return volcanes.get(i);
+            }
+        }
+        return null;
+    }
+    
+    public Remolino buscarRemolino(int x, int y){
+        for(int i = 0; i < remolinos.size();i++){
+            if(remolinos.get(i).x == x && remolinos.get(i).y == y){
+                return remolinos.get(i);
+            }
+        }
+        return null;
+    }
+    
     
     
     
