@@ -31,6 +31,7 @@ public class Casilla {
         heroOwner = "";
         historial = "";
         escudo = 0;
+        cantBasuraRactiva = 0;
     }
     
     

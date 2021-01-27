@@ -390,9 +390,7 @@ public class ThreadServer extends Thread {
                                        }    
                                        
                                        else if(jugadaDeseada.equals("releasethekraken")){
-                                           System.out.println("NO ENTRA 1");
                                             if(heroTmp.estaSuperpower(jugadaDeseada)){
-                                                System.out.println("NO ENTRA 2");
                                                if(ataqueDeseado.equals("tentaculos")){
                                                   resultado = heroTmp.buscarKraken(jugadaDeseada).attack1(jugadorTarget, jugadorTmp);
                                                    System.out.println("resultado: " + resultado);

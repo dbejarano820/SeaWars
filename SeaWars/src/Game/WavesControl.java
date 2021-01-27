@@ -103,6 +103,7 @@ public class WavesControl implements Superpower{
             atacante.cantidadAtinados++;
         return res+fallo;
     }
+    
     //Radioactive rush
     public String attack3(Player player,Player atacante,int extra){
         String res = "";
@@ -117,6 +118,8 @@ public class WavesControl implements Superpower{
             for(int j = 0; j < player.tablero[i].length;j++){
                 
                 if(player.tablero[i][j].vida > 0 && player.tablero[i][j].cantBasuraRactiva > 0){
+                   
+                    System.out.println("si entra al if de cantbasuraractiva");
                     
                     preDaño = 10*segundos*player.tablero[i][j].cantBasuraRactiva;
                     daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[i][j].escudo/100.0));
