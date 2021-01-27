@@ -103,8 +103,51 @@ public class Hero {
         else
             return false;
     }
+ 
+    public ThundersUnderTheSea buscarThunder(String power){      
+       if(power.equals("thundersunderthesea"))
+            return new ThundersUnderTheSea();     
+        else
+            return null;
+    }    
+    
+    public FishTelepathy buscarFish(String power){
+        if(power.equals("fishtelepathy"))
+            return new FishTelepathy();
+        else
+            return null;
+    }
+    
+    public ReleaseTheKraken buscarKraken(String power){       
+        if(power.equals("releasethekraken"))
+            return new ReleaseTheKraken();
+        else
+            return null;
+    }
+    
+    public WavesControl buscarWaves(String power){
+        if(power.equals("wavescontrol"))
+            return new WavesControl();
+        else
+            return null;
+    }
+    
+    public TheTrident buscarTrident(String power){
+        if(power.equals("thetrident"))
+            return new TheTrident();
+        else
+            return null;
+    }
+    
+    public UnderseaVolcanoes buscarVolcano(String power){
+        if(power.equals("underseavolcanoes"))
+            return new UnderseaVolcanoes();
+        else 
+            return null;
         
         
+    }
+
     public void addSuperPower1(String msj){
         
         switch (msj) {
