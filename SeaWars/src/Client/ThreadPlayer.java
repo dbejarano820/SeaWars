@@ -148,6 +148,9 @@ public class ThreadPlayer extends Thread {
                        
                        
                    break;
+                   
+                   case 10://pintar solamente a bitacora
+                       refPantalla.addHistory(reader.readUTF());
                       
                         
                 } 
