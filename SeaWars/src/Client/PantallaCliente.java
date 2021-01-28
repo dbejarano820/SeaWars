@@ -89,7 +89,6 @@ public class PantallaCliente extends javax.swing.JFrame {
                      refCliente.tableroCliente[row][col].refLabel.setIcon(new ImageIcon(new ImageIcon(pathVolcan).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
                  }
                  else if(refCliente.tableroCliente[row][col].activeWhirlpool){
-                     System.out.println("si entra la whirlpool");
                      refCliente.tableroCliente[row][col].refLabel.setIcon(new ImageIcon(new ImageIcon(pathWhirlpool).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
                  }
             }

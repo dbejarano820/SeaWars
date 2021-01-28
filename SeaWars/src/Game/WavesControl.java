@@ -80,12 +80,14 @@ public class WavesControl implements Superpower{
                     player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         "con un daño extra de "+extra+" y con un escudo de "+ player.tablero[y][x]+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
                 
-                    res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de"+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
+                    res += "Se redujo la vida de la casilla("+x+","+y+") de "+player.nombre+" de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         " con un daño extra de "+extra+" y un escudo de "+player.tablero[y][x].escudo+" por basura enviada por un remolino enviado de "+atacante.nombre+"\n";
                 }
                 else{
                     daño = 50 +(50*(extra/100.0))-(50*(player.tablero[y][x].escudo/100.0));
                     player.tablero[y][x].cantBasuraRactiva++;
+                    
+                    
                     player.tablero[y][x].historial += "Se redujo la vida de "+player.tablero[y][x].vida+" a "+(player.tablero[y][x].vida-daño)+
                         "con un daño extra de "+extra+" y con un escudo de "+ player.tablero[y][x]+" por basura radioactiva enviada por un remolino enviado de "+atacante.nombre+"\n";
                 
@@ -124,7 +126,10 @@ public class WavesControl implements Superpower{
             
             for(int j = 0; j < player.tablero[i].length;j++){
                 
-                if(player.tablero[i][j].vida > 0 && player.tablero[i][j].cantBasuraRactiva > 0){
+                if(player.tablero[i][j].cantBasuraRactiva == 0)
+                    continue;
+                
+                if(player.tablero[i][j].vida > 0){
                    
                     System.out.println("si entra al if de cantbasuraractiva");
                     
@@ -132,10 +137,12 @@ public class WavesControl implements Superpower{
                     
                     daño  = preDaño + (preDaño*(extra/100.0))-(preDaño*(player.tablero[i][j].escudo/100.0));
                     
+                    System.out.println("daño: " + daño + "predaño: " + preDaño);
+                    
                     player.tablero[i][j].historial += "La casilla redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de " +
                             player.tablero[i][j].escudo+"\n";
                     
-                    res+= "La casilla("+j+","+i+") de"+player.nombre+" redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
+                    res+= "La casilla ("+j+","+i+") de"+player.nombre+" redujo su vida de "+player.tablero[i][j].vida+" a "+(player.tablero[i][j].vida-daño)+" con un daño extra de "+extra+" y un escudo de "
                             +player.tablero[i][j].escudo+" por una reaccion radioactiva enviada por "+atacante.nombre+"\n";
                     
                     player.tablero[i][j].vida -= daño;
@@ -146,7 +153,7 @@ public class WavesControl implements Superpower{
                     
                 }
                 else{
-                    fallo += "La casilla("+j+","+i+") de "+player.nombre+" no redujo su vida de  por una reaccion radioactiva enviada por "+atacante.nombre+" porque ya estaba muerta\n";
+                    fallo += "La casilla ("+j+","+i+") de "+player.nombre+" no redujo su vida de  por una reaccion radioactiva enviada por "+atacante.nombre+" porque ya estaba muerta\n";
                 }
             }
         }
