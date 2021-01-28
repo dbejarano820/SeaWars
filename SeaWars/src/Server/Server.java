@@ -30,7 +30,11 @@ public class Server {
      private int turno = 0;
      private boolean gameStarted = false;
      public boolean allPlayersReady = false;
-
+     public int tridentNum1;
+     public int tridentNum2;
+     public int tridentNum3;
+     public Player tridentRetador;
+     public Hero tridentHeroRetador;
 
      
     public Server(PantallaServer refPantalla){
@@ -136,6 +140,36 @@ public class Server {
         }
     
     }
-
+   
     
+    public String absorberPoder(Player jugadorHeroe, Hero heroTmp, Player jugadorAtacado){
+        
+        String res = "";
+        
+        for(int i = 0; i < jugadorAtacado.heros.size();i++){
+            boolean muertoTmp = true;
+            for(int row = 0; row < jugadorAtacado.tablero.length; row++){
+                
+                for(int col = 0; col < jugadorAtacado.tablero[row].length; col++){
+                    
+                    if(jugadorAtacado.tablero[row][col].vida > 0 && jugadorAtacado.tablero[row][col].heroOwner.equals(jugadorAtacado.heros.get(i).nombre)){
+                        muertoTmp = false;
+                        break;
+                     }
+                }
+                if(!muertoTmp)
+                    break;
+            }
+  
+            if(muertoTmp && jugadorAtacado.heros.get(i).superpowers.size() > 0){
+                
+                for(int j = 0; j < jugadorAtacado.heros.get(i).superpowers.size(); j++){
+                    res += heroTmp.nombre + " de " + jugadorHeroe.nombre + " ha absorbido el poder " + jugadorAtacado.heros.get(i).superpowers.get(j).getClass().getSimpleName() 
+                            + " del heroe " + jugadorAtacado.heros.get(i).nombre + " del jugador " + jugadorAtacado.nombre + "\n";
+                    heroTmp.superpowers.add(jugadorAtacado.heros.get(i).superpowers.remove(j)); 
+                }
+            }
+        } 
+        return res;  
+    }
 }

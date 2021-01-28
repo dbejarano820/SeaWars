@@ -139,7 +139,6 @@ public class ThreadPlayer extends Thread {
                    
                    case 8: //caso para pintar los volcanes y remolinos en las casillas
                        refPantalla.mostrarVolcanesRemolinos("C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Volcano.png", "C:\\Users\\PERSONAL\\OneDrive\\Documents\\GitHub\\SeaWars\\SeaWars\\src\\Images\\Whirlpool.png");
-                    
                    break;
                    
                    case 9: //agregar detalles a bitacora y last play
@@ -149,6 +148,7 @@ public class ThreadPlayer extends Thread {
                        
                        
                    break;
+                      
                         
                 } 
             } catch (IOException ex) {
