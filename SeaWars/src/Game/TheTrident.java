@@ -218,8 +218,8 @@ public class TheTrident implements Superpower{
             x = new Random().nextInt(30);
             y = new Random().nextInt(20);
             
-            if(!player.estaVivo())
-                break;
+        //    if(!player.estaVivo())
+//      break;
             if(player.tablero[y][x].vida > 0){
                 player.tablero[y][x].vida = 0;
                 player.tablero[y][x].historial += "Fue destruida por el Three Numbers enviado por "+atacante.nombre+"\n";

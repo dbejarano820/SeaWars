@@ -151,6 +151,14 @@ public class ThreadPlayer extends Thread {
                    
                    case 10://pintar solamente a bitacora
                        refPantalla.addHistory(reader.readUTF());
+                       
+                   break;
+                   
+                   case 11:
+                       refPantalla.updateHero1Info(reader.readUTF());
+                       refPantalla.updateHero2Info(reader.readUTF());
+                       refPantalla.updateHero3Info(reader.readUTF());
+                   break;
                       
                         
                 } 

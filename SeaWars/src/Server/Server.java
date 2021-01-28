@@ -157,12 +157,13 @@ public class Server {
                         break;
                      }
                 }
-                if(!muertoTmp)
+                if(!muertoTmp){
                     break;
+                }
             }
-  
+    
+            
             if(muertoTmp && jugadorAtacado.heros.get(i).superpowers.size() > 0){
-                
                 for(int j = 0; j < jugadorAtacado.heros.get(i).superpowers.size(); j++){
                     res += heroTmp.nombre + " de " + jugadorHeroe.nombre + " ha absorbido el poder " + jugadorAtacado.heros.get(i).superpowers.get(j).getClass().getSimpleName() 
                             + " del heroe " + jugadorAtacado.heros.get(i).nombre + " del jugador " + jugadorAtacado.nombre + "\n";

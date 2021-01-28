@@ -203,7 +203,8 @@ public class Player {
 
         return muertas;   
     }     
-    
+     
+     
     //retorna un logsummary del jugador para saber la efectividad del mismo
     public String logSummary(){
         

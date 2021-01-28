@@ -185,5 +185,20 @@ public class Hero {
     }
     
    
+    public String updateInfo(){
+        
+        String heroInfo = "% de civilizacion: " + percentCivilization +"\n";
+        
+        for(int i = 0; i< superpowers.size(); i++){
+            heroInfo += superpowers.get(i).getClass().getSimpleName() + "\n\n";
+        }
+        
+        
+        heroInfo += "Healing: " + healing + "\n" + "Strength: " + strength + "\n" + "Resistance: " + resistance + "\n";
+        
+        return heroInfo;
+        
+    }
+    
     
 }

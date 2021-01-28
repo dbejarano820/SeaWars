@@ -121,6 +121,10 @@ public class PantallaCliente extends javax.swing.JFrame {
         txtHero1.setText(msj);
     }
     
+    public void updateHero1Info(String info){
+        txtHero1.setText(info);
+    }
+    
     public void setInfoHero1Tablero(String nombre, String info){
         lblHero1Tablero.setText(nombre);
         txtHero1Tablero.append(info);
@@ -140,6 +144,11 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHero2Name.setText(nombre);
         txtHero2.setText(msj);
     }   
+     
+     
+    public void updateHero2Info(String info){
+        txtHero2.setText(info);
+    }
      
      public void addHero2Image(String path){
         lblHero2.setSize(140, 150);
@@ -171,7 +180,11 @@ public class PantallaCliente extends javax.swing.JFrame {
         lblHero3Name.setText(nombre);
         txtHero3.setText(msj);
     }  
-    
+     
+    public void updateHero3Info(String info){
+        txtHero3.setText(info);
+    }
+        
      public void addHero3Image(String path){
         lblHero3.setSize(140, 150);
         lblHero3.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(140, 150, Image.SCALE_DEFAULT)));
