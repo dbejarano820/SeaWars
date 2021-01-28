@@ -228,6 +228,7 @@ public class TheTrident implements Superpower{
             else{
                 fallo += "La casilla("+x+","+y+") de "+player.nombre+" iba a ser destruida por el Three Numbers enviado por "+atacante.nombre+" pero ya estaba muerta\n";
             }
+            i++;
         }
         if(!res.equals(""))
             atacante.cantidadAtinados++;
