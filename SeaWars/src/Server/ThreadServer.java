@@ -312,7 +312,12 @@ public class ThreadServer extends Thread {
                                                   writer.writeUTF("ERROR. Invalid command!");
                                                   break;   
                                                }                          
-                                           }       
+                                           }  
+                                                                              else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;       
+                                   }
                                        }
                                        
                                        else if(jugadaDeseada.equals("fishtelepathy")){
@@ -342,7 +347,12 @@ public class ThreadServer extends Thread {
                                                   writer.writeUTF("ERROR. Invalid command!");
                                                   break;   
                                                }                                                                                   
-                                           }              
+                                           }   
+                                                                               else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;       
+                                   }
                                        }
                                        
                                        else if(jugadaDeseada.equals("wavescontrol")){
@@ -375,6 +385,11 @@ public class ThreadServer extends Thread {
                                                   break;   
                                                }                                                   
                                            }
+                                                                               else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;       
+                                   }
                                        }
                                        
                                        else if(jugadaDeseada.equals("thetrident")){
@@ -400,7 +415,7 @@ public class ThreadServer extends Thread {
                                                    server.tridentHeroRetador = heroTmp;
                                                    
                                                    msj = "ALERT! You have been attacked by The Trident - Three numbers from " + jugadorTmp.nombre + "! Enter the following command and choose 3 numbers to defend yourself!  "
-                                                           + "threelines-num1-num2-num3";
+                                                           + "threenumbers-num1-num2-num3";
 
                                                    for(int i = 0; i < server.conexiones.size(); i++){
                                                        ThreadServer current = server.conexiones.get(i);
@@ -423,6 +438,12 @@ public class ThreadServer extends Thread {
                                                   break;   
                                                }                                                   
                                            }
+                                            
+                                                                               else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;       
+                                   }
                                        }                                      
                                        
                                        else if(jugadaDeseada.equals("underseavolcanoes")){
@@ -457,6 +478,13 @@ public class ThreadServer extends Thread {
                                                   break;   
                                                }                                                          
                                            }
+                                            
+                                                                               else{
+                                          writer.writeInt(2);
+                                          writer.writeUTF("ERROR. Invalid command!");
+                                          break;       
+                                   }
+                                            
                                        }    
                                        
                                        else if(jugadaDeseada.equals("releasethekraken")){
@@ -488,7 +516,11 @@ public class ThreadServer extends Thread {
                                                   break;   
                                                }                                                    
                                            }
-                                            //acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                           else{
+                                            writer.writeInt(2);
+                                            writer.writeUTF("ERROR. Invalid command!");
+                                            break;       
+                                           }
                                        }                                       
                                        updateTableroHeros();    //se actualizan los valor que estan debajo del tablero
                                        updateMatrizCliente();  //se actualizan las matrices de los clientes
